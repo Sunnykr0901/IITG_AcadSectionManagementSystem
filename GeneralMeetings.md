@@ -8,7 +8,6 @@ Meeting 2:
 Date:23 February
 Members Absent: Longkiri Bey
 Agenda: The Software Architechture was finalized, Sub teams were made ,work division was done
-
 ------------------------------------------------------------
 Meetings During MidSem Break (Only for sub team Leaders):
 
@@ -21,3 +20,14 @@ Meeting 2:
 Date:4 March
 Members Present: Utkarsh Jain,Hardik Katyal,Vineet Mallick
 Agenda: Database Structure Finalized
+-------------------------------------------------------------
+
+Meeting 3:
+Date:12 March
+Members Absent :Longkiri Bey,Parvinder Singh
+Agenda:Milestone 1
+
+Meeting 4 (Only Sub Team Leaders):
+Date:13 March
+Members Present: Utkarsh Jain,Piyush Gupta,Vineet Mallick,Hansraj Patel
+Agenda:Discussion on timetable generation, Data collection(field work), Data base recreated after Milestone 1 feedback
