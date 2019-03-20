@@ -1,0 +1,3 @@
+# Temporary Files
+###########
+*.opensdf                 #File is created when solution is loaded in IDE. So, it cannot to staged.
