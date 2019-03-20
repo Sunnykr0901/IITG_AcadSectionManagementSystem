@@ -87,27 +87,59 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="additional_details.cpp" />
+    <ClCompile Include="Admin.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="CourseEnrollment.cpp" />
+    <ClCompile Include="HOD.cpp" />
     <ClCompile Include="projectUI.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Student_details.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="additional_details.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Admin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="CourseEnrollment.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Form1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="HOD.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Student_details.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="additional_details.resx">
+      <DependentUpon>additional_details.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin.resx">
+      <DependentUpon>Admin.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resX">
       <DependentUpon>Form1.h</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HOD.resx">
+      <DependentUpon>HOD.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Student_details.resx">
+      <DependentUpon>Student_details.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

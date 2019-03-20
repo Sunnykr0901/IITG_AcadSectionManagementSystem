@@ -1,0 +1,3 @@
+#Temporary files
+################
+*.opensdf 					#file is created when solution in loaded in IDE

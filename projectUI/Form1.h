@@ -1,5 +1,8 @@
 #pragma once
 
+#include "Admin.h"
+#include "Student_details.h"
+
 #using <System.dll>
 #using <System.data.dll>
 
@@ -354,6 +357,7 @@ namespace projectUI {
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Homepage - Academic Section";
 			this->TransparencyKey = System::Drawing::SystemColors::WindowText;
+			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
 			this->MouseEnter += gcnew System::EventHandler(this, &Form1::Form1_MouseEnter);
 			this->panel2->ResumeLayout(false);
 			this->panel2->PerformLayout();
@@ -364,41 +368,48 @@ namespace projectUI {
 
 		}
 #pragma endregion
-	
 
 
-private: System::Void button4_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-		    formsPanel->Show();
-	    }
 
-private: System::Void formsPanel_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-		    formsPanel->Hide();
-	    }
-
-private: System::Void Form1_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-		    formsPanel->Hide();
-	    }
-private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-			 try{
-			
-					OleDbConnection ^ DB_Connection = gcnew OleDbConnection();
-					DB_Connection->ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
-					DB_Connection->Open();
-					String ^ first = "Chirag3";
-					String ^ insertString = "insert into CourseList([CourseID],[CourseName],[DeptID],[Credits],[CourseLink]) VALUES('" +first+ "', '" +first+ "', '" +first+ "', '" +first+ "', '" +first+ "' );";
-					
-					OleDbCommand ^ cmd = gcnew OleDbCommand(insertString, DB_Connection);
-					
-
-					cmd->ExecuteNonQuery();
-					DB_Connection->Close();	 
+	private: System::Void button4_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+				 formsPanel->Show();
 			 }
-			
-			catch(Exception ^ ex)
-			{
-				MessageBox::Show(ex->Message);
-			}
-		 }
+
+	private: System::Void formsPanel_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
+				 formsPanel->Hide();
+			 }
+
+	private: System::Void Form1_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+				 formsPanel->Hide();
+			 }
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+				 try{
+
+					 OleDbConnection ^ DB_Connection = gcnew OleDbConnection();
+					 DB_Connection->ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
+					 DB_Connection->Open();
+					 String ^ first = "Chirag3";
+					 String ^ insertString = "insert into CourseList([CourseID],[CourseName],[DeptID],[Credits],[CourseLink]) VALUES('" +first+ "', '" +first+ "', '" +first+ "', '" +first+ "', '" +first+ "' );";
+
+					 OleDbCommand ^ cmd = gcnew OleDbCommand(insertString, DB_Connection);
+
+
+					 cmd->ExecuteNonQuery();
+					 DB_Connection->Close();	 
+				 }
+
+				 catch(Exception ^ ex)
+				 {
+					 MessageBox::Show(ex->Message);
+				 }
+			 }
+	private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {
+
+				 //Admin::Form1 ^form2 = gcnew Admin::Form1() ;
+				 //form2->Show();
+
+				 projectUI::Student_details ^form_student_details = gcnew projectUI::Student_details("katya170101026") ;
+				 form_student_details->Show() ;
+			 }
 };
 }
-
