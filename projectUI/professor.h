@@ -1,5 +1,9 @@
 #pragma once
+#using <System.dll>
+#using <System.data.dll>
 
+#include "professor_sendGrades.h"
+#include "professor_currentCourses.h"
 namespace projectUI {
 
 	using namespace System;
@@ -8,7 +12,7 @@ namespace projectUI {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
+	using namespace System::Data::OleDb;
 	/// <summary>
 	/// Summary for professor
 	/// </summary>
@@ -35,16 +39,28 @@ namespace projectUI {
 			}
 		}
 	private: System::Windows::Forms::SplitContainer^  splitContainer1;
+	private: System::Windows::Forms::Button^  btn_vn;
+
 	protected: 
-	private: System::Windows::Forms::Button^  button8;
-	private: System::Windows::Forms::Button^  button7;
-	private: System::Windows::Forms::Button^  button9;
-	private: System::Windows::Forms::Button^  button6;
-	private: System::Windows::Forms::Button^  button5;
-	private: System::Windows::Forms::Button^  button3;
-	private: System::Windows::Forms::Button^  button2;
-	private: System::Windows::Forms::Button^  button1;
-	private: System::Windows::Forms::Button^  button4;
+
+	private: System::Windows::Forms::Button^  btn_cs;
+	private: System::Windows::Forms::Button^  btn_an;
+
+
+	private: System::Windows::Forms::Button^  btn_cc;
+
+	private: System::Windows::Forms::Button^  btn_tt;
+
+	private: System::Windows::Forms::Button^  btn_scp;
+
+	private: System::Windows::Forms::Button^  btn_sg;
+
+	private: System::Windows::Forms::Button^  btn_up;
+	private: System::Windows::Forms::Button^  btn_tam;
+	private: System::Windows::Forms::Button^  btn_caa;
+
+
+
 
 	private:
 		/// <summary>
@@ -60,15 +76,16 @@ namespace projectUI {
 		void InitializeComponent(void)
 		{
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->button5 = (gcnew System::Windows::Forms::Button());
-			this->button6 = (gcnew System::Windows::Forms::Button());
-			this->button7 = (gcnew System::Windows::Forms::Button());
-			this->button8 = (gcnew System::Windows::Forms::Button());
-			this->button9 = (gcnew System::Windows::Forms::Button());
+			this->btn_caa = (gcnew System::Windows::Forms::Button());
+			this->btn_vn = (gcnew System::Windows::Forms::Button());
+			this->btn_cs = (gcnew System::Windows::Forms::Button());
+			this->btn_an = (gcnew System::Windows::Forms::Button());
+			this->btn_cc = (gcnew System::Windows::Forms::Button());
+			this->btn_tt = (gcnew System::Windows::Forms::Button());
+			this->btn_scp = (gcnew System::Windows::Forms::Button());
+			this->btn_sg = (gcnew System::Windows::Forms::Button());
+			this->btn_up = (gcnew System::Windows::Forms::Button());
+			this->btn_tam = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->splitContainer1))->BeginInit();
 			this->splitContainer1->Panel1->SuspendLayout();
 			this->splitContainer1->SuspendLayout();
@@ -83,100 +100,113 @@ namespace projectUI {
 			// splitContainer1.Panel1
 			// 
 			this->splitContainer1->Panel1->AutoScroll = true;
-			this->splitContainer1->Panel1->Controls->Add(this->button8);
-			this->splitContainer1->Panel1->Controls->Add(this->button7);
-			this->splitContainer1->Panel1->Controls->Add(this->button9);
-			this->splitContainer1->Panel1->Controls->Add(this->button6);
-			this->splitContainer1->Panel1->Controls->Add(this->button5);
-			this->splitContainer1->Panel1->Controls->Add(this->button3);
-			this->splitContainer1->Panel1->Controls->Add(this->button2);
-			this->splitContainer1->Panel1->Controls->Add(this->button1);
-			this->splitContainer1->Panel1->Controls->Add(this->button4);
+			this->splitContainer1->Panel1->Controls->Add(this->btn_caa);
+			this->splitContainer1->Panel1->Controls->Add(this->btn_vn);
+			this->splitContainer1->Panel1->Controls->Add(this->btn_cs);
+			this->splitContainer1->Panel1->Controls->Add(this->btn_an);
+			this->splitContainer1->Panel1->Controls->Add(this->btn_cc);
+			this->splitContainer1->Panel1->Controls->Add(this->btn_tt);
+			this->splitContainer1->Panel1->Controls->Add(this->btn_scp);
+			this->splitContainer1->Panel1->Controls->Add(this->btn_sg);
+			this->splitContainer1->Panel1->Controls->Add(this->btn_up);
+			this->splitContainer1->Panel1->Controls->Add(this->btn_tam);
 			this->splitContainer1->Size = System::Drawing::Size(1019, 617);
-			this->splitContainer1->SplitterDistance = 243;
+			this->splitContainer1->SplitterDistance = 261;
 			this->splitContainer1->TabIndex = 0;
 			// 
-			// button1
+			// btn_caa
 			// 
-			this->button1->Location = System::Drawing::Point(25, 90);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(187, 65);
-			this->button1->TabIndex = 0;
-			this->button1->Text = L"button1";
-			this->button1->UseVisualStyleBackColor = true;
+			this->btn_caa->Location = System::Drawing::Point(25, 876);
+			this->btn_caa->Margin = System::Windows::Forms::Padding(3, 3, 3, 30);
+			this->btn_caa->Name = L"btn_caa";
+			this->btn_caa->Size = System::Drawing::Size(187, 65);
+			this->btn_caa->TabIndex = 9;
+			this->btn_caa->Text = L"Course Adjustment Approval";
+			this->btn_caa->UseVisualStyleBackColor = true;
 			// 
-			// button2
+			// btn_vn
 			// 
-			this->button2->Location = System::Drawing::Point(25, 177);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(187, 65);
-			this->button2->TabIndex = 1;
-			this->button2->Text = L"button2";
-			this->button2->UseVisualStyleBackColor = true;
+			this->btn_vn->Location = System::Drawing::Point(25, 704);
+			this->btn_vn->Name = L"btn_vn";
+			this->btn_vn->Size = System::Drawing::Size(187, 65);
+			this->btn_vn->TabIndex = 7;
+			this->btn_vn->Text = L"View Notification";
+			this->btn_vn->UseVisualStyleBackColor = true;
 			// 
-			// button3
+			// btn_cs
 			// 
-			this->button3->Location = System::Drawing::Point(25, 270);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(187, 65);
-			this->button3->TabIndex = 2;
-			this->button3->Text = L"button3";
-			this->button3->UseVisualStyleBackColor = true;
+			this->btn_cs->Location = System::Drawing::Point(25, 621);
+			this->btn_cs->Name = L"btn_cs";
+			this->btn_cs->Size = System::Drawing::Size(187, 65);
+			this->btn_cs->TabIndex = 6;
+			this->btn_cs->Text = L"Current Students";
+			this->btn_cs->UseVisualStyleBackColor = true;
 			// 
-			// button4
+			// btn_an
 			// 
-			this->button4->Location = System::Drawing::Point(25, 358);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(187, 65);
-			this->button4->TabIndex = 3;
-			this->button4->Text = L"button4";
-			this->button4->UseVisualStyleBackColor = true;
+			this->btn_an->Location = System::Drawing::Point(25, 790);
+			this->btn_an->Margin = System::Windows::Forms::Padding(3, 3, 3, 30);
+			this->btn_an->Name = L"btn_an";
+			this->btn_an->Size = System::Drawing::Size(187, 65);
+			this->btn_an->TabIndex = 8;
+			this->btn_an->Text = L"Add Notification";
+			this->btn_an->UseVisualStyleBackColor = true;
 			// 
-			// button5
+			// btn_cc
 			// 
-			this->button5->Location = System::Drawing::Point(25, 447);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(187, 65);
-			this->button5->TabIndex = 4;
-			this->button5->Text = L"button5";
-			this->button5->UseVisualStyleBackColor = true;
+			this->btn_cc->Location = System::Drawing::Point(25, 532);
+			this->btn_cc->Name = L"btn_cc";
+			this->btn_cc->Size = System::Drawing::Size(187, 65);
+			this->btn_cc->TabIndex = 5;
+			this->btn_cc->Text = L"Current Courses";
+			this->btn_cc->UseVisualStyleBackColor = true;
+			this->btn_cc->Click += gcnew System::EventHandler(this, &professor::btn_cc_Click);
 			// 
-			// button6
+			// btn_tt
 			// 
-			this->button6->Location = System::Drawing::Point(25, 532);
-			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(187, 65);
-			this->button6->TabIndex = 5;
-			this->button6->Text = L"button6";
-			this->button6->UseVisualStyleBackColor = true;
+			this->btn_tt->Location = System::Drawing::Point(25, 447);
+			this->btn_tt->Name = L"btn_tt";
+			this->btn_tt->Size = System::Drawing::Size(187, 65);
+			this->btn_tt->TabIndex = 4;
+			this->btn_tt->Text = L"Time Table";
+			this->btn_tt->UseVisualStyleBackColor = true;
 			// 
-			// button7
+			// btn_scp
 			// 
-			this->button7->Location = System::Drawing::Point(25, 621);
-			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(187, 65);
-			this->button7->TabIndex = 6;
-			this->button7->Text = L"button7";
-			this->button7->UseVisualStyleBackColor = true;
+			this->btn_scp->Location = System::Drawing::Point(25, 270);
+			this->btn_scp->Name = L"btn_scp";
+			this->btn_scp->Size = System::Drawing::Size(187, 65);
+			this->btn_scp->TabIndex = 2;
+			this->btn_scp->Text = L"Send Course Preference";
+			this->btn_scp->UseVisualStyleBackColor = true;
 			// 
-			// button8
+			// btn_sg
 			// 
-			this->button8->Location = System::Drawing::Point(25, 704);
-			this->button8->Name = L"button8";
-			this->button8->Size = System::Drawing::Size(187, 65);
-			this->button8->TabIndex = 7;
-			this->button8->Text = L"button8";
-			this->button8->UseVisualStyleBackColor = true;
+			this->btn_sg->Location = System::Drawing::Point(25, 177);
+			this->btn_sg->Name = L"btn_sg";
+			this->btn_sg->Size = System::Drawing::Size(187, 65);
+			this->btn_sg->TabIndex = 1;
+			this->btn_sg->Text = L"Send Grades";
+			this->btn_sg->UseVisualStyleBackColor = true;
+			this->btn_sg->Click += gcnew System::EventHandler(this, &professor::btn_sg_Click);
 			// 
-			// button9
+			// btn_up
 			// 
-			this->button9->Location = System::Drawing::Point(25, 790);
-			this->button9->Margin = System::Windows::Forms::Padding(3, 3, 3, 30);
-			this->button9->Name = L"button9";
-			this->button9->Size = System::Drawing::Size(187, 65);
-			this->button9->TabIndex = 8;
-			this->button9->Text = L"button9";
-			this->button9->UseVisualStyleBackColor = true;
+			this->btn_up->Location = System::Drawing::Point(25, 90);
+			this->btn_up->Name = L"btn_up";
+			this->btn_up->Size = System::Drawing::Size(187, 65);
+			this->btn_up->TabIndex = 0;
+			this->btn_up->Text = L"Update Profile";
+			this->btn_up->UseVisualStyleBackColor = true;
+			// 
+			// btn_tam
+			// 
+			this->btn_tam->Location = System::Drawing::Point(25, 358);
+			this->btn_tam->Name = L"btn_tam";
+			this->btn_tam->Size = System::Drawing::Size(187, 65);
+			this->btn_tam->TabIndex = 3;
+			this->btn_tam->Text = L"TA Management";
+			this->btn_tam->UseVisualStyleBackColor = true;
 			// 
 			// professor
 			// 
@@ -193,5 +223,13 @@ namespace projectUI {
 
 		}
 #pragma endregion
-	};
+	private: System::Void btn_sg_Click(System::Object^  sender, System::EventArgs^  e) {
+				 splitContainer1->Panel2->Controls->Clear();
+				 splitContainer1->Panel2->Controls->Add(gcnew professor_sendGrades);
+			 }
+private: System::Void btn_cc_Click(System::Object^  sender, System::EventArgs^  e) {
+			 splitContainer1->Panel2->Controls->Clear();
+			 splitContainer1->Panel2->Controls->Add(gcnew professor_currentCourses);
+		 }
+};
 }

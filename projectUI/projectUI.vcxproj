@@ -89,6 +89,9 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="professor.cpp" />
+    <ClCompile Include="professor_currentCourses.cpp" />
+    <ClCompile Include="professor_sendCoursePreference.cpp" />
+    <ClCompile Include="professor_sendGrades.cpp" />
     <ClCompile Include="projectUI.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -101,6 +104,15 @@
     </ClInclude>
     <ClInclude Include="professor.h">
       <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="professor_currentCourses.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
+    <ClInclude Include="professor_sendCoursePreference.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
+    <ClInclude Include="professor_sendGrades.h">
+      <FileType>CppControl</FileType>
     </ClInclude>
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -115,6 +127,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="professor.resx">
       <DependentUpon>professor.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="professor_currentCourses.resx">
+      <DependentUpon>professor_currentCourses.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="professor_sendCoursePreference.resx">
+      <DependentUpon>professor_sendCoursePreference.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="professor_sendGrades.resx">
+      <DependentUpon>professor_sendGrades.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
