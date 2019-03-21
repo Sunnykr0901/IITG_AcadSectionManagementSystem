@@ -89,6 +89,9 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="professor.cpp" />
+    <ClCompile Include="professor_addnotif_1.cpp" />
+    <ClCompile Include="professor_addnotif_2.cpp" />
+    <ClCompile Include="professor_addnotif_3.cpp" />
     <ClCompile Include="professor_currentCourses.cpp" />
     <ClCompile Include="professor_sendCoursePreference.cpp" />
     <ClCompile Include="professor_sendGrades.cpp" />
@@ -104,6 +107,15 @@
     </ClInclude>
     <ClInclude Include="professor.h">
       <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="professor_addnotif_1.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
+    <ClInclude Include="professor_addnotif_2.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
+    <ClInclude Include="professor_addnotif_3.h">
+      <FileType>CppControl</FileType>
     </ClInclude>
     <ClInclude Include="professor_currentCourses.h">
       <FileType>CppControl</FileType>
@@ -127,6 +139,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="professor.resx">
       <DependentUpon>professor.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="professor_addnotif_1.resx">
+      <DependentUpon>professor_addnotif_1.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="professor_addnotif_2.resx">
+      <DependentUpon>professor_addnotif_2.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="professor_addnotif_3.resx">
+      <DependentUpon>professor_addnotif_3.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="professor_currentCourses.resx">
       <DependentUpon>professor_currentCourses.h</DependentUpon>
