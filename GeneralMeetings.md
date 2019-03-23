@@ -51,14 +51,3 @@ Date:13 March
 Members Present: Utkarsh Jain,Piyush Gupta,Vineet Mallick,Hansraj Patel
 
 Agenda:Discussion on timetable generation, Data collection(field work), Data base recreated after Milestone 1 feedback
-
-
-Meeting 5 (Only Sub Team Leaders):
-
-Date:18 March
-
-Members Present: Utkarsh Jain,Hardik Katyal,Piyush Gupta,Hansraj Patel
-
-Agenda:Project Status and Minor Updates
-
-

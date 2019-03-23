@@ -1,8 +1,8 @@
 // projectUI.cpp : main project file.
 
 #include "stdafx.h"
-#include "Form1.h"
-
+#include "Homepage.h"
+#include "professor.h"
 using namespace projectUI;
 
 [STAThreadAttribute]
@@ -13,6 +13,7 @@ int main(array<System::String ^> ^args)
 	Application::SetCompatibleTextRenderingDefault(false); 
 
 	// Create the main window and run it
-	Application::Run(gcnew Form1());
+	//Application::Run(gcnew professor());
+	Application::Run(gcnew Homepage());
 	return 0;
 }

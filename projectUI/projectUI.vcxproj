@@ -88,26 +88,82 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="DetailedStudentProfile.cpp" />
+    <ClCompile Include="Homepage.cpp" />
+    <ClCompile Include="professor.cpp" />
+    <ClCompile Include="professor_currentCourses.cpp" />
+    <ClCompile Include="professor_sendCoursePreference.cpp" />
+    <ClCompile Include="professor_sendGrades.cpp" />
     <ClCompile Include="projectUI.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="StudentProfile.cpp" />
+    <ClCompile Include="Search.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Form1.h">
+    <ClInclude Include="DetailedStudentProfile.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
+    <ClInclude Include="Homepage.h">
       <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="professor.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="professor_currentCourses.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
+    <ClInclude Include="professor_sendCoursePreference.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
+    <ClInclude Include="professor_sendGrades.h">
+      <FileType>CppControl</FileType>
     </ClInclude>
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="StudentForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="StudentProfile.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
+    <ClInclude Include="Search.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resX">
-      <DependentUpon>Form1.h</DependentUpon>
+    <EmbeddedResource Include="DetailedStudentProfile.resx">
+      <DependentUpon>DetailedStudentProfile.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Homepage.resx">
+      <DependentUpon>Homepage.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="professor.resx">
+      <DependentUpon>professor.h</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="professor_currentCourses.resx">
+      <DependentUpon>professor_currentCourses.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="professor_sendCoursePreference.resx">
+      <DependentUpon>professor_sendCoursePreference.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="professor_sendGrades.resx">
+      <DependentUpon>professor_sendGrades.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentForm.resx">
+      <DependentUpon>StudentForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentProfile.resx">
+      <DependentUpon>StudentProfile.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Search.resx">
+      <DependentUpon>Search.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
