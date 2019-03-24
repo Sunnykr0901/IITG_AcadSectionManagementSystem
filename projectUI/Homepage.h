@@ -434,40 +434,47 @@ namespace projectUI {
 		}
 #pragma endregion
 	private: System::Void loginBtn_Click(System::Object^  sender, System::EventArgs^  e) {
-				 /*try{
 
-				OleDb::OleDbConnection ^con;
-			    String^ connString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
-						 
-				con=gcnew OleDb::OleDbConnection(connString);
-				con->Open();
-			   
- 			    String ^ aString = "Select [Password] from Student where [Username] ='"+usernametxt-> Text+"';";
-				MessageBox::Show(aString);
-				
-				//if(aString->Length){
-				//	Homepage::Hide();
-				//	studentform ^student=gcnew studentform();
-				//	student->ShowDialog();
-				//}
-			    OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(aString,con);
-				OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
+				 OleDb::OleDbConnection ^con;	 
+				 try{				
+					 String^ connString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
 
-				int count=0;
-				String ^password;
-				while(readerData->Read())
-				{
-				password=readerData->GetString(0);
-				MessageBox::Show(password);
-				count++;
-				}
-				if(count==1 && passwordtxt->Text==password){
-					Homepage::Hide();
-					StudentForm ^student=gcnew StudentForm();
-					student->ShowDialog();
-				}
-			
-			*/	
-			 }
-};
+					 con=gcnew OleDb::OleDbConnection(connString);
+					 con->Open();
+
+					 String ^ aString = "Select [Password] from Student where [Username] ='"+txtUsername-> Text+"';";
+					 MessageBox::Show(aString);
+
+					 //if(aString->Length){
+					 //	Homepage::Hide();
+					 //	studentform ^student=gcnew studentform();
+					 //	student->ShowDialog();
+					 //}
+					 OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(aString,con);
+					 OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
+
+					 int count=0;
+					 String ^password;
+					 while(readerData->Read())
+					 {
+						 password=readerData->GetString(0);
+						 MessageBox::Show(password);
+						 count++;
+					 }
+					 if(count==1 && txtPassword->Text==password){
+						 Homepage::Hide();
+						 StudentForm ^student=gcnew StudentForm(txtUsername->Text);
+						 student->ShowDialog();
+						 con->Close();
+					 }
+					 con->Close();
+				 }
+				 catch(Exception ^ ex)
+				 {
+					 MessageBox::Show(ex->Message);
+					 con->Close();
+				 }
+
+			 };
+	};
 }

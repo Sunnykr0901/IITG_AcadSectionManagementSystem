@@ -1,5 +1,9 @@
 #pragma once
+#using <System.dll>
+#using <System.data.dll>
 
+#include "StudentProfile.h"
+//#include "professor_currentCourses.h"
 namespace projectUI {
 
 	using namespace System;
@@ -15,6 +19,9 @@ namespace projectUI {
 	public ref class StudentForm : public System::Windows::Forms::Form
 	{
 	public:
+		String ^usrnm;
+
+	public:
 		StudentForm(void)
 		{
 			InitializeComponent();
@@ -23,6 +30,11 @@ namespace projectUI {
 			//
 		}
 
+		StudentForm(String ^text)
+		{
+			InitializeComponent();
+			usrnm=text;
+		}
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -34,7 +46,7 @@ namespace projectUI {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^  editProfileBtn;
+
 	protected: 
 	private: System::Windows::Forms::Label^  label5;
 	private: System::Windows::Forms::Button^  button1;
@@ -48,6 +60,7 @@ namespace projectUI {
 
 	private: System::Windows::Forms::Button^  noticificationBtn;
 	private: System::Windows::Forms::PictureBox^  pictureBox2;
+	private: System::Windows::Forms::Panel^  panel1;
 
 	protected: 
 
@@ -65,7 +78,6 @@ namespace projectUI {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(StudentForm::typeid));
-			this->editProfileBtn = (gcnew System::Windows::Forms::Button());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label6 = (gcnew System::Windows::Forms::Label());
@@ -76,25 +88,10 @@ namespace projectUI {
 			this->TTBtn = (gcnew System::Windows::Forms::Button());
 			this->noticificationBtn = (gcnew System::Windows::Forms::Button());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->panel2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox2))->BeginInit();
 			this->SuspendLayout();
-			// 
-			// editProfileBtn
-			// 
-			this->editProfileBtn->BackColor = System::Drawing::Color::Teal;
-			this->editProfileBtn->FlatAppearance->BorderSize = 0;
-			this->editProfileBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->editProfileBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
-				static_cast<System::Byte>(0)));
-			this->editProfileBtn->ForeColor = System::Drawing::Color::White;
-			this->editProfileBtn->Location = System::Drawing::Point(807, -1);
-			this->editProfileBtn->Margin = System::Windows::Forms::Padding(0);
-			this->editProfileBtn->Name = L"editProfileBtn";
-			this->editProfileBtn->Size = System::Drawing::Size(80, 49);
-			this->editProfileBtn->TabIndex = 12;
-			this->editProfileBtn->Text = L"EDIT PROFILE";
-			this->editProfileBtn->UseVisualStyleBackColor = false;
 			// 
 			// label5
 			// 
@@ -188,7 +185,6 @@ namespace projectUI {
 			// panel2
 			// 
 			this->panel2->BackColor = System::Drawing::Color::Teal;
-			this->panel2->Controls->Add(this->editProfileBtn);
 			this->panel2->Controls->Add(this->button1);
 			this->panel2->Controls->Add(this->logoutBtn);
 			this->panel2->Controls->Add(this->searchBtn);
@@ -244,17 +240,27 @@ namespace projectUI {
 			this->pictureBox2->TabIndex = 23;
 			this->pictureBox2->TabStop = false;
 			// 
+			// panel1
+			// 
+			this->panel1->Location = System::Drawing::Point(9, 180);
+			this->panel1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(968, 431);
+			this->panel1->TabIndex = 27;
+			// 
 			// StudentForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(986, 614);
+			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->pictureBox2);
 			this->Name = L"StudentForm";
 			this->Text = L"StudentForm";
+			this->Load += gcnew System::EventHandler(this, &StudentForm::StudentForm_Load);
 			this->panel2->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
@@ -262,5 +268,11 @@ namespace projectUI {
 
 		}
 #pragma endregion
-	};
+	
+private: System::Void StudentForm_Load(System::Object^  sender, System::EventArgs^  e) {
+			 panel1->Controls->Clear();
+			 StudentProfile ^sp = gcnew StudentProfile(usrnm);
+			 panel1->Controls->Add(sp);
+		 }
+};
 }
