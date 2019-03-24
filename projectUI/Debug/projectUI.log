@@ -1,4 +1,4 @@
-﻿Build started 24-03-2019 15:47:20.
+﻿Build started 24-03-2019 16:37:40.
      1>Project "C:\Users\Hansraj Patel\Desktop\Software Engg\AcadManagemetSysyetm\HansuAcadManagement-master\HansuAcadManagement\A\projectUI\projectUI.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\ASMS_IITG.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -14,7 +14,8 @@
          Generating Code...
          All outputs are up-to-date.
        CoreResGen:
-         No resources are out of date with respect to their source files. Skipping resource generation.
+         "C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\NETFX 4.0 Tools\resgen.exe" /useSourcePath /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /compile DetailedStudentProfile.resx,Debug\projectUI.DetailedStudentProfile.resources
+         Processing resource file "DetailedStudentProfile.resx" into "Debug\projectUI.DetailedStudentProfile.resources".
        ResourceCompile:
          All outputs are up-to-date.
        Link:
@@ -41,4 +42,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.37
+Time Elapsed 00:00:01.15

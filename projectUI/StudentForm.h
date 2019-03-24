@@ -142,10 +142,10 @@ namespace projectUI {
 			this->logoutBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->logoutBtn->ForeColor = System::Drawing::Color::White;
-			this->logoutBtn->Location = System::Drawing::Point(896, 1);
+			this->logoutBtn->Location = System::Drawing::Point(780, -1);
 			this->logoutBtn->Margin = System::Windows::Forms::Padding(0);
 			this->logoutBtn->Name = L"logoutBtn";
-			this->logoutBtn->Size = System::Drawing::Size(80, 46);
+			this->logoutBtn->Size = System::Drawing::Size(80, 48);
 			this->logoutBtn->TabIndex = 10;
 			this->logoutBtn->Text = L"LOGOUT";
 			this->logoutBtn->UseVisualStyleBackColor = false;
@@ -194,7 +194,7 @@ namespace projectUI {
 			this->panel2->Location = System::Drawing::Point(0, 131);
 			this->panel2->Margin = System::Windows::Forms::Padding(0);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(986, 47);
+			this->panel2->Size = System::Drawing::Size(900, 47);
 			this->panel2->TabIndex = 24;
 			// 
 			// TTBtn
@@ -242,17 +242,17 @@ namespace projectUI {
 			// 
 			// panel1
 			// 
-			this->panel1->Location = System::Drawing::Point(9, 180);
-			this->panel1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->panel1->Location = System::Drawing::Point(0, 180);
+			this->panel1->Margin = System::Windows::Forms::Padding(0);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(968, 431);
+			this->panel1->Size = System::Drawing::Size(883, 481);
 			this->panel1->TabIndex = 27;
 			// 
 			// StudentForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(986, 614);
+			this->ClientSize = System::Drawing::Size(884, 661);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label6);

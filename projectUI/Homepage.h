@@ -43,7 +43,7 @@ namespace projectUI {
 	private: System::Windows::Forms::Button^  MFormsBtn;
 	private: System::Windows::Forms::Button^  GenFormsBtn;
 	private: System::Windows::Forms::Button^  BMFormsBtn;
-	private: System::Windows::Forms::Button^  button1;
+
 	private: System::Windows::Forms::Button^  searchBtn;
 	private: System::Windows::Forms::Label^  label4;
 	private: System::Windows::Forms::Button^  formsBtn;
@@ -82,7 +82,6 @@ namespace projectUI {
 			this->MFormsBtn = (gcnew System::Windows::Forms::Button());
 			this->GenFormsBtn = (gcnew System::Windows::Forms::Button());
 			this->BMFormsBtn = (gcnew System::Windows::Forms::Button());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->searchBtn = (gcnew System::Windows::Forms::Button());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->formsBtn = (gcnew System::Windows::Forms::Button());
@@ -113,7 +112,7 @@ namespace projectUI {
 			this->formsPanel->Controls->Add(this->MFormsBtn);
 			this->formsPanel->Controls->Add(this->GenFormsBtn);
 			this->formsPanel->Controls->Add(this->BMFormsBtn);
-			this->formsPanel->Location = System::Drawing::Point(845, 176);
+			this->formsPanel->Location = System::Drawing::Point(742, 176);
 			this->formsPanel->Margin = System::Windows::Forms::Padding(0);
 			this->formsPanel->Name = L"formsPanel";
 			this->formsPanel->Size = System::Drawing::Size(133, 118);
@@ -179,22 +178,6 @@ namespace projectUI {
 			this->BMFormsBtn->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			this->BMFormsBtn->UseVisualStyleBackColor = false;
 			// 
-			// button1
-			// 
-			this->button1->BackColor = System::Drawing::Color::Tomato;
-			this->button1->FlatAppearance->BorderSize = 0;
-			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
-				static_cast<System::Byte>(0)));
-			this->button1->ForeColor = System::Drawing::Color::White;
-			this->button1->Location = System::Drawing::Point(11, 0);
-			this->button1->Margin = System::Windows::Forms::Padding(0);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(80, 47);
-			this->button1->TabIndex = 10;
-			this->button1->Text = L"LOGIN";
-			this->button1->UseVisualStyleBackColor = false;
-			// 
 			// searchBtn
 			// 
 			this->searchBtn->BackColor = System::Drawing::Color::Teal;
@@ -203,7 +186,7 @@ namespace projectUI {
 			this->searchBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->searchBtn->ForeColor = System::Drawing::Color::White;
-			this->searchBtn->Location = System::Drawing::Point(499, 0);
+			this->searchBtn->Location = System::Drawing::Point(396, 0);
 			this->searchBtn->Margin = System::Windows::Forms::Padding(0);
 			this->searchBtn->Name = L"searchBtn";
 			this->searchBtn->Size = System::Drawing::Size(80, 47);
@@ -232,7 +215,7 @@ namespace projectUI {
 			this->formsBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->formsBtn->ForeColor = System::Drawing::Color::White;
-			this->formsBtn->Location = System::Drawing::Point(905, 0);
+			this->formsBtn->Location = System::Drawing::Point(802, 0);
 			this->formsBtn->Margin = System::Windows::Forms::Padding(0);
 			this->formsBtn->Name = L"formsBtn";
 			this->formsBtn->Size = System::Drawing::Size(73, 47);
@@ -248,7 +231,7 @@ namespace projectUI {
 			this->AcadCalBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->AcadCalBtn->ForeColor = System::Drawing::Color::White;
-			this->AcadCalBtn->Location = System::Drawing::Point(716, 0);
+			this->AcadCalBtn->Location = System::Drawing::Point(613, 0);
 			this->AcadCalBtn->Margin = System::Windows::Forms::Padding(0);
 			this->AcadCalBtn->Name = L"AcadCalBtn";
 			this->AcadCalBtn->Size = System::Drawing::Size(189, 47);
@@ -284,7 +267,6 @@ namespace projectUI {
 			// panel2
 			// 
 			this->panel2->BackColor = System::Drawing::Color::Teal;
-			this->panel2->Controls->Add(this->button1);
 			this->panel2->Controls->Add(this->searchBtn);
 			this->panel2->Controls->Add(this->formsBtn);
 			this->panel2->Controls->Add(this->AcadCalBtn);
@@ -292,7 +274,7 @@ namespace projectUI {
 			this->panel2->Location = System::Drawing::Point(0, 129);
 			this->panel2->Margin = System::Windows::Forms::Padding(0);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(986, 47);
+			this->panel2->Size = System::Drawing::Size(900, 47);
 			this->panel2->TabIndex = 17;
 			// 
 			// noticeBrdBtn
@@ -303,7 +285,7 @@ namespace projectUI {
 			this->noticeBrdBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->noticeBrdBtn->ForeColor = System::Drawing::Color::White;
-			this->noticeBrdBtn->Location = System::Drawing::Point(574, 0);
+			this->noticeBrdBtn->Location = System::Drawing::Point(471, 0);
 			this->noticeBrdBtn->Margin = System::Windows::Forms::Padding(0);
 			this->noticeBrdBtn->Name = L"noticeBrdBtn";
 			this->noticeBrdBtn->Size = System::Drawing::Size(142, 47);
@@ -326,7 +308,7 @@ namespace projectUI {
 			// 
 			this->panel1->BackColor = System::Drawing::Color::Teal;
 			this->panel1->Controls->Add(this->panel3);
-			this->panel1->Location = System::Drawing::Point(63, 282);
+			this->panel1->Location = System::Drawing::Point(224, 328);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(411, 190);
 			this->panel1->TabIndex = 22;
@@ -412,7 +394,7 @@ namespace projectUI {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(975, 602);
+			this->ClientSize = System::Drawing::Size(884, 661);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->formsPanel);
 			this->Controls->Add(this->label4);
