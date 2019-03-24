@@ -3,6 +3,7 @@
 #using <System.data.dll>
 
 #include "StudentProfile.h"
+#include "StudentCourses.h"
 //#include "professor_currentCourses.h"
 namespace projectUI {
 
@@ -49,7 +50,8 @@ namespace projectUI {
 
 	protected: 
 	private: System::Windows::Forms::Label^  label5;
-	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::Button^  profileBtn;
+
 	private: System::Windows::Forms::Label^  label6;
 	private: System::Windows::Forms::Button^  logoutBtn;
 	private: System::Windows::Forms::Button^  searchBtn;
@@ -79,7 +81,7 @@ namespace projectUI {
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(StudentForm::typeid));
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->profileBtn = (gcnew System::Windows::Forms::Button());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->logoutBtn = (gcnew System::Windows::Forms::Button());
 			this->searchBtn = (gcnew System::Windows::Forms::Button());
@@ -106,21 +108,21 @@ namespace projectUI {
 			this->label5->TabIndex = 26;
 			this->label5->Text = L"StudentS Portal";
 			// 
-			// button1
+			// profileBtn
 			// 
-			this->button1->BackColor = System::Drawing::Color::Teal;
-			this->button1->FlatAppearance->BorderSize = 0;
-			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			this->profileBtn->BackColor = System::Drawing::Color::Teal;
+			this->profileBtn->FlatAppearance->BorderSize = 0;
+			this->profileBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->profileBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->button1->ForeColor = System::Drawing::Color::White;
-			this->button1->Location = System::Drawing::Point(11, 0);
-			this->button1->Margin = System::Windows::Forms::Padding(0);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(80, 47);
-			this->button1->TabIndex = 11;
-			this->button1->Text = L"PROFILE";
-			this->button1->UseVisualStyleBackColor = false;
+			this->profileBtn->ForeColor = System::Drawing::Color::White;
+			this->profileBtn->Location = System::Drawing::Point(11, 0);
+			this->profileBtn->Margin = System::Windows::Forms::Padding(0);
+			this->profileBtn->Name = L"profileBtn";
+			this->profileBtn->Size = System::Drawing::Size(80, 47);
+			this->profileBtn->TabIndex = 11;
+			this->profileBtn->Text = L"PROFILE";
+			this->profileBtn->UseVisualStyleBackColor = false;
 			// 
 			// label6
 			// 
@@ -149,6 +151,7 @@ namespace projectUI {
 			this->logoutBtn->TabIndex = 10;
 			this->logoutBtn->Text = L"LOGOUT";
 			this->logoutBtn->UseVisualStyleBackColor = false;
+			this->logoutBtn->Click += gcnew System::EventHandler(this, &StudentForm::logoutBtn_Click);
 			// 
 			// searchBtn
 			// 
@@ -181,11 +184,12 @@ namespace projectUI {
 			this->MyCoursesBtn->TabIndex = 5;
 			this->MyCoursesBtn->Text = L"MY COURSES";
 			this->MyCoursesBtn->UseVisualStyleBackColor = false;
+			this->MyCoursesBtn->Click += gcnew System::EventHandler(this, &StudentForm::MyCoursesBtn_Click);
 			// 
 			// panel2
 			// 
 			this->panel2->BackColor = System::Drawing::Color::Teal;
-			this->panel2->Controls->Add(this->button1);
+			this->panel2->Controls->Add(this->profileBtn);
 			this->panel2->Controls->Add(this->logoutBtn);
 			this->panel2->Controls->Add(this->searchBtn);
 			this->panel2->Controls->Add(this->MyCoursesBtn);
@@ -242,16 +246,18 @@ namespace projectUI {
 			// 
 			// panel1
 			// 
-			this->panel1->Location = System::Drawing::Point(0, 180);
+			this->panel1->BackColor = System::Drawing::SystemColors::Control;
+			this->panel1->Location = System::Drawing::Point(85, 179);
 			this->panel1->Margin = System::Windows::Forms::Padding(0);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(883, 481);
+			this->panel1->Size = System::Drawing::Size(715, 481);
 			this->panel1->TabIndex = 27;
 			// 
 			// StudentForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(884, 661);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->label5);
@@ -273,6 +279,17 @@ private: System::Void StudentForm_Load(System::Object^  sender, System::EventArg
 			 panel1->Controls->Clear();
 			 StudentProfile ^sp = gcnew StudentProfile(usrnm);
 			 panel1->Controls->Add(sp);
+		 }
+private: System::Void logoutBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+// 			 this->Controls->Clear();
+// 			 StudentForm::Hide();
+// 			 Homepage ^home=gcnew Homepage();
+// 			 home->ShowDialog();
+		 }
+private: System::Void MyCoursesBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+			 panel1->Controls->Clear();
+			 StudentCourses ^sc = gcnew StudentCourses(usrnm);
+			 panel1->Controls->Add(sc);
 		 }
 };
 }

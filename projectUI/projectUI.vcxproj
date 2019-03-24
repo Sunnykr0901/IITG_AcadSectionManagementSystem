@@ -99,6 +99,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="StudentCourses.cpp" />
     <ClCompile Include="StudentProfile.cpp" />
     <ClCompile Include="Search.cpp" />
   </ItemGroup>
@@ -123,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="StudentCourses.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
     <ClInclude Include="StudentForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -155,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="professor_sendGrades.resx">
       <DependentUpon>professor_sendGrades.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentCourses.resx">
+      <DependentUpon>StudentCourses.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StudentForm.resx">
       <DependentUpon>StudentForm.h</DependentUpon>
