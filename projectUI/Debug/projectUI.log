@@ -1,25 +1,40 @@
-﻿Build started 24-03-2019 16:37:40.
-     1>Project "C:\Users\Hansraj Patel\Desktop\Software Engg\AcadManagemetSysyetm\HansuAcadManagement-master\HansuAcadManagement\A\projectUI\projectUI.vcxproj" on node 2 (build target(s)).
+﻿Build started 24-03-2019 17:46:58.
+     1>Project "C:\Users\hansrajhello\Desktop\CS243 SWE\L3\HansuAcadManagement\IITG_AcadSectionManagementSystem-branch_hansu\projectUI\projectUI.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\ASMS_IITG.unsuccessfulbuild" because "AlwaysCreate" was specified.
        GenerateTargetFrameworkMonikerAttribute:
        Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
        ClCompile:
-         All outputs are up-to-date.
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr:pure /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\ASMS_IITG.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt DetailedStudentProfile.cpp Homepage.cpp StudentProfile.cpp projectUI.cpp /clr:nostdlib 
+         E:\Installed Programs\Visual Studio 2010\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr:pure /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug\ASMS_IITG.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt stdafx.cpp /clr:nostdlib 
+         stdafx.cpp
+         E:\Installed Programs\Visual Studio 2010\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr:pure /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\ASMS_IITG.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt AssemblyInfo.cpp DetailedStudentProfile.cpp Homepage.cpp professor.cpp professor_currentCourses.cpp professor_sendCoursePreference.cpp professor_sendGrades.cpp projectUI.cpp StudentProfile.cpp Search.cpp /clr:nostdlib 
+         AssemblyInfo.cpp
          DetailedStudentProfile.cpp
          Homepage.cpp
-         StudentProfile.cpp
+         professor.cpp
+         professor_currentCourses.cpp
+         professor_sendCoursePreference.cpp
+         professor_sendGrades.cpp
          projectUI.cpp
+         StudentProfile.cpp
+         Search.cpp
          Generating Code...
          All outputs are up-to-date.
        CoreResGen:
-         "C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\NETFX 4.0 Tools\resgen.exe" /useSourcePath /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /compile DetailedStudentProfile.resx,Debug\projectUI.DetailedStudentProfile.resources
+         "C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\NETFX 4.0 Tools\resgen.exe" /useSourcePath /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /compile DetailedStudentProfile.resx,Debug\projectUI.DetailedStudentProfile.resources Homepage.resx,Debug\projectUI.Homepage.resources professor.resx,Debug\projectUI.professor.resources professor_currentCourses.resx,Debug\projectUI.professor_currentCourses.resources professor_sendCoursePreference.resx,Debug\projectUI.professor_sendCoursePreference.resources professor_sendGrades.resx,Debug\projectUI.professor_sendGrades.resources StudentForm.resx,Debug\projectUI.StudentForm.resources StudentProfile.resx,Debug\projectUI.StudentProfile.resources Search.resx,Debug\projectUI.Search.resources
          Processing resource file "DetailedStudentProfile.resx" into "Debug\projectUI.DetailedStudentProfile.resources".
+         Processing resource file "Homepage.resx" into "Debug\projectUI.Homepage.resources".
+         Processing resource file "professor.resx" into "Debug\projectUI.professor.resources".
+         Processing resource file "professor_currentCourses.resx" into "Debug\projectUI.professor_currentCourses.resources".
+         Processing resource file "professor_sendCoursePreference.resx" into "Debug\projectUI.professor_sendCoursePreference.resources".
+         Processing resource file "professor_sendGrades.resx" into "Debug\projectUI.professor_sendGrades.resources".
+         Processing resource file "StudentForm.resx" into "Debug\projectUI.StudentForm.resources".
+         Processing resource file "StudentProfile.resx" into "Debug\projectUI.StudentProfile.resources".
+         Processing resource file "Search.resx" into "Debug\projectUI.Search.resources".
        ResourceCompile:
-         All outputs are up-to-date.
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D _UNICODE /D UNICODE /l"0x0409" /nologo /fo"Debug\app.res" app.rc 
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Hansraj Patel\Desktop\Software Engg\AcadManagemetSysyetm\HansuAcadManagement-master\HansuAcadManagement\A\Debug\ASMS_IITG.exe" /INCREMENTAL /NOLOGO /ASSEMBLYRESOURCE:Debug\projectUI.DetailedStudentProfile.resources /ASSEMBLYRESOURCE:Debug\projectUI.Homepage.resources /ASSEMBLYRESOURCE:Debug\projectUI.professor.resources /ASSEMBLYRESOURCE:Debug\projectUI.professor_currentCourses.resources /ASSEMBLYRESOURCE:Debug\projectUI.professor_sendCoursePreference.resources /ASSEMBLYRESOURCE:Debug\projectUI.professor_sendGrades.resources /ASSEMBLYRESOURCE:Debug\projectUI.StudentForm.resources /ASSEMBLYRESOURCE:Debug\projectUI.StudentProfile.resources /ASSEMBLYRESOURCE:Debug\projectUI.Search.resources /MANIFEST /ManifestFile:"Debug\ASMS_IITG.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Hansraj Patel\Desktop\Software Engg\AcadManagemetSysyetm\HansuAcadManagement-master\HansuAcadManagement\A\Debug\ASMS_IITG.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\app.res
+         E:\Installed Programs\Visual Studio 2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\hansrajhello\Desktop\CS243 SWE\L3\HansuAcadManagement\IITG_AcadSectionManagementSystem-branch_hansu\Debug\ASMS_IITG.exe" /INCREMENTAL /NOLOGO /ASSEMBLYRESOURCE:Debug\projectUI.DetailedStudentProfile.resources /ASSEMBLYRESOURCE:Debug\projectUI.Homepage.resources /ASSEMBLYRESOURCE:Debug\projectUI.professor.resources /ASSEMBLYRESOURCE:Debug\projectUI.professor_currentCourses.resources /ASSEMBLYRESOURCE:Debug\projectUI.professor_sendCoursePreference.resources /ASSEMBLYRESOURCE:Debug\projectUI.professor_sendGrades.resources /ASSEMBLYRESOURCE:Debug\projectUI.StudentForm.resources /ASSEMBLYRESOURCE:Debug\projectUI.StudentProfile.resources /ASSEMBLYRESOURCE:Debug\projectUI.Search.resources /MANIFEST /ManifestFile:"Debug\ASMS_IITG.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\hansrajhello\Desktop\CS243 SWE\L3\HansuAcadManagement\IITG_AcadSectionManagementSystem-branch_hansu\Debug\ASMS_IITG.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\app.res
          Debug\AssemblyInfo.obj
          Debug\DetailedStudentProfile.obj
          Debug\Homepage.obj
@@ -32,14 +47,14 @@
          Debug\StudentProfile.obj
          Debug\Search.obj
          "Debug\.NETFramework,Version=v4.0.AssemblyAttributes.obj"
-         projectUI.vcxproj -> C:\Users\Hansraj Patel\Desktop\Software Engg\AcadManagemetSysyetm\HansuAcadManagement-master\HansuAcadManagement\A\Debug\ASMS_IITG.exe
+         projectUI.vcxproj -> C:\Users\hansrajhello\Desktop\CS243 SWE\L3\HansuAcadManagement\IITG_AcadSectionManagementSystem-branch_hansu\Debug\ASMS_IITG.exe
        Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Hansraj Patel\Desktop\Software Engg\AcadManagemetSysyetm\HansuAcadManagement-master\HansuAcadManagement\A\Debug\ASMS_IITG.exe;#1" /manifest Debug\ASMS_IITG.exe.intermediate.manifest
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\hansrajhello\Desktop\CS243 SWE\L3\HansuAcadManagement\IITG_AcadSectionManagementSystem-branch_hansu\Debug\ASMS_IITG.exe;#1" /manifest Debug\ASMS_IITG.exe.intermediate.manifest
        FinalizeBuildStatus:
          Deleting file "Debug\ASMS_IITG.unsuccessfulbuild".
          Touching "Debug\ASMS_IITG.lastbuildstate".
-     1>Done Building Project "C:\Users\Hansraj Patel\Desktop\Software Engg\AcadManagemetSysyetm\HansuAcadManagement-master\HansuAcadManagement\A\projectUI\projectUI.vcxproj" (build target(s)).
+     1>Done Building Project "C:\Users\hansrajhello\Desktop\CS243 SWE\L3\HansuAcadManagement\IITG_AcadSectionManagementSystem-branch_hansu\projectUI\projectUI.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.15
+Time Elapsed 00:00:03.22
