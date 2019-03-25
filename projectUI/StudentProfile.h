@@ -323,8 +323,7 @@ private: System::Void StudentProfile_Load(System::Object^  sender, System::Event
 				 con->Open();
 
 				 String ^ aString = "Select * from Student where [Username] ='"+usrnm+"';";
-				 MessageBox::Show(aString);
-
+				 
 				 //if(aString->Length){
 				 //	Homepage::Hide();
 				 //	studentform ^student=gcnew studentform();
@@ -370,3 +369,5 @@ private: System::Void updateBtn_Click(System::Object^  sender, System::EventArgs
 		 }
 };
 }
+
+			

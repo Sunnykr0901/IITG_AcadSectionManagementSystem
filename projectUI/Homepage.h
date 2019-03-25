@@ -425,8 +425,7 @@ namespace projectUI {
 					 con->Open();
 
 					 String ^ aString = "Select [Password] from Student where [Username] ='"+txtUsername-> Text+"';";
-					 MessageBox::Show(aString);
-
+					
 					 //if(aString->Length){
 					 //	Homepage::Hide();
 					 //	studentform ^student=gcnew studentform();
@@ -440,7 +439,6 @@ namespace projectUI {
 					 while(readerData->Read())
 					 {
 						 password=readerData->GetString(0);
-						 MessageBox::Show(password);
 						 count++;
 					 }
 					 if(count==1 && txtPassword->Text==password){
