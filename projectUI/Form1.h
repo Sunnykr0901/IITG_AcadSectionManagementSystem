@@ -2,6 +2,7 @@
 
 #include "Admin.h"
 #include "Student_details.h"
+#include "HOD.h"
 
 #using <System.dll>
 #using <System.data.dll>
@@ -405,11 +406,16 @@ namespace projectUI {
 			 }
 	private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {
 
-				 //Admin::Form1 ^form2 = gcnew Admin::Form1() ;
-				 //form2->Show();
+				 Admin::Form1 ^form2 = gcnew Admin::Form1() ;
+				 form2->Show();
 
 				 projectUI::Student_details ^form_student_details = gcnew projectUI::Student_details("katya170101026") ;
 				 form_student_details->Show() ;
+
+				 projectUI::HOD ^form_HOD = gcnew projectUI::HOD ;
+				 form_HOD->Show() ;
+
+				 
 			 }
 };
 }

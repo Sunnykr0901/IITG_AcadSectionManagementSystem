@@ -14,10 +14,12 @@ namespace projectUI {
 	/// </summary>
 	public ref class HOD : public System::Windows::Forms::Form
 	{
+	bool skip_textbox_changed ;
 	public:
 		HOD(void)
 		{
 			InitializeComponent();
+			skip_textbox_changed = false ;
 			//
 			//TODO: Add the constructor code here
 			//
@@ -58,7 +60,8 @@ namespace projectUI {
 	private: System::Windows::Forms::Panel^  panel4;
 	private: System::Windows::Forms::TextBox^  tb_link;
 	private: System::Windows::Forms::Label^  label8;
-	private: System::Windows::Forms::ComboBox^  comboBox2;
+	private: System::Windows::Forms::ComboBox^  cb_course_id;
+
 	private: System::Windows::Forms::TextBox^  tb_credit;
 	private: System::Windows::Forms::TextBox^  tb_course_name;
 	private: System::Windows::Forms::TextBox^  tb_course_id;
@@ -101,18 +104,18 @@ namespace projectUI {
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->panel4 = (gcnew System::Windows::Forms::Panel());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->btn_edit = (gcnew System::Windows::Forms::Button());
-			this->btn_add = (gcnew System::Windows::Forms::Button());
-			this->tb_course_id = (gcnew System::Windows::Forms::TextBox());
-			this->tb_course_name = (gcnew System::Windows::Forms::TextBox());
-			this->tb_credit = (gcnew System::Windows::Forms::TextBox());
-			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
-			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->tb_link = (gcnew System::Windows::Forms::TextBox());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->cb_course_id = (gcnew System::Windows::Forms::ComboBox());
+			this->tb_credit = (gcnew System::Windows::Forms::TextBox());
+			this->tb_course_name = (gcnew System::Windows::Forms::TextBox());
+			this->tb_course_id = (gcnew System::Windows::Forms::TextBox());
+			this->btn_add = (gcnew System::Windows::Forms::Button());
+			this->btn_edit = (gcnew System::Windows::Forms::Button());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->panel1->SuspendLayout();
 			this->panel2->SuspendLayout();
 			this->panel4->SuspendLayout();
@@ -141,11 +144,10 @@ namespace projectUI {
 			this->panel1->Controls->Add(this->label2);
 			this->panel1->Controls->Add(this->comboBox1);
 			this->panel1->Controls->Add(this->Dept);
-			this->panel1->Location = System::Drawing::Point(0, 55);
+			this->panel1->Location = System::Drawing::Point(12, 27);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(454, 473);
 			this->panel1->TabIndex = 1;
-			this->panel1->Visible = false;
 			// 
 			// receivers
 			// 
@@ -265,7 +267,6 @@ namespace projectUI {
 			this->panel2->Name = L"panel2";
 			this->panel2->Size = System::Drawing::Size(347, 300);
 			this->panel2->TabIndex = 2;
-		//	this->panel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &HOD::panel2_Paint);
 			// 
 			// panel3
 			// 
@@ -279,7 +280,7 @@ namespace projectUI {
 			// 
 			this->panel4->Controls->Add(this->tb_link);
 			this->panel4->Controls->Add(this->label8);
-			this->panel4->Controls->Add(this->comboBox2);
+			this->panel4->Controls->Add(this->cb_course_id);
 			this->panel4->Controls->Add(this->tb_credit);
 			this->panel4->Controls->Add(this->tb_course_name);
 			this->panel4->Controls->Add(this->tb_course_id);
@@ -288,95 +289,17 @@ namespace projectUI {
 			this->panel4->Controls->Add(this->label7);
 			this->panel4->Controls->Add(this->label6);
 			this->panel4->Controls->Add(this->label5);
-			this->panel4->Location = System::Drawing::Point(862, 56);
+			this->panel4->Location = System::Drawing::Point(859, 56);
 			this->panel4->Name = L"panel4";
 			this->panel4->Size = System::Drawing::Size(369, 458);
 			this->panel4->TabIndex = 3;
 			// 
-			// label1
+			// tb_link
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(859, 17);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(117, 13);
-			this->label1->TabIndex = 4;
-			this->label1->Text = L"Next Semester Courses";
-			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(25, 73);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(54, 13);
-			this->label5->TabIndex = 0;
-			this->label5->Text = L"Course ID";
-			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(25, 157);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(39, 13);
-			this->label6->TabIndex = 1;
-			this->label6->Text = L"Credits";
-			// 
-			// label7
-			// 
-			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(25, 115);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(71, 13);
-			this->label7->TabIndex = 2;
-			this->label7->Text = L"Course Name";
-			// 
-			// btn_edit
-			// 
-			this->btn_edit->Location = System::Drawing::Point(39, 14);
-			this->btn_edit->Name = L"btn_edit";
-			this->btn_edit->Size = System::Drawing::Size(97, 23);
-			this->btn_edit->TabIndex = 3;
-			this->btn_edit->Text = L"Edit";
-			this->btn_edit->UseVisualStyleBackColor = true;
-			// 
-			// btn_add
-			// 
-			this->btn_add->Location = System::Drawing::Point(220, 14);
-			this->btn_add->Name = L"btn_add";
-			this->btn_add->Size = System::Drawing::Size(110, 23);
-			this->btn_add->TabIndex = 4;
-			this->btn_add->Text = L"Add";
-			this->btn_add->UseVisualStyleBackColor = true;
-			// 
-			// tb_course_id
-			// 
-			this->tb_course_id->Location = System::Drawing::Point(182, 73);
-			this->tb_course_id->Name = L"tb_course_id";
-			this->tb_course_id->Size = System::Drawing::Size(148, 20);
-			this->tb_course_id->TabIndex = 5;
-			this->tb_course_id->Visible = false;
-			// 
-			// tb_course_name
-			// 
-			this->tb_course_name->Location = System::Drawing::Point(182, 112);
-			this->tb_course_name->Name = L"tb_course_name";
-			this->tb_course_name->Size = System::Drawing::Size(148, 20);
-			this->tb_course_name->TabIndex = 6;
-			// 
-			// tb_credit
-			// 
-			this->tb_credit->Location = System::Drawing::Point(182, 154);
-			this->tb_credit->Name = L"tb_credit";
-			this->tb_credit->Size = System::Drawing::Size(148, 20);
-			this->tb_credit->TabIndex = 7;
-			// 
-			// comboBox2
-			// 
-			this->comboBox2->FormattingEnabled = true;
-			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(2) {L"CS222", L"CS242"});
-			this->comboBox2->Location = System::Drawing::Point(182, 73);
-			this->comboBox2->Name = L"comboBox2";
-			this->comboBox2->Size = System::Drawing::Size(148, 21);
-			this->comboBox2->TabIndex = 8;
+			this->tb_link->Location = System::Drawing::Point(182, 197);
+			this->tb_link->Name = L"tb_link";
+			this->tb_link->Size = System::Drawing::Size(148, 20);
+			this->tb_link->TabIndex = 10;
 			// 
 			// label8
 			// 
@@ -387,12 +310,94 @@ namespace projectUI {
 			this->label8->TabIndex = 9;
 			this->label8->Text = L"Course Link";
 			// 
-			// tb_link
+			// cb_course_id
 			// 
-			this->tb_link->Location = System::Drawing::Point(182, 197);
-			this->tb_link->Name = L"tb_link";
-			this->tb_link->Size = System::Drawing::Size(148, 20);
-			this->tb_link->TabIndex = 10;
+			this->cb_course_id->AutoCompleteMode = System::Windows::Forms::AutoCompleteMode::Suggest;
+			this->cb_course_id->AutoCompleteSource = System::Windows::Forms::AutoCompleteSource::ListItems;
+			this->cb_course_id->FormattingEnabled = true;
+			this->cb_course_id->Items->AddRange(gcnew cli::array< System::Object^  >(6) {L"CS201", L"CS202", L"CS203", L"CS204", L"CS222", 
+				L"CS242"});
+			this->cb_course_id->Location = System::Drawing::Point(182, 73);
+			this->cb_course_id->Name = L"cb_course_id";
+			this->cb_course_id->Size = System::Drawing::Size(148, 21);
+			this->cb_course_id->TabIndex = 8;
+			// 
+			// tb_credit
+			// 
+			this->tb_credit->Location = System::Drawing::Point(182, 154);
+			this->tb_credit->Name = L"tb_credit";
+			this->tb_credit->Size = System::Drawing::Size(148, 20);
+			this->tb_credit->TabIndex = 7;
+			// 
+			// tb_course_name
+			// 
+			this->tb_course_name->Location = System::Drawing::Point(182, 112);
+			this->tb_course_name->Name = L"tb_course_name";
+			this->tb_course_name->Size = System::Drawing::Size(148, 20);
+			this->tb_course_name->TabIndex = 6;
+			this->tb_course_name->TextChanged += gcnew System::EventHandler(this, &HOD::tb_course_name_TextChanged);
+			// 
+			// tb_course_id
+			// 
+			this->tb_course_id->Location = System::Drawing::Point(182, 73);
+			this->tb_course_id->Name = L"tb_course_id";
+			this->tb_course_id->Size = System::Drawing::Size(148, 20);
+			this->tb_course_id->TabIndex = 5;
+			this->tb_course_id->Visible = false;
+			// 
+			// btn_add
+			// 
+			this->btn_add->Location = System::Drawing::Point(220, 14);
+			this->btn_add->Name = L"btn_add";
+			this->btn_add->Size = System::Drawing::Size(110, 23);
+			this->btn_add->TabIndex = 4;
+			this->btn_add->Text = L"Add";
+			this->btn_add->UseVisualStyleBackColor = true;
+			// 
+			// btn_edit
+			// 
+			this->btn_edit->Location = System::Drawing::Point(39, 14);
+			this->btn_edit->Name = L"btn_edit";
+			this->btn_edit->Size = System::Drawing::Size(97, 23);
+			this->btn_edit->TabIndex = 3;
+			this->btn_edit->Text = L"Edit";
+			this->btn_edit->UseVisualStyleBackColor = true;
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(25, 115);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(71, 13);
+			this->label7->TabIndex = 2;
+			this->label7->Text = L"Course Name";
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(25, 157);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(39, 13);
+			this->label6->TabIndex = 1;
+			this->label6->Text = L"Credits";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(25, 73);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(54, 13);
+			this->label5->TabIndex = 0;
+			this->label5->Text = L"Course ID";
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(856, 17);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(117, 13);
+			this->label1->TabIndex = 4;
+			this->label1->Text = L"Next Semester Courses";
 			// 
 			// HOD
 			// 
@@ -416,5 +421,21 @@ namespace projectUI {
 
 		}
 #pragma endregion
+private: System::Void tb_course_name_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+			 if(skip_textbox_changed){
+				 skip_textbox_changed = false ;
+				 return ;
+			 }
+			 if(cb_course_id->SelectedIndex == -1){
+				 skip_textbox_changed = true ;
+				 tb_course_name->Text = "" ;
+				 MessageBox::Show("Select Course ID first!") ;
+
+				 return ;
+			 }
+
+
+
+		 }
 };
 }

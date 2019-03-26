@@ -290,20 +290,34 @@ private: System::Void Student_details_Load(System::Object^  sender, System::Even
 				 OleDbConnection ^ DB_Connection = gcnew OleDbConnection();
 				 DB_Connection->ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
 				 DB_Connection->Open();
-				 String ^ selectString = "SELECT * FROM Student WHERE Username = "+"'"+username+"'" ;
+				 String ^ selectString = "SELECT * FROM Student WHERE Username = "+"'akshy170201025'" ;
 				 OleDbCommand ^ cmd = gcnew OleDbCommand(selectString, DB_Connection);
 
 				 OleDbDataReader ^ reader = cmd->ExecuteReader();
-				 
-				 do{
-					 while(reader->Read()){
-						 
-						 // Fill all the fields (start)
-						 name->Text += reader->GetValue(1) ;
-						 // Fill all the fields (end)
-					 }
-				 }while(reader->NextResult()) ;
 
+
+				 reader->Read();
+				 if(reader->GetValue(2)!="")
+					 name->Text += reader->GetValue(1) + " " + reader->GetValue(2) + " " + reader->GetValue(3) ;
+				 else
+					 name->Text += reader->GetValue(1) + " " + reader->GetValue(3) ;		
+				 roll->Text += reader->GetValue(4);
+				 //Department Name field should be added
+				 dept->Text += reader->GetValue(8);
+				 webmail->Text += reader->GetValue(0) + "@iitg.ac.in";
+				 prog->Text += reader->GetValue(9);
+				 nationality->Text +=reader->GetValue(10);
+
+				 //	MessageBox::Show(reader->GetValue(10).ToString());
+				 birth_cat->Text += reader->GetValue(11);
+				 gender->Text += reader->GetValue(12);
+				 hostel->Text += reader->GetValue(13);
+				 //Remove after testing (start)
+				 if(reader->NextResult())
+				 {
+					 MessageBox::Show("Unhandled Case!!!");
+				 }
+				 //Remove after testing (end)
 				 DB_Connection->Close();
 
 			 }
