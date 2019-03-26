@@ -7,4 +7,5 @@
 ##dATABASE
 ```
 1)Remove semester from Notfication.
+2)Professor field needs to be added in the phd table
 ```
