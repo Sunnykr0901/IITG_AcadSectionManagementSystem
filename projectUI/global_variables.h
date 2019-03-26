@@ -1,3 +1,4 @@
+#include <string>
 #pragma once
 ref class global_variables
 {
@@ -15,3 +16,7 @@ extern int course_btn_index;
 extern int x; 
 extern int y;
 
+extern bool dropValid;
+extern bool adjustValid;
+
+extern std::string clickedBtn;

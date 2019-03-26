@@ -1,18 +1,16 @@
-﻿Build started 26-03-2019 14:27:42.
+﻿Build started 26-03-2019 17:12:17.
      1>Project "C:\Users\Hansraj Patel\Desktop\Software Engg\AcadManagemetSysyetm\HansuAcadManagement-master\HansuAcadManagement\A\projectUI\projectUI.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
-         Creating "Debug\ASMS_IITG.unsuccessfulbuild" because "AlwaysCreate" was specified.
+         Touching "Debug\ASMS_IITG.unsuccessfulbuild".
        GenerateTargetFrameworkMonikerAttribute:
        Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
        ClCompile:
          All outputs are up-to-date.
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr:pure /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\ASMS_IITG.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt Homepage.cpp StudentCourses.cpp projectUI.cpp /clr:nostdlib 
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr:pure /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\ASMS_IITG.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt global_variables.cpp Homepage.cpp projectUI.cpp StudentCourses.cpp /clr:nostdlib 
+         global_variables.cpp
          Homepage.cpp
-     1>c:\users\hansraj patel\desktop\software engg\acadmanagemetsysyetm\hansuacadmanagement-master\hansuacadmanagement\a\projectui\StudentCourses.h(134): warning C4101: 'ex' : unreferenced local variable
-         StudentCourses.cpp
-     1>c:\users\hansraj patel\desktop\software engg\acadmanagemetsysyetm\hansuacadmanagement-master\hansuacadmanagement\a\projectui\StudentCourses.h(134): warning C4101: 'ex' : unreferenced local variable
          projectUI.cpp
-     1>c:\users\hansraj patel\desktop\software engg\acadmanagemetsysyetm\hansuacadmanagement-master\hansuacadmanagement\a\projectui\StudentCourses.h(134): warning C4101: 'ex' : unreferenced local variable
+         StudentCourses.cpp
          Generating Code...
          All outputs are up-to-date.
        CoreResGen:
@@ -45,4 +43,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.32
+Time Elapsed 00:00:03.31

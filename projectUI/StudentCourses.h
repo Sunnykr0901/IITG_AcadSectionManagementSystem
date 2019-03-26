@@ -46,10 +46,16 @@ namespace projectUI {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Panel^  panel1;
+	protected: 
+	private: System::Windows::Forms::Panel^  panel2;
+	private: System::Windows::Forms::Label^  label1;
 
 	protected: 
 
-	
+	protected: 
+
+
 
 	private:
 		/// <summary>
@@ -64,7 +70,27 @@ namespace projectUI {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(StudentCourses::typeid));
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->SuspendLayout();
+			// 
+			// panel1
+			// 
+			this->panel1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"panel1.BackgroundImage")));
+			this->panel1->Location = System::Drawing::Point(3, 3);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(16, 17);
+			this->panel1->TabIndex = 0;
+			// 
+			// panel2
+			// 
+			this->panel2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"panel2.BackgroundImage")));
+			this->panel2->Location = System::Drawing::Point(3, 26);
+			this->panel2->Name = L"panel2";
+			this->panel2->Size = System::Drawing::Size(16, 18);
+			this->panel2->TabIndex = 1;
+			
 			// 
 			// StudentCourses
 			// 
@@ -72,10 +98,13 @@ namespace projectUI {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
 			this->BackColor = System::Drawing::SystemColors::Control;
+			this->Controls->Add(this->panel2);
+			this->Controls->Add(this->panel1);
 			this->Name = L"StudentCourses";
 			this->Size = System::Drawing::Size(674, 443);
 			this->Load += gcnew System::EventHandler(this, &StudentCourses::StudentCourses_Load);
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -93,7 +122,20 @@ namespace projectUI {
 
 		void generateCourseButtons(){
 				
-				course_btn_index = 1;
+			System::Windows::Forms::Label ^ label1 = gcnew System::Windows::Forms::Label();
+			label1->AutoSize = true;
+			label1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 14.25F, System::Drawing::FontStyle::Underline, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			label1->ForeColor = System::Drawing::Color::OrangeRed;
+			label1->Location = System::Drawing::Point(190, 21);
+			label1->Name = L"label1";
+			label1->Size = System::Drawing::Size(65, 32);
+			label1->TabIndex = 0;
+			label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			
+			this->Controls->Add(label1);	
+			
+			course_btn_index = 1;
 				
 				OleDb::OleDbConnection ^con;	 
 				try
@@ -112,6 +154,8 @@ namespace projectUI {
 					String ^ session = Convert::ToString(year_under_query)+"-"+Convert::ToString(Convert::ToInt32(year_under_query)-1999);
 					String ^ aString = "Select * from StudentCourses where [Username] ='"+usrnm+"' AND [Session] = '"+session+"' AND [Semester] = '"+semesterName+"'";
 
+					label1->Text = session+",  "+semesterName+" Semester";
+
 					OleDb::OleDbCommand ^ cmd = gcnew OleDb::OleDbCommand(aString, con);
 					OleDb::OleDbDataReader ^ readerData = cmd->ExecuteReader();
 
@@ -122,7 +166,7 @@ namespace projectUI {
 							course_grade = readerData->GetString(4);	
 
 
-						course_btn_creator(course_btn_index, course_id, course_grade);
+						course_btn_creator(course_btn_index, course_id, course_grade, con);
 
 						course_btn_index++;
 
@@ -134,6 +178,7 @@ namespace projectUI {
 				catch(Exception ^ ex)
 				{
 					con->Close();
+					MessageBox::Show(ex->Message);
 				}
 				
 				
@@ -149,7 +194,7 @@ namespace projectUI {
 			// prev_btn
 			// 
 			prev_btn->BackColor = System::Drawing::SystemColors::Control;
-			prev_btn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"prev")));
+			prev_btn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"panel1.BackgroundImage")));
 			prev_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			prev_btn->FlatAppearance->BorderSize = 0;
 			prev_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
@@ -173,7 +218,7 @@ namespace projectUI {
 			// next_btn
 			// 
 			next_btn->BackColor = System::Drawing::SystemColors::Control;
-			next_btn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"next")));
+			next_btn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"panel2.BackgroundImage")));
 			next_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			next_btn->FlatAppearance->BorderSize = 0;
 			next_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
@@ -191,24 +236,39 @@ namespace projectUI {
 		}
 
 
-		void course_btn_creator(int course_btn_index, String ^ course_id, String ^ course_grade){
+		void course_btn_creator(int course_btn_index, String ^ course_id, String ^ course_grade, OleDb::OleDbConnection ^con)
+		{
 				System::Windows::Forms::Button ^ btn_course = gcnew System::Windows::Forms::Button();
+				//////////////////////////////////////////////////////////////////////////////////////
+				String ^ courseName;
+					
+				String ^ bString = "Select * from CourseList where [CourseID] ='"+course_id+"'";
+
+				OleDb::OleDbCommand ^ cmd1 = gcnew OleDb::OleDbCommand(bString, con);
+				OleDb::OleDbDataReader ^ reader = cmd1->ExecuteReader();
+
+				while(reader->Read() == true){
+					courseName = reader->GetString(1);	
+				}
+				reader->Close();
 				
+				//////////////////////////////////////////////////////////////////////////////////////
 				
 				btn_course->Name = course_id;
-				btn_course->Text = course_id+"      "+course_grade;
+				btn_course->Text = "   "+course_grade+"  |           "+courseName+"  :  "+course_id;
 
 				btn_course->FlatAppearance->BorderColor = System::Drawing::Color::Teal;
 				btn_course->FlatAppearance->BorderSize = 2;
+				btn_course->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 				btn_course->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 				btn_course->ForeColor = System::Drawing::Color::Black;
-				btn_course->Size = System::Drawing::Size(350, 23);
+				btn_course->Size = System::Drawing::Size(350, 33);
 				btn_course->UseVisualStyleBackColor = true;
 
 
 
 				x = 150;
-				y = 50 + 21*(course_btn_index-1);
+				y = 50 + 31*(course_btn_index-1);
 				btn_course->Location = System::Drawing::Point(x, y);
 				
 				this->Controls->Add(btn_course);
@@ -223,7 +283,7 @@ namespace projectUI {
 					String ^ name = temp_btn->Name;
 					
 					generate_drop_btn();
-					 
+					generate_adjust_btn();
 					
 		}
 		
@@ -235,7 +295,7 @@ namespace projectUI {
 			drop_btn->FlatAppearance->BorderSize = 0;
 			drop_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			drop_btn->ForeColor = System::Drawing::Color::White;
-			drop_btn->Size = System::Drawing::Size(150, 40);
+			drop_btn->Size = System::Drawing::Size(155, 40);
 			drop_btn->UseVisualStyleBackColor = true;
 
 			x = 150;
@@ -254,10 +314,10 @@ namespace projectUI {
 			adjust_btn->FlatAppearance->BorderSize = 0;
 			adjust_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			adjust_btn->ForeColor = System::Drawing::Color::White;
-			adjust_btn->Size = System::Drawing::Size(150, 40);
+			adjust_btn->Size = System::Drawing::Size(155, 40);
 			adjust_btn->UseVisualStyleBackColor = true;
 
-			x = 150;
+			x = 340;
 			y = 70 + 21*(course_btn_index-1);
 			adjust_btn->Location = System::Drawing::Point(x, y);
 
@@ -266,8 +326,19 @@ namespace projectUI {
 			adjust_btn->Click += gcnew System::EventHandler(this, &StudentCourses::adjust_btn_Click);
 		}
 		private: System::Void drop_btn_Click(System::Object^  sender, System::EventArgs^  e) {
+					 System::Windows::Forms::Label^  questionLbl = gcnew System::Windows::Forms::Label();
+					 
+					 questionLbl->AutoSize = true;
+					 questionLbl->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+						 static_cast<System::Byte>(0)));
+					 questionLbl->ForeColor = System::Drawing::Color::OrangeRed;
+					 questionLbl->Location = System::Drawing::Point(150, y);
+					 questionLbl->Name = L"questionLbl";
+					 questionLbl->Size = System::Drawing::Size(225, 17);
+					 questionLbl->TabIndex = 2;
+					 questionLbl->Text = L"Why do you want to drop this Course\?";
 
-
+					 this->Controls->Add(questionLbl);	
 		}
 
 		private: System::Void adjust_btn_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -314,5 +385,7 @@ namespace projectUI {
 					 if(year_under_query <= 2018)
 						 generate_prev_btn();
 		}
-	};
+	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
+			 }
+};
 }
