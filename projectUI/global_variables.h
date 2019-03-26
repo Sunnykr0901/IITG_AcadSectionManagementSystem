@@ -12,3 +12,6 @@ extern int year_under_query;
 extern int semester_under_query; 
 extern int course_btn_index;
 
+extern int x; 
+extern int y;
+

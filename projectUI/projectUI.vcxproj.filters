@@ -19,6 +19,12 @@
     <None Include="app.ico">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\..\..\..\..\img\prev.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\..\..\img\next.png">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="projectUI.cpp">

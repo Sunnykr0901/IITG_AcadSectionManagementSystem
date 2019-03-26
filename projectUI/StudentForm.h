@@ -2,6 +2,7 @@
 #using <System.dll>
 #using <System.data.dll>
 
+#include "Homepage.h"
 #include "StudentProfile.h"
 #include "StudentCourses.h"
 //#include "professor_currentCourses.h"
@@ -281,7 +282,6 @@ private: System::Void StudentForm_Load(System::Object^  sender, System::EventArg
 			 panel1->Controls->Add(sp);
 		 }
 private: System::Void logoutBtn_Click(System::Object^  sender, System::EventArgs^  e) {
-// 			 this->Controls->Clear();
 // 			 StudentForm::Hide();
 // 			 Homepage ^home=gcnew Homepage();
 // 			 home->ShowDialog();

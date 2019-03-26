@@ -47,6 +47,8 @@ namespace projectUI {
 			}
 		}
 
+	protected: 
+
 	
 
 	private:
@@ -133,6 +135,8 @@ namespace projectUI {
 				{
 					con->Close();
 				}
+				
+				
 		}
 		
 
@@ -158,7 +162,7 @@ namespace projectUI {
 
 			this->Controls->Add(prev_btn);
 
-			//btn_course->Click += gcnew System::EventHandler(this, &User_Control_View_Election::btn_course_Click);
+			
 
 		}
 		void generate_next_btn(){
@@ -191,7 +195,7 @@ namespace projectUI {
 				System::Windows::Forms::Button ^ btn_course = gcnew System::Windows::Forms::Button();
 				
 				
-				btn_course->Name = Convert::ToString(course_btn_index);
+				btn_course->Name = course_id;
 				btn_course->Text = course_id+"      "+course_grade;
 
 				btn_course->FlatAppearance->BorderColor = System::Drawing::Color::Teal;
@@ -203,21 +207,76 @@ namespace projectUI {
 
 
 
-				int x = 150
-					;
-				int y = 50 + 21*(course_btn_index-1);
+				x = 150;
+				y = 50 + 21*(course_btn_index-1);
 				btn_course->Location = System::Drawing::Point(x, y);
 				
 				this->Controls->Add(btn_course);
 				
-				//btn_course->Click += gcnew System::EventHandler(this, &User_Control_View_Election::btn_course_Click);
+				btn_course->Click += gcnew System::EventHandler(this, &StudentCourses::btn_course_Click);
 
 		}
 
+		private: System::Void btn_course_Click(System::Object ^  sender, System::EventArgs^  e) {
+					System::Windows::Forms::Button ^ temp_btn = gcnew System::Windows::Forms::Button();
+					temp_btn = dynamic_cast<System::Windows::Forms::Button ^>(sender);
+					String ^ name = temp_btn->Name;
+					
+					generate_drop_btn();
+					 
+					
+		}
+		
+		void generate_drop_btn(){
+			System::Windows::Forms::Button ^ drop_btn = gcnew System::Windows::Forms::Button();
+			drop_btn->Name = "drop_btn";
+			drop_btn->Text = "DROP";
+			drop_btn->BackColor = System::Drawing::Color::Tomato;
+			drop_btn->FlatAppearance->BorderSize = 0;
+			drop_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			drop_btn->ForeColor = System::Drawing::Color::White;
+			drop_btn->Size = System::Drawing::Size(150, 40);
+			drop_btn->UseVisualStyleBackColor = true;
 
+			x = 150;
+			y = 70 + 21*(course_btn_index-1);
+			drop_btn->Location = System::Drawing::Point(x, y);
+
+			this->Controls->Add(drop_btn);
+
+			drop_btn->Click += gcnew System::EventHandler(this, &StudentCourses::drop_btn_Click);
+		}
+		void generate_adjust_btn(){
+			System::Windows::Forms::Button ^ adjust_btn = gcnew System::Windows::Forms::Button();
+			adjust_btn->Name = "adjust_btn";
+			adjust_btn->Text = "ADJUST";
+			adjust_btn->BackColor = System::Drawing::Color::Tomato;
+			adjust_btn->FlatAppearance->BorderSize = 0;
+			adjust_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			adjust_btn->ForeColor = System::Drawing::Color::White;
+			adjust_btn->Size = System::Drawing::Size(150, 40);
+			adjust_btn->UseVisualStyleBackColor = true;
+
+			x = 150;
+			y = 70 + 21*(course_btn_index-1);
+			adjust_btn->Location = System::Drawing::Point(x, y);
+
+			this->Controls->Add(adjust_btn);
+
+			adjust_btn->Click += gcnew System::EventHandler(this, &StudentCourses::adjust_btn_Click);
+		}
+		private: System::Void drop_btn_Click(System::Object^  sender, System::EventArgs^  e) {
+
+
+		}
+
+		private: System::Void adjust_btn_Click(System::Object^  sender, System::EventArgs^  e) {
+
+
+		}
 		void destroyer(){
 				this->Controls->Clear();
-			}
+		}
 
 
 		private: System::Void prev_btn_Click(System::Object^  sender, System::EventArgs^  e) {

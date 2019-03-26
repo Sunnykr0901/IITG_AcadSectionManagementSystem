@@ -1,32 +1,22 @@
-﻿Build started 26-03-2019 13:08:09.
+﻿Build started 26-03-2019 14:27:42.
      1>Project "C:\Users\Hansraj Patel\Desktop\Software Engg\AcadManagemetSysyetm\HansuAcadManagement-master\HansuAcadManagement\A\projectUI\projectUI.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
-         Touching "Debug\ASMS_IITG.unsuccessfulbuild".
+         Creating "Debug\ASMS_IITG.unsuccessfulbuild" because "AlwaysCreate" was specified.
        GenerateTargetFrameworkMonikerAttribute:
        Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
        ClCompile:
          All outputs are up-to-date.
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr:pure /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\ASMS_IITG.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt Homepage.cpp projectUI.cpp StudentCourses.cpp /clr:nostdlib 
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr:pure /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\ASMS_IITG.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt Homepage.cpp StudentCourses.cpp projectUI.cpp /clr:nostdlib 
          Homepage.cpp
-     1>c:\users\hansraj patel\desktop\software engg\acadmanagemetsysyetm\hansuacadmanagement-master\hansuacadmanagement\a\projectui\StudentCourses.h(133): warning C4101: 'ex' : unreferenced local variable
-         projectUI.cpp
-     1>c:\users\hansraj patel\desktop\software engg\acadmanagemetsysyetm\hansuacadmanagement-master\hansuacadmanagement\a\projectui\StudentCourses.h(133): warning C4101: 'ex' : unreferenced local variable
+     1>c:\users\hansraj patel\desktop\software engg\acadmanagemetsysyetm\hansuacadmanagement-master\hansuacadmanagement\a\projectui\StudentCourses.h(134): warning C4101: 'ex' : unreferenced local variable
          StudentCourses.cpp
-     1>c:\users\hansraj patel\desktop\software engg\acadmanagemetsysyetm\hansuacadmanagement-master\hansuacadmanagement\a\projectui\StudentCourses.h(133): warning C4101: 'ex' : unreferenced local variable
+     1>c:\users\hansraj patel\desktop\software engg\acadmanagemetsysyetm\hansuacadmanagement-master\hansuacadmanagement\a\projectui\StudentCourses.h(134): warning C4101: 'ex' : unreferenced local variable
+         projectUI.cpp
+     1>c:\users\hansraj patel\desktop\software engg\acadmanagemetsysyetm\hansuacadmanagement-master\hansuacadmanagement\a\projectui\StudentCourses.h(134): warning C4101: 'ex' : unreferenced local variable
          Generating Code...
          All outputs are up-to-date.
        CoreResGen:
-         "C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\NETFX 4.0 Tools\resgen.exe" /useSourcePath /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /compile DetailedStudentProfile.resx,Debug\projectUI.DetailedStudentProfile.resources Homepage.resx,Debug\projectUI.Homepage.resources professor.resx,Debug\projectUI.professor.resources professor_currentCourses.resx,Debug\projectUI.professor_currentCourses.resources professor_sendCoursePreference.resx,Debug\projectUI.professor_sendCoursePreference.resources professor_sendGrades.resx,Debug\projectUI.professor_sendGrades.resources StudentCourses.resx,Debug\projectUI.StudentCourses.resources StudentForm.resx,Debug\projectUI.StudentForm.resources StudentProfile.resx,Debug\projectUI.StudentProfile.resources Search.resx,Debug\projectUI.Search.resources
-         Processing resource file "DetailedStudentProfile.resx" into "Debug\projectUI.DetailedStudentProfile.resources".
-         Processing resource file "Homepage.resx" into "Debug\projectUI.Homepage.resources".
-         Processing resource file "professor.resx" into "Debug\projectUI.professor.resources".
-         Processing resource file "professor_currentCourses.resx" into "Debug\projectUI.professor_currentCourses.resources".
-         Processing resource file "professor_sendCoursePreference.resx" into "Debug\projectUI.professor_sendCoursePreference.resources".
-         Processing resource file "professor_sendGrades.resx" into "Debug\projectUI.professor_sendGrades.resources".
-         Processing resource file "StudentCourses.resx" into "Debug\projectUI.StudentCourses.resources".
-         Processing resource file "StudentForm.resx" into "Debug\projectUI.StudentForm.resources".
-         Processing resource file "StudentProfile.resx" into "Debug\projectUI.StudentProfile.resources".
-         Processing resource file "Search.resx" into "Debug\projectUI.Search.resources".
+         No resources are out of date with respect to their source files. Skipping resource generation.
        ResourceCompile:
          All outputs are up-to-date.
        Link:
@@ -55,4 +45,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.89
+Time Elapsed 00:00:01.32
