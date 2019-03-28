@@ -50,6 +50,12 @@ namespace projectUI {
 	protected: 
 	private: System::Windows::Forms::Panel^  panel2;
 	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::Label^  dropLbl;
+	private: System::Windows::Forms::TextBox^  textBox1;
+	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::Button^  button2;
+	private: System::Windows::Forms::Button^  button3;
+	private: System::Windows::Forms::Button^  button4;
 
 	protected: 
 
@@ -73,35 +79,147 @@ namespace projectUI {
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(StudentCourses::typeid));
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->dropLbl = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// panel1
 			// 
 			this->panel1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"panel1.BackgroundImage")));
-			this->panel1->Location = System::Drawing::Point(3, 3);
+			this->panel1->Location = System::Drawing::Point(4, 4);
+			this->panel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(16, 17);
+			this->panel1->Size = System::Drawing::Size(21, 21);
 			this->panel1->TabIndex = 0;
 			// 
 			// panel2
 			// 
 			this->panel2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"panel2.BackgroundImage")));
-			this->panel2->Location = System::Drawing::Point(3, 26);
+			this->panel2->Location = System::Drawing::Point(4, 32);
+			this->panel2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(16, 18);
+			this->panel2->Size = System::Drawing::Size(21, 22);
 			this->panel2->TabIndex = 1;
-			
+			// 
+			// dropLbl
+			// 
+			this->dropLbl->AutoSize = true;
+			this->dropLbl->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->dropLbl->ForeColor = System::Drawing::Color::OrangeRed;
+			this->dropLbl->Location = System::Drawing::Point(662, 511);
+			this->dropLbl->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->dropLbl->Name = L"dropLbl";
+			this->dropLbl->Size = System::Drawing::Size(214, 16);
+			this->dropLbl->TabIndex = 2;
+			this->dropLbl->Text = L"I want to drop/change a course";
+			this->dropLbl->Click += gcnew System::EventHandler(this, &StudentCourses::dropLbl_Click);
+			// 
+			// textBox1
+			// 
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->textBox1->Location = System::Drawing::Point(87, 401);
+			this->textBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->textBox1->Multiline = true;
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(525, 98);
+			this->textBox1->TabIndex = 3;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &StudentCourses::textBox1_TextChanged);
+			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::Transparent;
+			this->button1->FlatAppearance->BorderColor = System::Drawing::Color::Teal;
+			this->button1->FlatAppearance->BorderSize = 2;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->button1->ForeColor = System::Drawing::Color::Teal;
+			this->button1->Location = System::Drawing::Point(255, 32);
+			this->button1->Margin = System::Windows::Forms::Padding(0);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(195, 44);
+			this->button1->TabIndex = 4;
+			this->button1->Text = L"DROP";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &StudentCourses::button1_Click);
+			// 
+			// button2
+			// 
+			this->button2->BackColor = System::Drawing::Color::Transparent;
+			this->button2->FlatAppearance->BorderColor = System::Drawing::Color::Teal;
+			this->button2->FlatAppearance->BorderSize = 2;
+			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button2->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->button2->ForeColor = System::Drawing::Color::Teal;
+			this->button2->Location = System::Drawing::Point(447, 32);
+			this->button2->Margin = System::Windows::Forms::Padding(0);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(195, 44);
+			this->button2->TabIndex = 5;
+			this->button2->Text = L"CHANGE";
+			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &StudentCourses::button2_Click);
+			// 
+			// button3
+			// 
+			this->button3->BackColor = System::Drawing::Color::Tomato;
+			this->button3->FlatAppearance->BorderSize = 0;
+			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button3->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->button3->ForeColor = System::Drawing::Color::White;
+			this->button3->Location = System::Drawing::Point(616, 455);
+			this->button3->Margin = System::Windows::Forms::Padding(0);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(195, 44);
+			this->button3->TabIndex = 7;
+			this->button3->Text = L"CANCEL";
+			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &StudentCourses::button3_Click);
+			// 
+			// button4
+			// 
+			this->button4->BackColor = System::Drawing::Color::Teal;
+			this->button4->FlatAppearance->BorderSize = 0;
+			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button4->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->button4->ForeColor = System::Drawing::Color::White;
+			this->button4->Location = System::Drawing::Point(616, 401);
+			this->button4->Margin = System::Windows::Forms::Padding(0);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(195, 42);
+			this->button4->TabIndex = 6;
+			this->button4->Text = L"DROP";
+			this->button4->UseVisualStyleBackColor = false;
+			this->button4->Click += gcnew System::EventHandler(this, &StudentCourses::button4_Click);
 			// 
 			// StudentCourses
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
 			this->BackColor = System::Drawing::SystemColors::Control;
+			this->Controls->Add(this->button3);
+			this->Controls->Add(this->button4);
+			this->Controls->Add(this->button2);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->dropLbl);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
+			this->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"StudentCourses";
-			this->Size = System::Drawing::Size(674, 443);
+			this->Size = System::Drawing::Size(899, 545);
 			this->Load += gcnew System::EventHandler(this, &StudentCourses::StudentCourses_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -387,5 +505,17 @@ namespace projectUI {
 		}
 	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
 			 }
+private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+	    }
+private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+	    }
+private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+	    }
+private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+	    }
+private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
+	    }
+private: System::Void dropLbl_Click(System::Object^  sender, System::EventArgs^  e) {
+	    }
 };
 }

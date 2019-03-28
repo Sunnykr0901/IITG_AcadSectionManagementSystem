@@ -18,6 +18,7 @@ namespace projectUI {
 	{
 	public:
 		String ^usrnm;
+		Panel ^parent;
 
 	public:
 		StudentProfile(void)
@@ -28,10 +29,11 @@ namespace projectUI {
 			//
 		}
 
-		StudentProfile(String ^text)
+		StudentProfile(String ^text,Panel ^a)
 		{
 			InitializeComponent();
 			usrnm=text;
+			parent=a;
 		}
 
 	protected:
@@ -60,7 +62,8 @@ namespace projectUI {
 
 
 	private: System::Windows::Forms::Panel^  panel1;
-	private: System::Windows::Forms::Button^  updateBtn;
+	private: System::Windows::Forms::Button^  ExtraInfoBtn;
+
 	private: System::Windows::Forms::Label^  LblHostel;
 	private: System::Windows::Forms::Label^  LblGender;
 	private: System::Windows::Forms::Label^  LblNationality;
@@ -105,7 +108,7 @@ namespace projectUI {
 		void InitializeComponent(void)
 		{
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->updateBtn = (gcnew System::Windows::Forms::Button());
+			this->ExtraInfoBtn = (gcnew System::Windows::Forms::Button());
 			this->LblHostel = (gcnew System::Windows::Forms::Label());
 			this->LblGender = (gcnew System::Windows::Forms::Label());
 			this->LblNationality = (gcnew System::Windows::Forms::Label());
@@ -124,7 +127,7 @@ namespace projectUI {
 			// 
 			// panel1
 			// 
-			this->panel1->Controls->Add(this->updateBtn);
+			this->panel1->Controls->Add(this->ExtraInfoBtn);
 			this->panel1->Controls->Add(this->LblHostel);
 			this->panel1->Controls->Add(this->LblGender);
 			this->panel1->Controls->Add(this->LblNationality);
@@ -143,21 +146,22 @@ namespace projectUI {
 			this->panel1->Size = System::Drawing::Size(715, 483);
 			this->panel1->TabIndex = 27;
 			// 
-			// updateBtn
+			// ExtraInfoBtn
 			// 
-			this->updateBtn->BackColor = System::Drawing::Color::Teal;
-			this->updateBtn->FlatAppearance->BorderSize = 0;
-			this->updateBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->updateBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			this->ExtraInfoBtn->BackColor = System::Drawing::Color::Teal;
+			this->ExtraInfoBtn->FlatAppearance->BorderSize = 0;
+			this->ExtraInfoBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->ExtraInfoBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->updateBtn->ForeColor = System::Drawing::Color::White;
-			this->updateBtn->Location = System::Drawing::Point(273, 387);
-			this->updateBtn->Margin = System::Windows::Forms::Padding(0);
-			this->updateBtn->Name = L"updateBtn";
-			this->updateBtn->Size = System::Drawing::Size(194, 47);
-			this->updateBtn->TabIndex = 39;
-			this->updateBtn->Text = L"Additional Information";
-			this->updateBtn->UseVisualStyleBackColor = false;
+			this->ExtraInfoBtn->ForeColor = System::Drawing::Color::White;
+			this->ExtraInfoBtn->Location = System::Drawing::Point(273, 387);
+			this->ExtraInfoBtn->Margin = System::Windows::Forms::Padding(0);
+			this->ExtraInfoBtn->Name = L"ExtraInfoBtn";
+			this->ExtraInfoBtn->Size = System::Drawing::Size(194, 47);
+			this->ExtraInfoBtn->TabIndex = 39;
+			this->ExtraInfoBtn->Text = L"Additional Information";
+			this->ExtraInfoBtn->UseVisualStyleBackColor = false;
+			this->ExtraInfoBtn->Click += gcnew System::EventHandler(this, &StudentProfile::ExtraInfoBtn_Click);
 			// 
 			// LblHostel
 			// 
@@ -315,58 +319,45 @@ namespace projectUI {
 	
 private: System::Void StudentProfile_Load(System::Object^  sender, System::EventArgs^  e) {
 
-			 OleDb::OleDbConnection ^con;	 
-			 try{				
-				 String^ connString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
+		    OleDb::OleDbConnection ^con;	 
+		    try{				
+			    String^ connString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
 
-				 con=gcnew OleDb::OleDbConnection(connString);
-				 con->Open();
+			    con=gcnew OleDb::OleDbConnection(connString);
+			    con->Open();
 
-				 String ^ aString = "Select * from Student where [Username] ='"+usrnm+"';";
-				 
-				 //if(aString->Length){
-				 //	Homepage::Hide();
-				 //	studentform ^student=gcnew studentform();
-				 //	student->ShowDialog();
-				 //}
-				 OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(aString,con);
-				 OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
+			    String ^ aString = "Select * from Student where [Username] ='"+usrnm+"';";
+			    //				 MessageBox::Show(aString);
 
-				 while(readerData->Read())
-				 {
-					 label1->Text=readerData->GetString(1);
-					 label2->Text=readerData->GetString(4);
-					 label3->Text=readerData->GetString(9);
-					 LblIITGEmail->Text=readerData->GetString(0);
-					 LblNationality->Text=readerData->GetString(10);
-					 LblGender->Text=readerData->GetString(12);
-					 LblHostel->Text=readerData->GetString(13);
-					 /*label1->Text=readerData->GetString(1)+readerData->GetString(3);
-					 label2->Text=readerData->GetString(4);
-					 label3->Text=readerData->GetString(9)+", "+readerData->GetString(8);
-					 LblIITGEmail->Text=readerData->GetString(0)+"@iitg.ac.in";
-					 LblNationality->Text=readerData->GetString(10);
-					 LblGender->Text=readerData->GetString(12);
-					 LblHostel->Text=readerData->GetString(13);*/
-				 }
-				 con->Close();
-			 }
-			 catch(Exception ^ ex)
-			 {
-				 MessageBox::Show(ex->Message);
-				 con->Close();
-			 }
+			    OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(aString,con);
+			    OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
+
+			    while(readerData->Read())
+			    {
+				    label1->Text=readerData->GetString(1);
+				    label2->Text=readerData->GetString(4);
+				    label3->Text=readerData->GetString(9);
+				    LblIITGEmail->Text=readerData->GetString(0) + "@iitg.ac.in";
+				    LblNationality->Text=readerData->GetString(10);
+				    LblGender->Text=readerData->GetString(12);
+				    LblHostel->Text=readerData->GetString(13);
+			    }
+			    con->Close();
+		    }
+		    catch(Exception ^ ex)
+		    {
+			    MessageBox::Show(ex->Message);
+			    con->Close();
+		    }
 
 	    }
-private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
-		 }
-private: System::Void updateBtn_Click(System::Object^  sender, System::EventArgs^  e) {
-			 panel1->Controls->Clear();
-			 DetailedStudentProfile ^dsp = gcnew DetailedStudentProfile(usrnm);
-			 panel1->Controls->Add(dsp);
-			 
 
-		 }
+private: System::Void ExtraInfoBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+		    parent->Controls->Clear();
+		    StudentProfile ^sp = gcnew StudentProfile(usrnm,parent);
+		    DetailedStudentProfile ^dsp = gcnew DetailedStudentProfile(usrnm,sp,parent);
+		    parent->Controls->Add(dsp);
+	    }
 };
 }
 
