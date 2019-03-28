@@ -4,6 +4,12 @@
 
 #include "professor_sendGrades.h"
 #include "professor_currentCourses.h"
+#include "professor_addnotif_1.h"
+#include "professor_viewNotifications.h"
+#include "professor_updateProfile.h"
+#include "professor_current_students.h"
+#include "professor_sendCoursePreference.h"
+#include "professor_ta_manage.h"
 namespace projectUI {
 
 	using namespace System;
@@ -123,6 +129,7 @@ namespace projectUI {
 			this->btn_caa->TabIndex = 9;
 			this->btn_caa->Text = L"Course Adjustment Approval";
 			this->btn_caa->UseVisualStyleBackColor = true;
+			this->btn_caa->Click += gcnew System::EventHandler(this, &professor::btn_caa_Click);
 			// 
 			// btn_vn
 			// 
@@ -132,6 +139,7 @@ namespace projectUI {
 			this->btn_vn->TabIndex = 7;
 			this->btn_vn->Text = L"View Notification";
 			this->btn_vn->UseVisualStyleBackColor = true;
+			this->btn_vn->Click += gcnew System::EventHandler(this, &professor::btn_vn_Click);
 			// 
 			// btn_cs
 			// 
@@ -141,6 +149,7 @@ namespace projectUI {
 			this->btn_cs->TabIndex = 6;
 			this->btn_cs->Text = L"Current Students";
 			this->btn_cs->UseVisualStyleBackColor = true;
+			this->btn_cs->Click += gcnew System::EventHandler(this, &professor::btn_cs_Click);
 			// 
 			// btn_an
 			// 
@@ -151,6 +160,7 @@ namespace projectUI {
 			this->btn_an->TabIndex = 8;
 			this->btn_an->Text = L"Add Notification";
 			this->btn_an->UseVisualStyleBackColor = true;
+			this->btn_an->Click += gcnew System::EventHandler(this, &professor::btn_an_Click);
 			// 
 			// btn_cc
 			// 
@@ -179,6 +189,7 @@ namespace projectUI {
 			this->btn_scp->TabIndex = 2;
 			this->btn_scp->Text = L"Send Course Preference";
 			this->btn_scp->UseVisualStyleBackColor = true;
+			this->btn_scp->Click += gcnew System::EventHandler(this, &professor::btn_scp_Click);
 			// 
 			// btn_sg
 			// 
@@ -198,6 +209,7 @@ namespace projectUI {
 			this->btn_up->TabIndex = 0;
 			this->btn_up->Text = L"Update Profile";
 			this->btn_up->UseVisualStyleBackColor = true;
+			this->btn_up->Click += gcnew System::EventHandler(this, &professor::btn_up_Click);
 			// 
 			// btn_tam
 			// 
@@ -207,6 +219,7 @@ namespace projectUI {
 			this->btn_tam->TabIndex = 3;
 			this->btn_tam->Text = L"TA Management";
 			this->btn_tam->UseVisualStyleBackColor = true;
+			this->btn_tam->Click += gcnew System::EventHandler(this, &professor::btn_tam_Click);
 			// 
 			// professor
 			// 
@@ -216,6 +229,7 @@ namespace projectUI {
 			this->Controls->Add(this->splitContainer1);
 			this->Name = L"professor";
 			this->Text = L"professor";
+			this->Load += gcnew System::EventHandler(this, &professor::professor_Load);
 			this->splitContainer1->Panel1->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->splitContainer1))->EndInit();
 			this->splitContainer1->ResumeLayout(false);
@@ -230,6 +244,32 @@ namespace projectUI {
 private: System::Void btn_cc_Click(System::Object^  sender, System::EventArgs^  e) {
 			 splitContainer1->Panel2->Controls->Clear();
 			 splitContainer1->Panel2->Controls->Add(gcnew professor_currentCourses);
+		 }
+private: System::Void btn_an_Click(System::Object^  sender, System::EventArgs^  e) {
+			 splitContainer1->Panel2->Controls->Clear();
+			 splitContainer1->Panel2->Controls->Add(gcnew professor_addnotif_1);
+		 }
+private: System::Void btn_vn_Click(System::Object^  sender, System::EventArgs^  e) {
+			 splitContainer1->Panel2->Controls->Clear();
+			 splitContainer1->Panel2->Controls->Add(gcnew professor_viewNotifications);
+		 }
+private: System::Void btn_up_Click(System::Object^  sender, System::EventArgs^  e) {
+			 splitContainer1->Panel2->Controls->Clear();
+			 splitContainer1->Panel2->Controls->Add(gcnew professor_updateProfile);
+		 }
+private: System::Void professor_Load(System::Object^  sender, System::EventArgs^  e) {
+		 }
+private: System::Void btn_scp_Click(System::Object^  sender, System::EventArgs^  e) {
+		 }
+private: System::Void btn_tam_Click(System::Object^  sender, System::EventArgs^  e) {
+			 splitContainer1->Panel2->Controls->Clear();
+			 splitContainer1->Panel2->Controls->Add(gcnew professor_ta_manage);
+		 }
+private: System::Void btn_cs_Click(System::Object^  sender, System::EventArgs^  e) {
+			 splitContainer1->Panel2->Controls->Clear();
+			 splitContainer1->Panel2->Controls->Add(gcnew professor_current_students);
+		 }
+private: System::Void btn_caa_Click(System::Object^  sender, System::EventArgs^  e) {
 		 }
 };
 }

@@ -1,49 +1,25 @@
-﻿Build started 3/21/2019 8:26:13 AM.
-     1>Project "J:\IITG_AcadSectionManagementSystem\projectUI\projectUI.vcxproj" on node 2 (build target(s)).
+﻿Build started 29-03-2019 01:03:54.
+     1>Project "E:\master\IITG_AcadSectionManagementSystem\projectUI\projectUI.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\ASMS_IITG.unsuccessfulbuild" because "AlwaysCreate" was specified.
        GenerateTargetFrameworkMonikerAttribute:
        Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
        ClCompile:
          All outputs are up-to-date.
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr:pure /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\ASMS_IITG.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt professor_addnotif_2.cpp professor_addnotif_3.cpp /clr:nostdlib 
-         professor_addnotif_2.cpp
-         professor_addnotif_3.cpp
-         Generating Code...
+         All outputs are up-to-date.
          All outputs are up-to-date.
        CoreResGen:
-         "C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\NETFX 4.0 Tools\resgen.exe" /useSourcePath /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /compile Form1.resX,Debug\projectUI.Form1.resources professor.resx,Debug\projectUI.professor.resources professor_addnotif_1.resx,Debug\projectUI.professor_addnotif_1.resources professor_addnotif_2.resx,Debug\projectUI.professor_addnotif_2.resources professor_addnotif_3.resx,Debug\projectUI.professor_addnotif_3.resources professor_currentCourses.resx,Debug\projectUI.professor_currentCourses.resources professor_sendCoursePreference.resx,Debug\projectUI.professor_sendCoursePreference.resources professor_sendGrades.resx,Debug\projectUI.professor_sendGrades.resources
-         Processing resource file "Form1.resX" into "Debug\projectUI.Form1.resources".
-         Processing resource file "professor.resx" into "Debug\projectUI.professor.resources".
-         Processing resource file "professor_addnotif_1.resx" into "Debug\projectUI.professor_addnotif_1.resources".
-         Processing resource file "professor_addnotif_2.resx" into "Debug\projectUI.professor_addnotif_2.resources".
-         Processing resource file "professor_addnotif_3.resx" into "Debug\projectUI.professor_addnotif_3.resources".
-         Processing resource file "professor_currentCourses.resx" into "Debug\projectUI.professor_currentCourses.resources".
-         Processing resource file "professor_sendCoursePreference.resx" into "Debug\projectUI.professor_sendCoursePreference.resources".
-         Processing resource file "professor_sendGrades.resx" into "Debug\projectUI.professor_sendGrades.resources".
+         No resources are out of date with respect to their source files. Skipping resource generation.
        ResourceCompile:
          All outputs are up-to-date.
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"J:\IITG_AcadSectionManagementSystem\Debug\ASMS_IITG.exe" /INCREMENTAL /NOLOGO /ASSEMBLYRESOURCE:Debug\projectUI.Form1.resources /ASSEMBLYRESOURCE:Debug\projectUI.professor.resources /ASSEMBLYRESOURCE:Debug\projectUI.professor_addnotif_1.resources /ASSEMBLYRESOURCE:Debug\projectUI.professor_addnotif_2.resources /ASSEMBLYRESOURCE:Debug\projectUI.professor_addnotif_3.resources /ASSEMBLYRESOURCE:Debug\projectUI.professor_currentCourses.resources /ASSEMBLYRESOURCE:Debug\projectUI.professor_sendCoursePreference.resources /ASSEMBLYRESOURCE:Debug\projectUI.professor_sendGrades.resources /MANIFEST /ManifestFile:"Debug\ASMS_IITG.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"J:\IITG_AcadSectionManagementSystem\Debug\ASMS_IITG.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\app.res
-         Debug\AssemblyInfo.obj
-         Debug\professor.obj
-         Debug\professor_addnotif_1.obj
-         Debug\professor_addnotif_2.obj
-         Debug\professor_addnotif_3.obj
-         Debug\professor_currentCourses.obj
-         Debug\professor_sendCoursePreference.obj
-         Debug\professor_sendGrades.obj
-         Debug\projectUI.obj
-         Debug\stdafx.obj
-         "Debug\.NETFramework,Version=v4.0.AssemblyAttributes.obj"
-         projectUI.vcxproj -> J:\IITG_AcadSectionManagementSystem\Debug\ASMS_IITG.exe
-       Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"J:\IITG_AcadSectionManagementSystem\Debug\ASMS_IITG.exe;#1" /manifest Debug\ASMS_IITG.exe.intermediate.manifest
+         All outputs are up-to-date.
+         projectUI.vcxproj -> E:\master\IITG_AcadSectionManagementSystem\Debug\ASMS_IITG.exe
        FinalizeBuildStatus:
          Deleting file "Debug\ASMS_IITG.unsuccessfulbuild".
          Touching "Debug\ASMS_IITG.lastbuildstate".
-     1>Done Building Project "J:\IITG_AcadSectionManagementSystem\projectUI\projectUI.vcxproj" (build target(s)).
+     1>Done Building Project "E:\master\IITG_AcadSectionManagementSystem\projectUI\projectUI.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:05.31
+Time Elapsed 00:00:00.15

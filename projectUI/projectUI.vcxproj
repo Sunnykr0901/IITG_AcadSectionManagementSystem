@@ -88,21 +88,37 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="DetailedStudentProfile.cpp" />
+    <ClCompile Include="global_variables.cpp" />
+    <ClCompile Include="Homepage.cpp" />
     <ClCompile Include="professor.cpp" />
     <ClCompile Include="professor_addnotif_1.cpp" />
     <ClCompile Include="professor_addnotif_2.cpp" />
     <ClCompile Include="professor_addnotif_3.cpp" />
+    <ClCompile Include="professor_course_adjustment.cpp" />
     <ClCompile Include="professor_currentCourses.cpp" />
+    <ClCompile Include="professor_current_students.cpp" />
     <ClCompile Include="professor_sendCoursePreference.cpp" />
     <ClCompile Include="professor_sendGrades.cpp" />
+    <ClCompile Include="professor_ta_manage.cpp" />
+    <ClCompile Include="professor_updateProfile.cpp" />
+    <ClCompile Include="professor_viewNotifications.cpp" />
     <ClCompile Include="projectUI.cpp" />
+    <ClCompile Include="Search.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="StudentCourses.cpp" />
+    <ClCompile Include="StudentForm.cpp" />
+    <ClCompile Include="StudentProfile.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Form1.h">
+    <ClInclude Include="DetailedStudentProfile.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
+    <ClInclude Include="global_variables.h" />
+    <ClInclude Include="Homepage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="professor.h">
@@ -117,7 +133,13 @@
     <ClInclude Include="professor_addnotif_3.h">
       <FileType>CppControl</FileType>
     </ClInclude>
+    <ClInclude Include="professor_course_adjustment.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
     <ClInclude Include="professor_currentCourses.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
+    <ClInclude Include="professor_current_students.h">
       <FileType>CppControl</FileType>
     </ClInclude>
     <ClInclude Include="professor_sendCoursePreference.h">
@@ -126,15 +148,36 @@
     <ClInclude Include="professor_sendGrades.h">
       <FileType>CppControl</FileType>
     </ClInclude>
+    <ClInclude Include="professor_ta_manage.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
+    <ClInclude Include="professor_updateProfile.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
+    <ClInclude Include="professor_viewNotifications.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Search.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="StudentCourses.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
+    <ClInclude Include="StudentForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="StudentProfile.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resX">
-      <DependentUpon>Form1.h</DependentUpon>
+    <EmbeddedResource Include="Homepage.resX">
+      <DependentUpon>Homepage.h</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="professor.resx">
@@ -149,8 +192,14 @@
     <EmbeddedResource Include="professor_addnotif_3.resx">
       <DependentUpon>professor_addnotif_3.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="professor_course_adjustment.resx">
+      <DependentUpon>professor_course_adjustment.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="professor_currentCourses.resx">
       <DependentUpon>professor_currentCourses.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="professor_current_students.resx">
+      <DependentUpon>professor_current_students.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="professor_sendCoursePreference.resx">
       <DependentUpon>professor_sendCoursePreference.h</DependentUpon>
@@ -158,6 +207,8 @@
     <EmbeddedResource Include="professor_sendGrades.resx">
       <DependentUpon>professor_sendGrades.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StudentCourses.resx" />
+    <EmbeddedResource Include="StudentForm.resx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

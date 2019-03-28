@@ -1,4 +1,9 @@
 #pragma once
+#using <System.dll>
+#using <System.data.dll>
+#include <cstring>
+#include <ctime>
+#include<cstdio>
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -6,7 +11,7 @@ using namespace System::Collections;
 using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
-
+using namespace System::Data::OleDb;
 
 namespace projectUI {
 
@@ -38,18 +43,23 @@ namespace projectUI {
 	private: System::Windows::Forms::Label^  lbl_dept;
 	private: System::Windows::Forms::CheckedListBox^  checkedListBox1;
 	private: System::Windows::Forms::Label^  lbl_session;
-	private: System::Windows::Forms::ComboBox^  comboBox1;
-	private: System::Windows::Forms::Label^  lbl_sem;
-	private: System::Windows::Forms::ComboBox^  comboBox2;
+	private: System::Windows::Forms::ComboBox^  sessionCombo;
+
+
+
+
 	private: System::Windows::Forms::Label^  lbl_courses;
 	private: System::Windows::Forms::ComboBox^  comboBox3;
 	private: System::Windows::Forms::Label^  lbl_prog;
-	private: System::Windows::Forms::ComboBox^  comboBox4;
+	private: System::Windows::Forms::ComboBox^  programmeCombo;
+
 	private: System::Windows::Forms::Label^  lbl_otherec;
-	private: System::Windows::Forms::TextBox^  textBox1;
+	private: System::Windows::Forms::TextBox^  otherText;
+
 	private: System::Windows::Forms::Label^  lbl_info;
 	private: System::Windows::Forms::Label^  lbl_ntf;
-	private: System::Windows::Forms::TextBox^  textBox2;
+	private: System::Windows::Forms::TextBox^  messageText;
+
 	private: System::Windows::Forms::Button^  btn_post;
 	protected: 
 
@@ -71,18 +81,16 @@ namespace projectUI {
 			this->lbl_dept = (gcnew System::Windows::Forms::Label());
 			this->checkedListBox1 = (gcnew System::Windows::Forms::CheckedListBox());
 			this->lbl_session = (gcnew System::Windows::Forms::Label());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->lbl_sem = (gcnew System::Windows::Forms::Label());
-			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
+			this->sessionCombo = (gcnew System::Windows::Forms::ComboBox());
 			this->lbl_courses = (gcnew System::Windows::Forms::Label());
 			this->comboBox3 = (gcnew System::Windows::Forms::ComboBox());
 			this->lbl_prog = (gcnew System::Windows::Forms::Label());
-			this->comboBox4 = (gcnew System::Windows::Forms::ComboBox());
+			this->programmeCombo = (gcnew System::Windows::Forms::ComboBox());
 			this->lbl_otherec = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->otherText = (gcnew System::Windows::Forms::TextBox());
 			this->lbl_info = (gcnew System::Windows::Forms::Label());
 			this->lbl_ntf = (gcnew System::Windows::Forms::Label());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->messageText = (gcnew System::Windows::Forms::TextBox());
 			this->btn_post = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
@@ -99,6 +107,8 @@ namespace projectUI {
 			// checkedListBox1
 			// 
 			this->checkedListBox1->FormattingEnabled = true;
+			this->checkedListBox1->Items->AddRange(gcnew cli::array< System::Object^  >(10) {L"CSE", L"EEE", L"ECE", L"MA", L"BSBE", L"ME", 
+				L"CE", L"DD", L"CST", L"CH"});
 			this->checkedListBox1->Location = System::Drawing::Point(255, 24);
 			this->checkedListBox1->Name = L"checkedListBox1";
 			this->checkedListBox1->Size = System::Drawing::Size(242, 89);
@@ -113,35 +123,18 @@ namespace projectUI {
 			this->lbl_session->TabIndex = 2;
 			this->lbl_session->Text = L"Session:";
 			// 
-			// comboBox1
+			// sessionCombo
 			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(255, 131);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(242, 24);
-			this->comboBox1->TabIndex = 3;
-			// 
-			// lbl_sem
-			// 
-			this->lbl_sem->AutoSize = true;
-			this->lbl_sem->Location = System::Drawing::Point(48, 178);
-			this->lbl_sem->Name = L"lbl_sem";
-			this->lbl_sem->Size = System::Drawing::Size(72, 17);
-			this->lbl_sem->TabIndex = 4;
-			this->lbl_sem->Text = L"Semester:";
-			// 
-			// comboBox2
-			// 
-			this->comboBox2->FormattingEnabled = true;
-			this->comboBox2->Location = System::Drawing::Point(255, 175);
-			this->comboBox2->Name = L"comboBox2";
-			this->comboBox2->Size = System::Drawing::Size(242, 24);
-			this->comboBox2->TabIndex = 5;
+			this->sessionCombo->FormattingEnabled = true;
+			this->sessionCombo->Location = System::Drawing::Point(255, 131);
+			this->sessionCombo->Name = L"sessionCombo";
+			this->sessionCombo->Size = System::Drawing::Size(242, 24);
+			this->sessionCombo->TabIndex = 3;
 			// 
 			// lbl_courses
 			// 
 			this->lbl_courses->AutoSize = true;
-			this->lbl_courses->Location = System::Drawing::Point(48, 223);
+			this->lbl_courses->Location = System::Drawing::Point(48, 189);
 			this->lbl_courses->Name = L"lbl_courses";
 			this->lbl_courses->Size = System::Drawing::Size(64, 17);
 			this->lbl_courses->TabIndex = 6;
@@ -150,7 +143,7 @@ namespace projectUI {
 			// comboBox3
 			// 
 			this->comboBox3->FormattingEnabled = true;
-			this->comboBox3->Location = System::Drawing::Point(255, 220);
+			this->comboBox3->Location = System::Drawing::Point(255, 186);
 			this->comboBox3->Name = L"comboBox3";
 			this->comboBox3->Size = System::Drawing::Size(242, 24);
 			this->comboBox3->TabIndex = 7;
@@ -158,19 +151,21 @@ namespace projectUI {
 			// lbl_prog
 			// 
 			this->lbl_prog->AutoSize = true;
-			this->lbl_prog->Location = System::Drawing::Point(48, 271);
+			this->lbl_prog->Location = System::Drawing::Point(49, 250);
 			this->lbl_prog->Name = L"lbl_prog";
 			this->lbl_prog->Size = System::Drawing::Size(85, 17);
 			this->lbl_prog->TabIndex = 8;
 			this->lbl_prog->Text = L"Programme:";
 			// 
-			// comboBox4
+			// programmeCombo
 			// 
-			this->comboBox4->FormattingEnabled = true;
-			this->comboBox4->Location = System::Drawing::Point(255, 268);
-			this->comboBox4->Name = L"comboBox4";
-			this->comboBox4->Size = System::Drawing::Size(242, 24);
-			this->comboBox4->TabIndex = 9;
+			this->programmeCombo->FormattingEnabled = true;
+			this->programmeCombo->Items->AddRange(gcnew cli::array< System::Object^  >(6) {L"Btech", L"Mtech", L"BDes", L"MDes", L"Phd", 
+				L"MS"});
+			this->programmeCombo->Location = System::Drawing::Point(255, 247);
+			this->programmeCombo->Name = L"programmeCombo";
+			this->programmeCombo->Size = System::Drawing::Size(242, 24);
+			this->programmeCombo->TabIndex = 9;
 			// 
 			// lbl_otherec
 			// 
@@ -181,12 +176,12 @@ namespace projectUI {
 			this->lbl_otherec->TabIndex = 10;
 			this->lbl_otherec->Text = L"Other receivers(if any):";
 			// 
-			// textBox1
+			// otherText
 			// 
-			this->textBox1->Location = System::Drawing::Point(255, 318);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(242, 22);
-			this->textBox1->TabIndex = 11;
+			this->otherText->Location = System::Drawing::Point(255, 318);
+			this->otherText->Name = L"otherText";
+			this->otherText->Size = System::Drawing::Size(242, 22);
+			this->otherText->TabIndex = 11;
 			// 
 			// lbl_info
 			// 
@@ -208,14 +203,14 @@ namespace projectUI {
 			this->lbl_ntf->TabIndex = 13;
 			this->lbl_ntf->Text = L"Message:";
 			// 
-			// textBox2
+			// messageText
 			// 
-			this->textBox2->Location = System::Drawing::Point(255, 393);
-			this->textBox2->Multiline = true;
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(329, 109);
-			this->textBox2->TabIndex = 14;
-			this->textBox2->TextChanged += gcnew System::EventHandler(this, &professor_addnotif_2::textBox2_TextChanged);
+			this->messageText->Location = System::Drawing::Point(255, 393);
+			this->messageText->Multiline = true;
+			this->messageText->Name = L"messageText";
+			this->messageText->Size = System::Drawing::Size(329, 109);
+			this->messageText->TabIndex = 14;
+			this->messageText->TextChanged += gcnew System::EventHandler(this, &professor_addnotif_2::textBox2_TextChanged);
 			// 
 			// btn_post
 			// 
@@ -225,29 +220,29 @@ namespace projectUI {
 			this->btn_post->TabIndex = 15;
 			this->btn_post->Text = L"POST";
 			this->btn_post->UseVisualStyleBackColor = true;
+			this->btn_post->Click += gcnew System::EventHandler(this, &professor_addnotif_2::btn_post_Click);
 			// 
 			// professor_addnotif_2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->Controls->Add(this->btn_post);
-			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->messageText);
 			this->Controls->Add(this->lbl_ntf);
 			this->Controls->Add(this->lbl_info);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->otherText);
 			this->Controls->Add(this->lbl_otherec);
-			this->Controls->Add(this->comboBox4);
+			this->Controls->Add(this->programmeCombo);
 			this->Controls->Add(this->lbl_prog);
 			this->Controls->Add(this->comboBox3);
 			this->Controls->Add(this->lbl_courses);
-			this->Controls->Add(this->comboBox2);
-			this->Controls->Add(this->lbl_sem);
-			this->Controls->Add(this->comboBox1);
+			this->Controls->Add(this->sessionCombo);
 			this->Controls->Add(this->lbl_session);
 			this->Controls->Add(this->checkedListBox1);
 			this->Controls->Add(this->lbl_dept);
 			this->Name = L"professor_addnotif_2";
 			this->Size = System::Drawing::Size(753, 614);
+			this->Load += gcnew System::EventHandler(this, &professor_addnotif_2::professor_addnotif_2_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -257,5 +252,132 @@ namespace projectUI {
 			 }
 	private: System::Void textBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 			 }
+private: System::Void professor_addnotif_2_Load(System::Object^  sender, System::EventArgs^  e) {
+
+			 time_t now = time(0);
+			 tm *ltm = new tm;
+			 localtime_s(ltm,&now);
+
+			 for(int i=(ltm->tm_year-100);i>((ltm->tm_year-100)-8);i--)
+			 {
+				 char str1[10];
+				 sprintf_s(str1,"20%02d-%02d",i,i+1);
+				 String^ s=gcnew String(str1);
+				 sessionCombo->Items->Add(s);
+			 }
+			 OleDb::OleDbConnection ^con;
+			 try
+			 {
+				 String^ connString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
+
+				 con=gcnew OleDb::OleDbConnection(connString);
+				 con->Open();
+				 String^ com="select distinct [CourseID] from CourseList;";
+				 OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(com,con);
+				 OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
+				 while (readerData->Read())
+				 {
+					comboBox3->Items->Add(readerData->GetString(0));
+				 }
+				 con->Close();
+
+
+			 }
+			 catch(Exception ^ ex)
+			 {
+				 MessageBox::Show(ex->Message);
+				 con->Close();
+			 }
+
+
+		 }
+private: System::Void btn_post_Click(System::Object^  sender, System::EventArgs^  e) {
+			 time_t now = time(0);
+			 tm *ltm = new tm;
+			 localtime_s(ltm,&now);
+			 if(messageText->Text=="")
+			 { 
+				 MessageBox::Show("Empty Message");
+				 return;
+			 }
+			 if(otherText->Text=="")
+			 {
+				 
+				 if(checkedListBox1->SelectedItems->Count==0)
+				 { 
+					 MessageBox::Show("No Dept Selected");
+					 return;
+				 }
+				 if(sessionCombo->Text=="")
+				 {
+					 MessageBox::Show("Select Session");
+					 return;
+				 }
+				 if(programmeCombo->Text=="")
+				 {
+					 MessageBox::Show("Select Programme");
+					 return;
+				 }
+
+			 }
+			 if(otherText->Text!="")
+			 {
+				 OleDb::OleDbConnection ^con;
+				 try
+				 {
+					 String^ connString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
+
+					 con=gcnew OleDb::OleDbConnection(connString);
+					 con->Open();
+					 String^ com="insert into Notification(SenderUsername,SendTime,SendDate,Message,OtherReceivers,Type) values('ckarfa','"+ltm->tm_hour+":"+ltm->tm_min+"','"+ltm->tm_mday+"/"+(ltm->tm_mon+1)+"/"+(ltm->tm_year+1900)+"','"+messageText->Text+"','"+otherText->Text+"','Message');";
+					 MessageBox::Show(com);
+					 
+					 OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(com,con);
+					 OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
+					 
+					 con->Close();
+
+
+				 }
+				 catch(Exception ^ ex)
+				 {
+					 MessageBox::Show(ex->Message);
+					 con->Close();
+				 }
+			 }
+			 if (checkedListBox1->SelectedItems->Count!=0)
+			 {
+				 for(int i=0;i<checkedListBox1->Items->Count;i++)
+				 {
+					 if(checkedListBox1->GetItemCheckState(i)==CheckState::Checked)
+					 {
+						 OleDb::OleDbConnection ^con;
+						 try
+						 {
+							 String^ connString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
+							 //checkedListBox1->Items
+							 con=gcnew OleDb::OleDbConnection(connString);
+							 con->Open();
+							 String^ com="insert into Notification(SenderUsername,SendTime,SendDate,Message,DeptID,[Session],Programme,Type) values('ckarfa','"+ltm->tm_hour+":"+ltm->tm_min+":"+ltm->tm_sec+"','"+ltm->tm_mday+"/"+(ltm->tm_mon+1)+"/"+(ltm->tm_year+1900)+"','"+messageText->Text+"','"+checkedListBox1->Items[i]+"','"+sessionCombo->Text+"','"+programmeCombo->Text+"','Message');";
+							 MessageBox::Show(com);
+
+							 OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(com,con);
+							 OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
+
+							 con->Close();
+
+
+						 }
+						 catch(Exception ^ ex)
+						 {
+							 MessageBox::Show(ex->Message);
+							 con->Close();
+						 }
+					 }
+				 }
+			 }
+
+			 
+		 }
 };
 }
