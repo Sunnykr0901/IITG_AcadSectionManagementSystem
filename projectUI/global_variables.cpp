@@ -4,7 +4,6 @@
 
 global_variables::global_variables(void)
 {
-	;
 }
 int present_year = 2018;
 int present_sem = 1; // 0 = Spring, 1 = Fall
@@ -18,4 +17,3 @@ int y = 50 + 21*(course_btn_index-1);
 bool dropValid;
 bool adjustValid;
 
-std::string clickedBtn = "";

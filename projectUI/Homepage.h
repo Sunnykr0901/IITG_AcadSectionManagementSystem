@@ -1,10 +1,7 @@
 #pragma once
 #using <System.dll>
 #using <System.data.dll>
-
-#include "Search.h"
-#include "LoginUserControl.h"
-
+#include "StudentForm.h"
 
 namespace projectUI {
 
@@ -20,8 +17,6 @@ namespace projectUI {
 	/// </summary>
 	public ref class Homepage : public System::Windows::Forms::Form
 	{
-	public:
-		String^ table;
 	public:
 		Homepage(void)
 		{
@@ -48,7 +43,7 @@ namespace projectUI {
 	private: System::Windows::Forms::Button^  MFormsBtn;
 	private: System::Windows::Forms::Button^  GenFormsBtn;
 	private: System::Windows::Forms::Button^  BMFormsBtn;
-
+	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Button^  searchBtn;
 	private: System::Windows::Forms::Label^  label4;
 	private: System::Windows::Forms::Button^  formsBtn;
@@ -58,24 +53,15 @@ namespace projectUI {
 	private: System::Windows::Forms::Panel^  panel2;
 	private: System::Windows::Forms::Button^  noticeBrdBtn;
 	private: System::Windows::Forms::PictureBox^  pictureBox2;
+	private: System::Windows::Forms::Panel^  loginPnl;
 
-
-
-
-
-
-
-
-	private: System::Windows::Forms::ComboBox^  comboBox1;
-	private: System::Windows::Forms::Button^  helpBtn;
-	private: System::Windows::Forms::TextBox^  textBox1;
-	private: System::Windows::Forms::Panel^  panel4;
-	private: System::Windows::Forms::RadioButton^  radioButton2;
-	private: System::Windows::Forms::RadioButton^  radioButton1;
-	private: System::Windows::Forms::RadioButton^  radioButton3;
-	private: System::Windows::Forms::Panel^  panel5;
+	private: System::Windows::Forms::Panel^  panel3;
+	private: System::Windows::Forms::Button^  forgotBtn;
 	private: System::Windows::Forms::Button^  loginBtn;
+	private: System::Windows::Forms::TextBox^  txtPassword;
 
+	private: System::Windows::Forms::TextBox^  textBox2;
+	private: System::Windows::Forms::TextBox^  txtUsername;
 
 
 	private:
@@ -97,6 +83,7 @@ namespace projectUI {
 			this->MFormsBtn = (gcnew System::Windows::Forms::Button());
 			this->GenFormsBtn = (gcnew System::Windows::Forms::Button());
 			this->BMFormsBtn = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->searchBtn = (gcnew System::Windows::Forms::Button());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->formsBtn = (gcnew System::Windows::Forms::Button());
@@ -104,21 +91,20 @@ namespace projectUI {
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
-			this->loginBtn = (gcnew System::Windows::Forms::Button());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->helpBtn = (gcnew System::Windows::Forms::Button());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->noticeBrdBtn = (gcnew System::Windows::Forms::Button());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
-			this->panel4 = (gcnew System::Windows::Forms::Panel());
-			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton3 = (gcnew System::Windows::Forms::RadioButton());
-			this->panel5 = (gcnew System::Windows::Forms::Panel());
+			this->loginPnl = (gcnew System::Windows::Forms::Panel());
+			this->panel3 = (gcnew System::Windows::Forms::Panel());
+			this->forgotBtn = (gcnew System::Windows::Forms::Button());
+			this->loginBtn = (gcnew System::Windows::Forms::Button());
+			this->txtPassword = (gcnew System::Windows::Forms::TextBox());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->txtUsername = (gcnew System::Windows::Forms::TextBox());
 			this->formsPanel->SuspendLayout();
 			this->panel2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox2))->BeginInit();
-			this->panel4->SuspendLayout();
+			this->loginPnl->SuspendLayout();
+			this->panel3->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// formsPanel
@@ -128,7 +114,7 @@ namespace projectUI {
 			this->formsPanel->Controls->Add(this->MFormsBtn);
 			this->formsPanel->Controls->Add(this->GenFormsBtn);
 			this->formsPanel->Controls->Add(this->BMFormsBtn);
-			this->formsPanel->Location = System::Drawing::Point(742, 176);
+			this->formsPanel->Location = System::Drawing::Point(922, 176);
 			this->formsPanel->Margin = System::Windows::Forms::Padding(0);
 			this->formsPanel->Name = L"formsPanel";
 			this->formsPanel->Size = System::Drawing::Size(133, 118);
@@ -185,7 +171,7 @@ namespace projectUI {
 			this->BMFormsBtn->FlatAppearance->BorderSize = 0;
 			this->BMFormsBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->BMFormsBtn->ForeColor = System::Drawing::Color::White;
-			this->BMFormsBtn->Location = System::Drawing::Point(1, 2);
+			this->BMFormsBtn->Location = System::Drawing::Point(1, 1);
 			this->BMFormsBtn->Margin = System::Windows::Forms::Padding(1);
 			this->BMFormsBtn->Name = L"BMFormsBtn";
 			this->BMFormsBtn->Size = System::Drawing::Size(130, 28);
@@ -193,6 +179,22 @@ namespace projectUI {
 			this->BMFormsBtn->Text = L"   BTech/BDes/MSc   ";
 			this->BMFormsBtn->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			this->BMFormsBtn->UseVisualStyleBackColor = false;
+			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::Tomato;
+			this->button1->FlatAppearance->BorderSize = 0;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->button1->ForeColor = System::Drawing::Color::White;
+			this->button1->Location = System::Drawing::Point(11, 0);
+			this->button1->Margin = System::Windows::Forms::Padding(0);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(80, 47);
+			this->button1->TabIndex = 10;
+			this->button1->Text = L"LOGIN";
+			this->button1->UseVisualStyleBackColor = false;
 			// 
 			// searchBtn
 			// 
@@ -202,14 +204,13 @@ namespace projectUI {
 			this->searchBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->searchBtn->ForeColor = System::Drawing::Color::White;
-			this->searchBtn->Location = System::Drawing::Point(396, 0);
+			this->searchBtn->Location = System::Drawing::Point(576, 0);
 			this->searchBtn->Margin = System::Windows::Forms::Padding(0);
 			this->searchBtn->Name = L"searchBtn";
 			this->searchBtn->Size = System::Drawing::Size(80, 47);
 			this->searchBtn->TabIndex = 9;
 			this->searchBtn->Text = L"SEARCH";
 			this->searchBtn->UseVisualStyleBackColor = false;
-			this->searchBtn->Click += gcnew System::EventHandler(this, &Homepage::searchBtn_Click);
 			// 
 			// label4
 			// 
@@ -232,7 +233,7 @@ namespace projectUI {
 			this->formsBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->formsBtn->ForeColor = System::Drawing::Color::White;
-			this->formsBtn->Location = System::Drawing::Point(802, 0);
+			this->formsBtn->Location = System::Drawing::Point(982, 0);
 			this->formsBtn->Margin = System::Windows::Forms::Padding(0);
 			this->formsBtn->Name = L"formsBtn";
 			this->formsBtn->Size = System::Drawing::Size(73, 47);
@@ -248,7 +249,7 @@ namespace projectUI {
 			this->AcadCalBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->AcadCalBtn->ForeColor = System::Drawing::Color::White;
-			this->AcadCalBtn->Location = System::Drawing::Point(613, 0);
+			this->AcadCalBtn->Location = System::Drawing::Point(793, 0);
 			this->AcadCalBtn->Margin = System::Windows::Forms::Padding(0);
 			this->AcadCalBtn->Name = L"AcadCalBtn";
 			this->AcadCalBtn->Size = System::Drawing::Size(189, 47);
@@ -284,80 +285,16 @@ namespace projectUI {
 			// panel2
 			// 
 			this->panel2->BackColor = System::Drawing::Color::Teal;
-			this->panel2->Controls->Add(this->loginBtn);
+			this->panel2->Controls->Add(this->button1);
 			this->panel2->Controls->Add(this->searchBtn);
-			this->panel2->Controls->Add(this->comboBox1);
-			this->panel2->Controls->Add(this->helpBtn);
 			this->panel2->Controls->Add(this->formsBtn);
-			this->panel2->Controls->Add(this->textBox1);
 			this->panel2->Controls->Add(this->AcadCalBtn);
 			this->panel2->Controls->Add(this->noticeBrdBtn);
 			this->panel2->Location = System::Drawing::Point(0, 129);
 			this->panel2->Margin = System::Windows::Forms::Padding(0);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(900, 47);
+			this->panel2->Size = System::Drawing::Size(1067, 47);
 			this->panel2->TabIndex = 17;
-			// 
-			// loginBtn
-			// 
-			this->loginBtn->BackColor = System::Drawing::Color::Tomato;
-			this->loginBtn->FlatAppearance->BorderSize = 0;
-			this->loginBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->loginBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
-				static_cast<System::Byte>(0)));
-			this->loginBtn->ForeColor = System::Drawing::Color::White;
-			this->loginBtn->Location = System::Drawing::Point(9, 0);
-			this->loginBtn->Margin = System::Windows::Forms::Padding(0);
-			this->loginBtn->Name = L"loginBtn";
-			this->loginBtn->Size = System::Drawing::Size(80, 47);
-			this->loginBtn->TabIndex = 35;
-			this->loginBtn->Text = L"LOGIN";
-			this->loginBtn->UseVisualStyleBackColor = false;
-			this->loginBtn->Click += gcnew System::EventHandler(this, &Homepage::loginBtn_Click);
-			// 
-			// comboBox1
-			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(12) {L"----(Select)----", L"CSE", L"MNC", L"ECE", L"EEE", 
-				L"BT", L"CST", L"CE", L"EP", L"ME", L"CL", L"DoD"});
-			this->comboBox1->Location = System::Drawing::Point(103, 16);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(75, 21);
-			this->comboBox1->TabIndex = 34;
-			this->comboBox1->Visible = false;
-			// 
-			// helpBtn
-			// 
-			this->helpBtn->BackColor = System::Drawing::Color::SpringGreen;
-			this->helpBtn->FlatAppearance->BorderSize = 0;
-			this->helpBtn->FlatAppearance->MouseDownBackColor = System::Drawing::Color::Teal;
-			this->helpBtn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::Teal;
-			this->helpBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->helpBtn->Font = (gcnew System::Drawing::Font(L"Chiller", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
-				static_cast<System::Byte>(0)));
-			this->helpBtn->ForeColor = System::Drawing::Color::Gold;
-			this->helpBtn->Location = System::Drawing::Point(369, 9);
-			this->helpBtn->Margin = System::Windows::Forms::Padding(0);
-			this->helpBtn->Name = L"helpBtn";
-			this->helpBtn->Size = System::Drawing::Size(19, 19);
-			this->helpBtn->TabIndex = 33;
-			this->helpBtn->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
-			this->helpBtn->UseVisualStyleBackColor = false;
-			this->helpBtn->Visible = false;
-			this->helpBtn->Click += gcnew System::EventHandler(this, &Homepage::helpBtn_Click);
-			// 
-			// textBox1
-			// 
-			this->textBox1->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Lucida Sans", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
-				static_cast<System::Byte>(0)));
-			this->textBox1->Location = System::Drawing::Point(214, 9);
-			this->textBox1->Margin = System::Windows::Forms::Padding(0);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(155, 19);
-			this->textBox1->TabIndex = 32;
-			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->textBox1->Visible = false;
 			// 
 			// noticeBrdBtn
 			// 
@@ -367,7 +304,7 @@ namespace projectUI {
 			this->noticeBrdBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->noticeBrdBtn->ForeColor = System::Drawing::Color::White;
-			this->noticeBrdBtn->Location = System::Drawing::Point(471, 0);
+			this->noticeBrdBtn->Location = System::Drawing::Point(651, 0);
 			this->noticeBrdBtn->Margin = System::Windows::Forms::Padding(0);
 			this->noticeBrdBtn->Name = L"noticeBrdBtn";
 			this->noticeBrdBtn->Size = System::Drawing::Size(142, 47);
@@ -386,70 +323,98 @@ namespace projectUI {
 			this->pictureBox2->TabIndex = 16;
 			this->pictureBox2->TabStop = false;
 			// 
-			// panel4
+			// loginPnl
 			// 
-			this->panel4->BackColor = System::Drawing::Color::Teal;
-			this->panel4->Controls->Add(this->radioButton2);
-			this->panel4->Controls->Add(this->radioButton1);
-			this->panel4->Controls->Add(this->radioButton3);
-			this->panel4->Location = System::Drawing::Point(572, 46);
-			this->panel4->Margin = System::Windows::Forms::Padding(0);
-			this->panel4->Name = L"panel4";
-			this->panel4->Size = System::Drawing::Size(96, 83);
-			this->panel4->TabIndex = 35;
-			this->panel4->Visible = false;
+			this->loginPnl->BackColor = System::Drawing::Color::Teal;
+			this->loginPnl->Controls->Add(this->panel3);
+			this->loginPnl->Location = System::Drawing::Point(300, 328);
+			this->loginPnl->Name = L"loginPnl";
+			this->loginPnl->Size = System::Drawing::Size(411, 190);
+			this->loginPnl->TabIndex = 22;
 			// 
-			// radioButton2
+			// panel3
 			// 
-			this->radioButton2->AutoSize = true;
-			this->radioButton2->ForeColor = System::Drawing::Color::White;
-			this->radioButton2->Location = System::Drawing::Point(8, 33);
-			this->radioButton2->Name = L"radioButton2";
-			this->radioButton2->Size = System::Drawing::Size(59, 17);
-			this->radioButton2->TabIndex = 16;
-			this->radioButton2->TabStop = true;
-			this->radioButton2->Text = L"Faculty";
-			this->radioButton2->UseVisualStyleBackColor = true;
+			this->panel3->BackColor = System::Drawing::Color::White;
+			this->panel3->Controls->Add(this->forgotBtn);
+			this->panel3->Controls->Add(this->loginBtn);
+			this->panel3->Controls->Add(this->txtPassword);
+			this->panel3->Controls->Add(this->textBox2);
+			this->panel3->Controls->Add(this->txtUsername);
+			this->panel3->Location = System::Drawing::Point(3, 3);
+			this->panel3->Name = L"panel3";
+			this->panel3->Size = System::Drawing::Size(405, 184);
+			this->panel3->TabIndex = 0;
 			// 
-			// radioButton1
+			// forgotBtn
 			// 
-			this->radioButton1->AutoSize = true;
-			this->radioButton1->ForeColor = System::Drawing::Color::White;
-			this->radioButton1->Location = System::Drawing::Point(8, 10);
-			this->radioButton1->Name = L"radioButton1";
-			this->radioButton1->Size = System::Drawing::Size(62, 17);
-			this->radioButton1->TabIndex = 15;
-			this->radioButton1->TabStop = true;
-			this->radioButton1->Text = L"Student";
-			this->radioButton1->UseVisualStyleBackColor = true;
+			this->forgotBtn->BackColor = System::Drawing::Color::White;
+			this->forgotBtn->FlatAppearance->BorderColor = System::Drawing::Color::Tomato;
+			this->forgotBtn->FlatAppearance->BorderSize = 2;
+			this->forgotBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->forgotBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 6.7F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->forgotBtn->ForeColor = System::Drawing::Color::Tomato;
+			this->forgotBtn->Location = System::Drawing::Point(204, 123);
+			this->forgotBtn->Name = L"forgotBtn";
+			this->forgotBtn->Size = System::Drawing::Size(114, 32);
+			this->forgotBtn->TabIndex = 4;
+			this->forgotBtn->Text = L"Forgot Password";
+			this->forgotBtn->UseVisualStyleBackColor = false;
 			// 
-			// radioButton3
+			// loginBtn
 			// 
-			this->radioButton3->AutoSize = true;
-			this->radioButton3->ForeColor = System::Drawing::Color::White;
-			this->radioButton3->Location = System::Drawing::Point(8, 57);
-			this->radioButton3->Name = L"radioButton3";
-			this->radioButton3->Size = System::Drawing::Size(79, 17);
-			this->radioButton3->TabIndex = 17;
-			this->radioButton3->TabStop = true;
-			this->radioButton3->Text = L"Admin Staff";
-			this->radioButton3->UseVisualStyleBackColor = true;
+			this->loginBtn->BackColor = System::Drawing::Color::Teal;
+			this->loginBtn->FlatAppearance->BorderSize = 0;
+			this->loginBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->loginBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->loginBtn->ForeColor = System::Drawing::Color::White;
+			this->loginBtn->Location = System::Drawing::Point(61, 123);
+			this->loginBtn->Name = L"loginBtn";
+			this->loginBtn->Size = System::Drawing::Size(137, 32);
+			this->loginBtn->TabIndex = 3;
+			this->loginBtn->Text = L"LOGIN";
+			this->loginBtn->UseVisualStyleBackColor = false;
+			this->loginBtn->Click += gcnew System::EventHandler(this, &Homepage::loginBtn_Click);
 			// 
-			// panel5
+			// txtPassword
 			// 
-			this->panel5->AutoScroll = true;
-			this->panel5->Location = System::Drawing::Point(0, 179);
-			this->panel5->Name = L"panel5";
-			this->panel5->Size = System::Drawing::Size(872, 485);
-			this->panel5->TabIndex = 36;
+			this->txtPassword->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->txtPassword->Location = System::Drawing::Point(34, 67);
+			this->txtPassword->Name = L"txtPassword";
+			this->txtPassword->PasswordChar = '*';
+			this->txtPassword->Size = System::Drawing::Size(317, 29);
+			this->txtPassword->TabIndex = 2;
+			this->txtPassword->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			// 
+			// textBox2
+			// 
+			this->textBox2->Enabled = false;
+			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->textBox2->ForeColor = System::Drawing::Color::DimGray;
+			this->textBox2->Location = System::Drawing::Point(258, 32);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(93, 29);
+			this->textBox2->TabIndex = 1;
+			this->textBox2->Text = L"@iitg.ac.in";
+			// 
+			// txtUsername
+			// 
+			this->txtUsername->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->txtUsername->Location = System::Drawing::Point(34, 32);
+			this->txtUsername->Name = L"txtUsername";
+			this->txtUsername->Size = System::Drawing::Size(223, 29);
+			this->txtUsername->TabIndex = 0;
 			// 
 			// Homepage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(878, 661);
-			this->Controls->Add(this->panel5);
-			this->Controls->Add(this->panel4);
+			this->ClientSize = System::Drawing::Size(1064, 681);
+			this->Controls->Add(this->loginPnl);
 			this->Controls->Add(this->formsPanel);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label5);
@@ -458,56 +423,68 @@ namespace projectUI {
 			this->Controls->Add(this->pictureBox2);
 			this->Name = L"Homepage";
 			this->Text = L"Homepage";
-			this->Load += gcnew System::EventHandler(this, &Homepage::Homepage_Load);
 			this->formsPanel->ResumeLayout(false);
 			this->panel2->ResumeLayout(false);
-			this->panel2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox2))->EndInit();
-			this->panel4->ResumeLayout(false);
-			this->panel4->PerformLayout();
+			this->loginPnl->ResumeLayout(false);
+			this->panel3->ResumeLayout(false);
+			this->panel3->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	
-	private: System::Void searchBtn_Click(System::Object^  sender, System::EventArgs^  e) {
-			    textBox1->Visible=true;
-			    helpBtn->Visible=true;
-			    comboBox1->Visible=true;
-			    panel4->Visible=true;
-			    this->comboBox1->SelectedIndex = 0;
-			    this->radioButton1->Checked=true;
-		    }
-private: System::Void helpBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void loginBtn_Click(System::Object^  sender, System::EventArgs^  e) {
 
-		    //checking if department selected for search
-		    if(comboBox1->SelectedIndex == 0){
-			    MessageBox::Show("Please Select Department from Dropdown Menu!");
-		    }
-		    else{
-			    String ^table = "Student";
-			    if (radioButton2->Checked) table="Professor";
-			    if (radioButton3->Checked) table="Staff";
+				 OleDb::OleDbConnection ^con;	 
+				 try{				
+					 String^ connString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
 
-			    panel5->Controls->Clear();
-			    UserControlSearch ^s = gcnew UserControlSearch(textBox1->Text,comboBox1->Text,table);
-			    textBox1->Visible=false;
-			    helpBtn->Visible=false;
-			    panel4->Visible=false;
-			    comboBox1->Visible=false;
-			    panel5->Controls->Add(s);
-		    }
-	    }
-private: System::Void loginBtn_Click(System::Object^  sender, System::EventArgs^  e) {
-		    Homepage ^parentForm = gcnew Homepage();
-		    LoginUserControl ^loginPage = gcnew LoginUserControl(parentForm);
-		    panel5->Controls->Add(loginPage);
-	    }
-private: System::Void Homepage_Load(System::Object^  sender, System::EventArgs^  e) {
-		    Homepage ^parentForm = gcnew Homepage();
-		    LoginUserControl ^loginPage = gcnew LoginUserControl(parentForm);
-		    panel5->Controls->Add(loginPage);
-	    }
+					 con=gcnew OleDb::OleDbConnection(connString);
+					 con->Open();
+
+					 String ^ aString = "Select * from Student where [Username] ='"+txtUsername-> Text+"';";
+//					 MessageBox::Show(aString);
+
+					 OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(aString,con);
+					 OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
+
+					 int count=0;
+					 String ^password;
+					 String ^usrnm;
+					 while(readerData->Read())
+					 {
+						 password=readerData->GetString(5);
+						 usrnm=readerData->GetString(0);
+//						 MessageBox::Show(password);
+						 count++;
+					 }
+
+					 //checking if any entry found with the username specified by user
+					 if(count==0 || usrnm != txtUsername->Text){
+						 MessageBox::Show("Wrong Username! Try Again");
+					 }
+					 else{
+						 //matching the password entered
+						 if(txtPassword->Text == password){
+							 Homepage::Hide();
+							 Homepage ^homepage=gcnew Homepage(); 
+							 StudentForm ^student=gcnew StudentForm(usrnm,homepage);  //passing the homepage object in order to return back.
+							 student->ShowDialog();
+							 con->Close();
+						 }
+						 else{
+							 MessageBox::Show("Please check your password and try again!");
+						 }
+					 }
+					 
+					 con->Close();
+				 }
+				catch(Exception ^ ex)
+				{
+					 MessageBox::Show(ex->Message);
+					 con->Close();
+				}
+			 };
 };
 }

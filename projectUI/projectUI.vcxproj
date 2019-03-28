@@ -83,8 +83,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\..\img\next.png" />
-    <None Include="..\..\..\..\..\img\prev.png" />
     <None Include="app.ico" />
     <None Include="ReadMe.txt" />
   </ItemGroup>
@@ -93,7 +91,6 @@
     <ClCompile Include="DetailedStudentProfile.cpp" />
     <ClCompile Include="global_variables.cpp" />
     <ClCompile Include="Homepage.cpp" />
-    <ClCompile Include="LoginUserControl.cpp" />
     <ClCompile Include="professor.cpp" />
     <ClCompile Include="professor_currentCourses.cpp" />
     <ClCompile Include="professor_sendCoursePreference.cpp" />
@@ -114,9 +111,6 @@
     <ClInclude Include="global_variables.h" />
     <ClInclude Include="Homepage.h">
       <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="LoginUserControl.h">
-      <FileType>CppControl</FileType>
     </ClInclude>
     <ClInclude Include="professor.h">
       <FileType>CppForm</FileType>
@@ -155,9 +149,6 @@
     <EmbeddedResource Include="Homepage.resx">
       <DependentUpon>Homepage.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginUserControl.resx">
-      <DependentUpon>LoginUserControl.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="professor.resx">
       <DependentUpon>professor.h</DependentUpon>
       <SubType>Designer</SubType>
@@ -173,7 +164,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StudentCourses.resx">
       <DependentUpon>StudentCourses.h</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="StudentForm.resx">
       <DependentUpon>StudentForm.h</DependentUpon>

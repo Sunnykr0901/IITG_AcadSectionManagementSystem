@@ -322,181 +322,181 @@ namespace projectUI {
 
 	private: System::Void UserControlSearch_Load(System::Object^  sender, System::EventArgs^  e) {
 
-			    int i=1;
+				 int i=1;
 
-			    String ^aString = "";
-			    OleDb::OleDbConnection ^con;
+				 String ^aString = "";
+				 OleDb::OleDbConnection ^con;
 
-			    try{					 
+				 try{					 
 
-				    String^ connString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
-				    con=gcnew OleDb::OleDbConnection(connString);
-				    con->Open();
+					 String^ connString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
+					 con=gcnew OleDb::OleDbConnection(connString);
+					 con->Open();
 
-				    if (textbox == "")
-				    {
-					    aString = "Select * from "+ table +" where [DeptID] ='"+ combobox +"';";
-				    }
-				    else{
-					    if (table == "Student")
-						    aString = "Select * from "+ table +" where [FirstName] Like '%"+ textbox +"%' or [MiddleName] Like '%"+ textbox +"%' or [LastName] Like '%"+ textbox +"%' or [RollNumber] = '"+ textbox +"' and [DeptID] ='"+ combobox +"';";
-					    else
-						    aString = "Select * from "+ table +" where [FirstName] Like '%"+ textbox +"%' or [MiddleName] Like '%"+ textbox +"%' or [LastName] Like '%"+ textbox +"%' and [DeptID] ='"+ combobox +"';";
-				    }
+					 if (textbox == "")
+					 {
+						 aString = "Select * from "+ table +" where [DeptID] ='"+ combobox +"';";
+					 }
+					 else{
+						 if (table == "Student")
+							 aString = "Select * from "+ table +" where [FirstName] Like '%"+ textbox +"%' or [MiddleName] Like '%"+ textbox +"%' or [LastName] Like '%"+ textbox +"%' or [RollNumber] = '"+ textbox +"' and [DeptID] ='"+ combobox +"';";
+						 else
+							 aString = "Select * from "+ table +" where [FirstName] Like '%"+ textbox +"%' or [MiddleName] Like '%"+ textbox +"%' or [LastName] Like '%"+ textbox +"%' and [DeptID] ='"+ combobox +"';";
+					 }
 
-				    //					 MessageBox::Show(aString);
+//					 MessageBox::Show(aString);
 
-				    OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(aString,con);
-				    OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
+					 OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(aString,con);
+					 OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
+ 
+				     while(readerData->Read()){
+							 String ^usrnm=readerData->GetString(0);
+							 String ^firstnm="";
+							 if (!readerData->IsDBNull(1)) firstnm=readerData->GetString(1);
+							
+							 String ^middlenm="";
+							 if (!readerData->IsDBNull(2)) middlenm=readerData->GetString(2);
 
-				    while(readerData->Read()){
-					    String ^usrnm=readerData->GetString(0);
-					    String ^firstnm="";
-					    if (!readerData->IsDBNull(1)) firstnm=readerData->GetString(1);
+							 String ^lastnm="";
+							 if (!readerData->IsDBNull(3)) lastnm=readerData->GetString(3);
 
-					    String ^middlenm="";
-					    if (!readerData->IsDBNull(2)) middlenm=readerData->GetString(2);
+							 creator(i,firstnm,middlenm,lastnm,usrnm);
+							 i=i+1;
+					 }
+					 con->Close();
+				 }
+				 catch(Exception ^ ex)
+				 {
+					 MessageBox::Show(ex->Message);
+					 con->Close();
+				 }
+			 }
 
-					    String ^lastnm="";
-					    if (!readerData->IsDBNull(3)) lastnm=readerData->GetString(3);
+void creator(int i,String^ firstnm,String^ middlenm,String^ lastnm,String^ usrnm){
+	Button ^ btn_course = gcnew Button();
 
-					    creator(i,firstnm,middlenm,lastnm,usrnm);
-					    i=i+1;
-				    }
-				    con->Close();
-			    }
-			    catch(Exception ^ ex)
-			    {
-				    MessageBox::Show(ex->Message);
-				    con->Close();
-			    }
-		    }
+	btn_course->Name = Convert::ToString(i);
+	btn_course->Text = firstnm+" "+middlenm+" "+lastnm;
 
-		    void creator(int i,String^ firstnm,String^ middlenm,String^ lastnm,String^ usrnm){
-			    Button ^ btn_course = gcnew Button();
+	btn_course->FlatAppearance->BorderColor = System::Drawing::Color::Teal;
+	btn_course->FlatAppearance->BorderSize = 2;
+	btn_course->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+	btn_course->ForeColor = System::Drawing::Color::Black;
+	btn_course->Size = System::Drawing::Size(250, 35);
+	btn_course->UseVisualStyleBackColor = true;
+	btn_course->Tag = usrnm;
 
-			    btn_course->Name = Convert::ToString(i);
-			    btn_course->Text = firstnm+" "+middlenm+" "+lastnm;
+	if(table=="Student")btn_course->Click += gcnew System::EventHandler(this,&UserControlSearch::clickbtnStudent);
+	else btn_course->Click += gcnew System::EventHandler(this,&UserControlSearch::clickbtnOthers);
 
-			    btn_course->FlatAppearance->BorderColor = System::Drawing::Color::Teal;
-			    btn_course->FlatAppearance->BorderSize = 2;
-			    btn_course->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			    btn_course->ForeColor = System::Drawing::Color::Black;
-			    btn_course->Size = System::Drawing::Size(250, 35);
-			    btn_course->UseVisualStyleBackColor = true;
-			    btn_course->Tag = usrnm;
+	int x = 15;
+	int y = 50 + 33*(i-1);
+	btn_course->Location = System::Drawing::Point(x, y);
 
-			    if(table=="Student")btn_course->Click += gcnew System::EventHandler(this,&UserControlSearch::clickbtnStudent);
-			    else btn_course->Click += gcnew System::EventHandler(this,&UserControlSearch::clickbtnOthers);
+	searchResultsPanel->Controls->Add(btn_course);
+}
 
-			    int x = 15;
-			    int y = 50 + 33*(i-1);
-			    btn_course->Location = System::Drawing::Point(x, y);
+Void clickbtnStudent(System::Object^  sender, System::EventArgs^  e) {
 
-			    searchResultsPanel->Controls->Add(btn_course);
-		    }
+	Button ^btn = gcnew Button();
+	btn = static_cast<Button^>(sender);
+	String^ username = static_cast<String^>(btn->Tag);
 
-		    Void clickbtnStudent(System::Object^  sender, System::EventArgs^  e) {
+	OleDb::OleDbConnection ^con;
 
-			    Button ^btn = gcnew Button();
-			    btn = static_cast<Button^>(sender);
-			    String^ username = static_cast<String^>(btn->Tag);
+	try{					 
 
-			    OleDb::OleDbConnection ^con;
+		String^ connString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
+		con=gcnew OleDb::OleDbConnection(connString);
+		con->Open();
+		
+		String ^aString = "Select * from "+ table +" where [Username] ='"+ username +"';";
 
-			    try{					 
+		//					 MessageBox::Show(aString);
 
-				    String^ connString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
-				    con=gcnew OleDb::OleDbConnection(connString);
-				    con->Open();
-
-				    String ^aString = "Select * from "+ table +" where [Username] ='"+ username +"';";
-
-				    //					 MessageBox::Show(aString);
-
-				    OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(aString,con);
-				    OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
-
-
-				    while(readerData->Read()){
-					    emailTxt->Text=readerData->GetString(0)+"@iitg.ac.in";
-					    nameLbl->Text=btn->Text;
-					    rollTxt->Text=readerData->GetString(4);
-					    deptTxt->Text=combobox;
-					    progTxt->Text=readerData->GetString(9);
-					    if(!readerData->IsDBNull(10)) nationalityTxt->Text=readerData->GetString(10);
-					    if(!readerData->IsDBNull(13)) hostelTxt->Text=readerData->GetString(13);
-				    }
-
-				    con->Close();
-			    }
-			    catch(Exception ^ ex)
-			    {
-				    MessageBox::Show(ex->Message);
-				    con->Close();
-			    }
-
-			    searchPanel->Visible=true;
-
-		    }
-
-		    Void clickbtnOthers(System::Object^  sender, System::EventArgs^  e) {
-
-			    Button ^btn = gcnew Button();
-			    btn = static_cast<Button^>(sender);
-			    String^ username = static_cast<String^>(btn->Tag);
-
-			    label2->Text="Post :";
-			    label7->Visible=false;
-			    label8->Visible=false;
-			    progTxt->Visible=false;
-			    rollTxt->Visible=false;
+		OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(aString,con);
+		OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
 
 
-			    OleDb::OleDbConnection ^con;
-			    searchPanel->Visible=true;
-			    try{					 
+		while(readerData->Read()){
+				emailTxt->Text=readerData->GetString(0)+"@iitg.ac.in";
+				nameLbl->Text=btn->Text;
+				rollTxt->Text=readerData->GetString(4);
+				deptTxt->Text=combobox;
+				progTxt->Text=readerData->GetString(9);
+				if(!readerData->IsDBNull(10)) nationalityTxt->Text=readerData->GetString(10);
+				if(!readerData->IsDBNull(13)) hostelTxt->Text=readerData->GetString(13);
+		}
 
-				    String^ connString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
-				    con=gcnew OleDb::OleDbConnection(connString);
-				    con->Open();
+		con->Close();
+	}
+	catch(Exception ^ ex)
+	{
+		MessageBox::Show(ex->Message);
+		con->Close();
+	}
 
-				    String ^table1;
-				    if(table=="Professor") table1="ProfStatus";
-				    else table1="StaffStatus";
+	searchPanel->Visible=true;
 
-				    String ^aString = "Select [Post] from "+table1+" where [Username] ='"+ username +"';";
-				    String ^bString = "Select [Nationality] from "+table+" where [Username] ='"+ username +"';";
+}
 
-				    //					 MessageBox::Show(aString);
+Void clickbtnOthers(System::Object^  sender, System::EventArgs^  e) {
 
-				    OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(aString,con);
-				    OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
+	Button ^btn = gcnew Button();
+	btn = static_cast<Button^>(sender);
+	String^ username = static_cast<String^>(btn->Tag);
 
-				    while(readerData->Read()){
-					    emailTxt->Text=username+"@iitg.ac.in";
-					    nameLbl->Text=btn->Text;
-					    if(!readerData->IsDBNull(0))hostelTxt->Text=readerData->GetString(0);
-					    deptTxt->Text=combobox;
-				    }
+	label2->Text="Post :";
+	label7->Visible=false;
+	label8->Visible=false;
+	progTxt->Visible=false;
+	rollTxt->Visible=false;
 
-				    OleDb::OleDbCommand ^cmd1=gcnew OleDb::OleDbCommand(bString,con);
-				    OleDb::OleDbDataReader ^readerData1=cmd1->ExecuteReader();
 
-				    while(readerData1->Read()){
-					    if(!readerData1->IsDBNull(0))nationalityTxt->Text=readerData1->GetString(0);
-				    }
+	OleDb::OleDbConnection ^con;
+	searchPanel->Visible=true;
+	try{					 
 
-				    con->Close();
-			    }
-			    catch(Exception ^ ex)
-			    {
-				    MessageBox::Show(ex->Message);
-				    con->Close();
-			    }
+		String^ connString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
+		con=gcnew OleDb::OleDbConnection(connString);
+		con->Open();
 
-		    }
+		String ^table1;
+		if(table=="Professor") table1="ProfStatus";
+		else table1="StaffStatus";
 
-	};
+		String ^aString = "Select [Post] from "+table1+" where [Username] ='"+ username +"';";
+		String ^bString = "Select [Nationality] from "+table+" where [Username] ='"+ username +"';";
+
+		//					 MessageBox::Show(aString);
+
+		OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(aString,con);
+		OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
+
+		while(readerData->Read()){
+			emailTxt->Text=username+"@iitg.ac.in";
+			nameLbl->Text=btn->Text;
+			if(!readerData->IsDBNull(0))hostelTxt->Text=readerData->GetString(0);
+			deptTxt->Text=combobox;
+		}
+
+		OleDb::OleDbCommand ^cmd1=gcnew OleDb::OleDbCommand(bString,con);
+		OleDb::OleDbDataReader ^readerData1=cmd1->ExecuteReader();
+
+		while(readerData1->Read()){
+			if(!readerData1->IsDBNull(0))nationalityTxt->Text=readerData1->GetString(0);
+		}
+
+		con->Close();
+	}
+	catch(Exception ^ ex)
+	{
+		MessageBox::Show(ex->Message);
+		con->Close();
+	}
+
+}
+
+};
 
 }

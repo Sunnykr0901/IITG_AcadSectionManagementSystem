@@ -1,10 +1,8 @@
-#include <string>
 #pragma once
 ref class global_variables
 {
 public:
 	global_variables(void);
-	
 };
 
 extern int present_year;
@@ -18,5 +16,3 @@ extern int y;
 
 extern bool dropValid;
 extern bool adjustValid;
-
-extern std::string clickedBtn;
