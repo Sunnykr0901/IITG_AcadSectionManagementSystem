@@ -4,6 +4,7 @@
 
 #include "StudentProfile.h"
 #include "StudentCourses.h"
+#include "StudentNoticifications.h"
 #include "Search.h"
 
 namespace projectUI {
@@ -22,6 +23,8 @@ namespace projectUI {
 	{
 	public:
 		String ^usrnm;     //stores the username of logged in user.
+
+	public: 
 
 	public: 
 		Form ^previous;    //object for the previous form.
@@ -98,10 +101,10 @@ namespace projectUI {
 			this->MyCoursesBtn = (gcnew System::Windows::Forms::Button());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->helpBtn = (gcnew System::Windows::Forms::Button());
 			this->TTBtn = (gcnew System::Windows::Forms::Button());
 			this->noticificationBtn = (gcnew System::Windows::Forms::Button());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
@@ -156,16 +159,16 @@ namespace projectUI {
 			// 
 			// logoutBtn
 			// 
-			this->logoutBtn->BackColor = System::Drawing::Color::Tomato;
+			this->logoutBtn->BackColor = System::Drawing::Color::OrangeRed;
 			this->logoutBtn->FlatAppearance->BorderSize = 0;
 			this->logoutBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->logoutBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->logoutBtn->ForeColor = System::Drawing::Color::White;
-			this->logoutBtn->Location = System::Drawing::Point(896, 1);
+			this->logoutBtn->Location = System::Drawing::Point(967, -1);
 			this->logoutBtn->Margin = System::Windows::Forms::Padding(0);
 			this->logoutBtn->Name = L"logoutBtn";
-			this->logoutBtn->Size = System::Drawing::Size(80, 46);
+			this->logoutBtn->Size = System::Drawing::Size(80, 48);
 			this->logoutBtn->TabIndex = 10;
 			this->logoutBtn->Text = L"LOGOUT";
 			this->logoutBtn->UseVisualStyleBackColor = false;
@@ -209,18 +212,17 @@ namespace projectUI {
 			// 
 			this->panel2->BackColor = System::Drawing::Color::Teal;
 			this->panel2->Controls->Add(this->textBox1);
-			this->panel2->Controls->Add(this->comboBox1);
 			this->panel2->Controls->Add(this->button1);
+			this->panel2->Controls->Add(this->helpBtn);
 			this->panel2->Controls->Add(this->logoutBtn);
 			this->panel2->Controls->Add(this->searchBtn);
 			this->panel2->Controls->Add(this->MyCoursesBtn);
-			this->panel2->Controls->Add(this->helpBtn);
 			this->panel2->Controls->Add(this->TTBtn);
 			this->panel2->Controls->Add(this->noticificationBtn);
 			this->panel2->Location = System::Drawing::Point(0, 131);
 			this->panel2->Margin = System::Windows::Forms::Padding(0);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(986, 47);
+			this->panel2->Size = System::Drawing::Size(1063, 47);
 			this->panel2->TabIndex = 24;
 			// 
 			// textBox1
@@ -228,28 +230,19 @@ namespace projectUI {
 			this->textBox1->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"Lucida Sans", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->textBox1->Location = System::Drawing::Point(675, 14);
+			this->textBox1->Location = System::Drawing::Point(602, 14);
 			this->textBox1->Margin = System::Windows::Forms::Padding(0);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(155, 19);
+			this->textBox1->Size = System::Drawing::Size(220, 19);
 			this->textBox1->TabIndex = 13;
 			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->textBox1->Visible = false;
 			// 
-			// comboBox1
-			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(12) {L"----(Select)----", L"CSE", L"MNC", L"ECE", L"EEE", 
-				L"BT", L"CST", L"CE", L"EP", L"ME", L"CL", L"DoD"});
-			this->comboBox1->Location = System::Drawing::Point(592, 15);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(75, 21);
-			this->comboBox1->TabIndex = 18;
-			this->comboBox1->Visible = false;
-			// 
 			// helpBtn
 			// 
-			this->helpBtn->BackColor = System::Drawing::Color::SpringGreen;
+			this->helpBtn->BackColor = System::Drawing::Color::Teal;
+			this->helpBtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"helpBtn.BackgroundImage")));
+			this->helpBtn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->helpBtn->FlatAppearance->BorderSize = 0;
 			this->helpBtn->FlatAppearance->MouseDownBackColor = System::Drawing::Color::Teal;
 			this->helpBtn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::Teal;
@@ -257,13 +250,13 @@ namespace projectUI {
 			this->helpBtn->Font = (gcnew System::Drawing::Font(L"Chiller", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->helpBtn->ForeColor = System::Drawing::Color::Gold;
-			this->helpBtn->Location = System::Drawing::Point(850, 15);
+			this->helpBtn->Location = System::Drawing::Point(835, 11);
 			this->helpBtn->Margin = System::Windows::Forms::Padding(0);
 			this->helpBtn->Name = L"helpBtn";
-			this->helpBtn->Size = System::Drawing::Size(19, 19);
+			this->helpBtn->Size = System::Drawing::Size(26, 26);
 			this->helpBtn->TabIndex = 14;
 			this->helpBtn->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
-			this->helpBtn->UseVisualStyleBackColor = false;
+			this->helpBtn->UseVisualStyleBackColor = true;
 			this->helpBtn->Visible = false;
 			this->helpBtn->Click += gcnew System::EventHandler(this, &StudentForm::helpBtn_Click);
 			// 
@@ -298,6 +291,20 @@ namespace projectUI {
 			this->noticificationBtn->TabIndex = 0;
 			this->noticificationBtn->Text = L"NOTICIFICATIONS";
 			this->noticificationBtn->UseVisualStyleBackColor = false;
+			this->noticificationBtn->Click += gcnew System::EventHandler(this, &StudentForm::noticificationBtn_Click);
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->BackColor = System::Drawing::Color::White;
+			this->comboBox1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(12) {L"----(Select)----", L"CSE", L"MNC", L"ECE", L"EEE", 
+				L"BT", L"CST", L"CE", L"EP", L"ME", L"CL", L"DoD"});
+			this->comboBox1->Location = System::Drawing::Point(109, 32);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(75, 21);
+			this->comboBox1->TabIndex = 18;
+			this->comboBox1->Visible = false;
 			// 
 			// pictureBox2
 			// 
@@ -312,11 +319,11 @@ namespace projectUI {
 			// 
 			// panel1
 			// 
-			this->panel1->BackColor = System::Drawing::Color::Transparent;
-			this->panel1->Location = System::Drawing::Point(8, 179);
+			this->panel1->BackColor = System::Drawing::SystemColors::Control;
+			this->panel1->Location = System::Drawing::Point(113, 179);
 			this->panel1->Margin = System::Windows::Forms::Padding(0);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(968, 431);
+			this->panel1->Size = System::Drawing::Size(839, 503);
 			this->panel1->TabIndex = 27;
 			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &StudentForm::panel1_Paint);
 			// 
@@ -324,12 +331,13 @@ namespace projectUI {
 			// 
 			this->panel3->BackColor = System::Drawing::Color::Teal;
 			this->panel3->Controls->Add(this->radioButton2);
+			this->panel3->Controls->Add(this->comboBox1);
 			this->panel3->Controls->Add(this->radioButton1);
 			this->panel3->Controls->Add(this->radioButton3);
 			this->panel3->Location = System::Drawing::Point(493, 178);
 			this->panel3->Margin = System::Windows::Forms::Padding(0);
 			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(96, 83);
+			this->panel3->Size = System::Drawing::Size(187, 83);
 			this->panel3->TabIndex = 19;
 			this->panel3->Visible = false;
 			// 
@@ -373,13 +381,14 @@ namespace projectUI {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(986, 614);
+			this->BackColor = System::Drawing::Color::White;
+			this->ClientSize = System::Drawing::Size(1064, 681);
 			this->Controls->Add(this->panel3);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label6);
-			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->pictureBox2);
 			this->Controls->Add(this->panel1);
+			this->Controls->Add(this->panel2);
 			this->Name = L"StudentForm";
 			this->Text = L"StudentForm";
 			this->Load += gcnew System::EventHandler(this, &StudentForm::StudentForm_Load);
@@ -395,58 +404,63 @@ namespace projectUI {
 #pragma endregion
 
 		//making sure that the profile opens as default page
-private: System::Void StudentForm_Load(System::Object^  sender, System::EventArgs^  e) {
-			 panel1->Controls->Clear();
-			 Panel ^profile=panel1;
-			 StudentProfile ^sp = gcnew StudentProfile(usrnm,profile);
-			 panel1->Controls->Add(sp);
-		 }
-private: System::Void MyCoursesBtn_Click(System::Object^  sender, System::EventArgs^  e) {
-		    panel1->Controls->Clear();
-		    StudentCourses ^sc = gcnew StudentCourses(usrnm);
-		    panel1->Controls->Add(sc);
-	    }
-private: System::Void helpBtn_Click(System::Object^  sender, System::EventArgs^  e) {
-
-			 //checking if department selected for search
-			 if(comboBox1->SelectedIndex == 0){
-				 MessageBox::Show("Please Select Department from Dropdown Menu!");
-			 }
-			 else{
-				 String ^table = "Student";
-				 if (radioButton2->Checked) table="Professor";
-				 if (radioButton3->Checked) table="Staff";
-
+	private: System::Void StudentForm_Load(System::Object^  sender, System::EventArgs^  e) {
 				 panel1->Controls->Clear();
-				 UserControlSearch ^s = gcnew UserControlSearch(textBox1->Text,comboBox1->Text,table);
-				 textBox1->Visible=false;
-				 helpBtn->Visible=false;
-				 panel3->Visible=false;
-				 comboBox1->Visible=false;
-				 panel1->Controls->Add(s);
+				 Panel ^profile=panel1;
+				 StudentProfile ^sp = gcnew StudentProfile(usrnm,profile);
+				 panel1->Controls->Add(sp);
 			 }
-			 
+	private: System::Void MyCoursesBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+				 panel1->Controls->Clear();
+				 StudentCourses ^sc = gcnew StudentCourses(usrnm);
+				 panel1->Controls->Add(sc);
+			 }
+	private: System::Void helpBtn_Click(System::Object^  sender, System::EventArgs^  e) {
 
-};
-private: System::Void searchBtn_Click(System::Object^  sender, System::EventArgs^  e) {
-			 textBox1->Visible=true;
-			 helpBtn->Visible=true;
-			 comboBox1->Visible=true;
-			 panel3->Visible=true;
-			 this->comboBox1->SelectedIndex = 0;
-			 this->radioButton1->Checked=true;
-		 }
+				 //checking if department selected for search
+				 if(comboBox1->SelectedIndex == 0){
+					 MessageBox::Show("Please Select Department from Dropdown Menu!");
+				 }
+				 else{
+					 String ^table = "Student";
+					 if (radioButton2->Checked) table="Professor";
+					 if (radioButton3->Checked) table="Staff";
 
-private: System::Void logoutBtn_Click(System::Object^  sender, System::EventArgs^  e) {
-			 previous->Show();
-			 StudentForm::Close();
-		 }
+					 panel1->Controls->Clear();
+					 UserControlSearch ^s = gcnew UserControlSearch(textBox1->Text,comboBox1->Text,table);
+					 textBox1->Visible=false;
+					 helpBtn->Visible=false;
+					 panel3->Visible=false;
+					 comboBox1->Visible=false;
+					 panel1->Controls->Add(s);
+				 }
+
+
+			 };
+	private: System::Void searchBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+				 textBox1->Visible=true;
+				 helpBtn->Visible=true;
+				 comboBox1->Visible=true;
+				 panel3->Visible=true;
+				 this->comboBox1->SelectedIndex = 0;
+				 this->radioButton1->Checked=true;
+			 }
+
+	private: System::Void logoutBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+				 previous->Show();
+				 StudentForm::Close();
+			 }
 	private: System::Void MyCoursesBtn_Click_1(System::Object^  sender, System::EventArgs^  e) {
+				 panel1->Controls->Clear();
+				 StudentCourses ^sc = gcnew StudentCourses(usrnm);
+				 panel1->Controls->Add(sc);
+			 }
+	private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+			 }
+	private: System::Void noticificationBtn_Click(System::Object^  sender, System::EventArgs^  e) {
 			    panel1->Controls->Clear();
-			    StudentCourses ^sc = gcnew StudentCourses(usrnm);
-			    panel1->Controls->Add(sc);
+			    StudentNoticifications ^sn = gcnew StudentNoticifications(usrnm);
+			    panel1->Controls->Add(sn);
 		    }
-private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
-	    }
 };
 }

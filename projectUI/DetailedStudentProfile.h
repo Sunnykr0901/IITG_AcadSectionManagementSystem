@@ -6,6 +6,7 @@ using namespace System::Collections;
 using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
+using namespace System::IO;
 
 namespace projectUI {
 
@@ -17,7 +18,12 @@ namespace projectUI {
 	public:
 		String ^usrnm;
 		Panel ^parent;
-		UserControl ^previous;
+		String ^ profilePicPath;
+	private: System::Windows::Forms::Button^  button1;
+	public: 
+	private: System::Windows::Forms::PictureBox^  pictureBox1;
+	private: System::Windows::Forms::OpenFileDialog^  openFileDialogPhoto;
+		    UserControl ^previous;
 
 	public:
 		DetailedStudentProfile(String ^text,UserControl ^b,Panel ^a)
@@ -26,6 +32,7 @@ namespace projectUI {
 			usrnm=text;
 			parent=a;
 			previous=b;
+			profilePicPath = "";
 		}
 
 	protected:
@@ -95,7 +102,7 @@ namespace projectUI {
 	protected: 
 
 	protected: 
-	
+
 
 
 	private:
@@ -112,6 +119,8 @@ namespace projectUI {
 		void InitializeComponent(void)
 		{
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->backBtn = (gcnew System::Windows::Forms::Button());
 			this->cancelBtn = (gcnew System::Windows::Forms::Button());
 			this->m = (gcnew System::Windows::Forms::TextBox());
@@ -164,7 +173,9 @@ namespace projectUI {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->openFileDialogPhoto = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->panel1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// panel1
@@ -172,7 +183,8 @@ namespace projectUI {
 			this->panel1->AutoScroll = true;
 			this->panel1->AutoScrollMargin = System::Drawing::Size(0, 25);
 			this->panel1->BackColor = System::Drawing::SystemColors::Control;
-			this->panel1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->panel1->Controls->Add(this->button1);
+			this->panel1->Controls->Add(this->pictureBox1);
 			this->panel1->Controls->Add(this->backBtn);
 			this->panel1->Controls->Add(this->cancelBtn);
 			this->panel1->Controls->Add(this->m);
@@ -225,24 +237,56 @@ namespace projectUI {
 			this->panel1->Controls->Add(this->label6);
 			this->panel1->Controls->Add(this->label5);
 			this->panel1->Controls->Add(this->label4);
-			this->panel1->Location = System::Drawing::Point(147, -1);
+			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->panel1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Margin = System::Windows::Forms::Padding(0);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(675, 433);
+			this->panel1->Size = System::Drawing::Size(841, 505);
 			this->panel1->TabIndex = 75;
+			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::OrangeRed;
+			this->button1->FlatAppearance->BorderSize = 0;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->button1->ForeColor = System::Drawing::Color::White;
+			this->button1->Location = System::Drawing::Point(464, 121);
+			this->button1->Margin = System::Windows::Forms::Padding(0);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(73, 29);
+			this->button1->TabIndex = 128;
+			this->button1->Text = L"Browse";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &DetailedStudentProfile::button1_Click);
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pictureBox1->ImageLocation = L"Resources\\\\";
+			this->pictureBox1->Location = System::Drawing::Point(360, 34);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(0);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(104, 116);
+			this->pictureBox1->TabIndex = 127;
+			this->pictureBox1->TabStop = false;
 			// 
 			// backBtn
 			// 
 			this->backBtn->BackColor = System::Drawing::Color::Teal;
 			this->backBtn->FlatAppearance->BorderSize = 0;
 			this->backBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->backBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			this->backBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->backBtn->ForeColor = System::Drawing::Color::White;
-			this->backBtn->Location = System::Drawing::Point(447, 526);
+			this->backBtn->Location = System::Drawing::Point(430, 722);
 			this->backBtn->Margin = System::Windows::Forms::Padding(0);
 			this->backBtn->Name = L"backBtn";
-			this->backBtn->Size = System::Drawing::Size(106, 51);
+			this->backBtn->Size = System::Drawing::Size(166, 51);
 			this->backBtn->TabIndex = 92;
 			this->backBtn->Text = L"BACK";
 			this->backBtn->UseVisualStyleBackColor = false;
@@ -250,16 +294,16 @@ namespace projectUI {
 			// 
 			// cancelBtn
 			// 
-			this->cancelBtn->BackColor = System::Drawing::Color::Teal;
+			this->cancelBtn->BackColor = System::Drawing::Color::OrangeRed;
 			this->cancelBtn->FlatAppearance->BorderSize = 0;
 			this->cancelBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->cancelBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			this->cancelBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->cancelBtn->ForeColor = System::Drawing::Color::White;
-			this->cancelBtn->Location = System::Drawing::Point(412, 526);
+			this->cancelBtn->Location = System::Drawing::Point(430, 722);
 			this->cancelBtn->Margin = System::Windows::Forms::Padding(0);
 			this->cancelBtn->Name = L"cancelBtn";
-			this->cancelBtn->Size = System::Drawing::Size(106, 51);
+			this->cancelBtn->Size = System::Drawing::Size(166, 51);
 			this->cancelBtn->TabIndex = 126;
 			this->cancelBtn->Text = L"CANCEL";
 			this->cancelBtn->UseVisualStyleBackColor = false;
@@ -268,21 +312,21 @@ namespace projectUI {
 			// m
 			// 
 			this->m->Enabled = false;
-			this->m->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->m->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->m->Location = System::Drawing::Point(485, 5);
+			this->m->Location = System::Drawing::Point(557, 201);
 			this->m->Name = L"m";
-			this->m->Size = System::Drawing::Size(68, 21);
+			this->m->Size = System::Drawing::Size(169, 26);
 			this->m->TabIndex = 125;
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label8->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label8->Location = System::Drawing::Point(360, 7);
+			this->label8->Location = System::Drawing::Point(432, 203);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(44, 16);
+			this->label8->Size = System::Drawing::Size(53, 20);
 			this->label8->TabIndex = 124;
 			this->label8->Text = L"Hostel";
 			this->label8->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -292,13 +336,13 @@ namespace projectUI {
 			this->editBtn->BackColor = System::Drawing::Color::Teal;
 			this->editBtn->FlatAppearance->BorderSize = 0;
 			this->editBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->editBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			this->editBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->editBtn->ForeColor = System::Drawing::Color::White;
-			this->editBtn->Location = System::Drawing::Point(194, 526);
+			this->editBtn->Location = System::Drawing::Point(229, 722);
 			this->editBtn->Margin = System::Windows::Forms::Padding(0);
 			this->editBtn->Name = L"editBtn";
-			this->editBtn->Size = System::Drawing::Size(106, 51);
+			this->editBtn->Size = System::Drawing::Size(166, 51);
 			this->editBtn->TabIndex = 123;
 			this->editBtn->Text = L"EDIT";
 			this->editBtn->UseVisualStyleBackColor = false;
@@ -307,11 +351,11 @@ namespace projectUI {
 			// label25
 			// 
 			this->label25->AutoSize = true;
-			this->label25->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label25->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label25->Location = System::Drawing::Point(100, 437);
+			this->label25->Location = System::Drawing::Point(98, 630);
 			this->label25->Name = L"label25";
-			this->label25->Size = System::Drawing::Size(51, 16);
+			this->label25->Size = System::Drawing::Size(66, 20);
 			this->label25->TabIndex = 122;
 			this->label25->Text = L"Gender";
 			this->label25->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -319,11 +363,11 @@ namespace projectUI {
 			// label26
 			// 
 			this->label26->AutoSize = true;
-			this->label26->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label26->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label26->Location = System::Drawing::Point(100, 394);
+			this->label26->Location = System::Drawing::Point(98, 587);
 			this->label26->Name = L"label26";
-			this->label26->Size = System::Drawing::Size(87, 16);
+			this->label26->Size = System::Drawing::Size(112, 20);
 			this->label26->TabIndex = 121;
 			this->label26->Text = L"Birth category";
 			this->label26->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -331,11 +375,11 @@ namespace projectUI {
 			// label27
 			// 
 			this->label27->AutoSize = true;
-			this->label27->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label27->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label27->Location = System::Drawing::Point(100, 351);
+			this->label27->Location = System::Drawing::Point(98, 544);
 			this->label27->Name = L"label27";
-			this->label27->Size = System::Drawing::Size(68, 16);
+			this->label27->Size = System::Drawing::Size(86, 20);
 			this->label27->TabIndex = 120;
 			this->label27->Text = L"Nationality";
 			this->label27->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -343,11 +387,11 @@ namespace projectUI {
 			// label14
 			// 
 			this->label14->AutoSize = true;
-			this->label14->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label14->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label14->Location = System::Drawing::Point(358, 480);
+			this->label14->Location = System::Drawing::Point(430, 676);
 			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(76, 16);
+			this->label14->Size = System::Drawing::Size(93, 20);
 			this->label14->TabIndex = 119;
 			this->label14->Text = L"Passport no";
 			this->label14->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -355,11 +399,11 @@ namespace projectUI {
 			// label15
 			// 
 			this->label15->AutoSize = true;
-			this->label15->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label15->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label15->Location = System::Drawing::Point(358, 437);
+			this->label15->Location = System::Drawing::Point(430, 633);
 			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(68, 16);
+			this->label15->Size = System::Drawing::Size(87, 20);
 			this->label15->TabIndex = 118;
 			this->label15->Text = L"Aadhar no";
 			this->label15->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -367,11 +411,11 @@ namespace projectUI {
 			// label16
 			// 
 			this->label16->AutoSize = true;
-			this->label16->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label16->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label16->Location = System::Drawing::Point(358, 394);
+			this->label16->Location = System::Drawing::Point(430, 590);
 			this->label16->Name = L"label16";
-			this->label16->Size = System::Drawing::Size(45, 16);
+			this->label16->Size = System::Drawing::Size(60, 20);
 			this->label16->TabIndex = 117;
 			this->label16->Text = L"weight";
 			this->label16->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -379,11 +423,11 @@ namespace projectUI {
 			// label17
 			// 
 			this->label17->AutoSize = true;
-			this->label17->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label17->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label17->Location = System::Drawing::Point(358, 351);
+			this->label17->Location = System::Drawing::Point(430, 547);
 			this->label17->Name = L"label17";
-			this->label17->Size = System::Drawing::Size(45, 16);
+			this->label17->Size = System::Drawing::Size(56, 20);
 			this->label17->TabIndex = 116;
 			this->label17->Text = L"Height";
 			this->label17->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -391,11 +435,11 @@ namespace projectUI {
 			// label18
 			// 
 			this->label18->AutoSize = true;
-			this->label18->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label18->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label18->Location = System::Drawing::Point(358, 308);
+			this->label18->Location = System::Drawing::Point(430, 504);
 			this->label18->Name = L"label18";
-			this->label18->Size = System::Drawing::Size(74, 16);
+			this->label18->Size = System::Drawing::Size(95, 20);
 			this->label18->TabIndex = 115;
 			this->label18->Text = L"Bloodgroup";
 			this->label18->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -403,11 +447,11 @@ namespace projectUI {
 			// label19
 			// 
 			this->label19->AutoSize = true;
-			this->label19->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label19->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label19->Location = System::Drawing::Point(358, 179);
+			this->label19->Location = System::Drawing::Point(430, 375);
 			this->label19->Name = L"label19";
-			this->label19->Size = System::Drawing::Size(113, 16);
+			this->label19->Size = System::Drawing::Size(134, 20);
 			this->label19->TabIndex = 114;
 			this->label19->Text = L"Admission session";
 			this->label19->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -415,11 +459,11 @@ namespace projectUI {
 			// label20
 			// 
 			this->label20->AutoSize = true;
-			this->label20->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label20->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label20->Location = System::Drawing::Point(358, 222);
+			this->label20->Location = System::Drawing::Point(430, 418);
 			this->label20->Name = L"label20";
-			this->label20->Size = System::Drawing::Size(89, 16);
+			this->label20->Size = System::Drawing::Size(110, 20);
 			this->label20->TabIndex = 113;
 			this->label20->Text = L"Father\'s name";
 			this->label20->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -427,11 +471,11 @@ namespace projectUI {
 			// label21
 			// 
 			this->label21->AutoSize = true;
-			this->label21->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label21->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label21->Location = System::Drawing::Point(358, 265);
+			this->label21->Location = System::Drawing::Point(430, 461);
 			this->label21->Name = L"label21";
-			this->label21->Size = System::Drawing::Size(93, 16);
+			this->label21->Size = System::Drawing::Size(118, 20);
 			this->label21->TabIndex = 112;
 			this->label21->Text = L"Mother\'s name";
 			this->label21->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -439,11 +483,11 @@ namespace projectUI {
 			// label22
 			// 
 			this->label22->AutoSize = true;
-			this->label22->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label22->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label22->Location = System::Drawing::Point(100, 480);
+			this->label22->Location = System::Drawing::Point(98, 673);
 			this->label22->Name = L"label22";
-			this->label22->Size = System::Drawing::Size(33, 16);
+			this->label22->Size = System::Drawing::Size(42, 20);
 			this->label22->TabIndex = 111;
 			this->label22->Text = L"DOB";
 			this->label22->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -451,11 +495,11 @@ namespace projectUI {
 			// label23
 			// 
 			this->label23->AutoSize = true;
-			this->label23->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label23->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label23->Location = System::Drawing::Point(358, 136);
+			this->label23->Location = System::Drawing::Point(430, 332);
 			this->label23->Name = L"label23";
-			this->label23->Size = System::Drawing::Size(57, 16);
+			this->label23->Size = System::Drawing::Size(74, 20);
 			this->label23->TabIndex = 110;
 			this->label23->Text = L"Pincode:";
 			this->label23->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -463,11 +507,11 @@ namespace projectUI {
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label12->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label12->Location = System::Drawing::Point(358, 50);
+			this->label12->Location = System::Drawing::Point(430, 246);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(63, 16);
+			this->label12->Size = System::Drawing::Size(79, 20);
 			this->label12->TabIndex = 109;
 			this->label12->Text = L"RoomNO:";
 			this->label12->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -475,11 +519,11 @@ namespace projectUI {
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label11->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label11->Location = System::Drawing::Point(358, 93);
+			this->label11->Location = System::Drawing::Point(430, 289);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(60, 16);
+			this->label11->Size = System::Drawing::Size(71, 20);
 			this->label11->TabIndex = 108;
 			this->label11->Text = L"Address:";
 			this->label11->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -487,11 +531,11 @@ namespace projectUI {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label2->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(100, 308);
+			this->label2->Location = System::Drawing::Point(98, 501);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(75, 16);
+			this->label2->Size = System::Drawing::Size(94, 20);
 			this->label2->TabIndex = 107;
 			this->label2->Text = L"Programme";
 			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -499,11 +543,11 @@ namespace projectUI {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(100, 265);
+			this->label1->Location = System::Drawing::Point(98, 458);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(77, 16);
+			this->label1->Size = System::Drawing::Size(97, 20);
 			this->label1->TabIndex = 106;
 			this->label1->Text = L"Department";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -511,121 +555,121 @@ namespace projectUI {
 			// x
 			// 
 			this->x->Enabled = false;
-			this->x->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->x->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->x->Location = System::Drawing::Point(485, 478);
+			this->x->Location = System::Drawing::Point(557, 674);
 			this->x->Name = L"x";
-			this->x->Size = System::Drawing::Size(68, 21);
+			this->x->Size = System::Drawing::Size(169, 26);
 			this->x->TabIndex = 105;
 			// 
 			// w
 			// 
 			this->w->Enabled = false;
-			this->w->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->w->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->w->Location = System::Drawing::Point(485, 436);
+			this->w->Location = System::Drawing::Point(557, 632);
 			this->w->Name = L"w";
-			this->w->Size = System::Drawing::Size(68, 21);
+			this->w->Size = System::Drawing::Size(169, 26);
 			this->w->TabIndex = 104;
 			// 
 			// v
 			// 
 			this->v->Enabled = false;
-			this->v->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->v->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->v->Location = System::Drawing::Point(485, 392);
+			this->v->Location = System::Drawing::Point(557, 588);
 			this->v->Name = L"v";
-			this->v->Size = System::Drawing::Size(68, 21);
+			this->v->Size = System::Drawing::Size(169, 26);
 			this->v->TabIndex = 103;
 			// 
 			// u
 			// 
 			this->u->Enabled = false;
-			this->u->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->u->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->u->Location = System::Drawing::Point(485, 349);
+			this->u->Location = System::Drawing::Point(557, 545);
 			this->u->Name = L"u";
-			this->u->Size = System::Drawing::Size(68, 21);
+			this->u->Size = System::Drawing::Size(169, 26);
 			this->u->TabIndex = 102;
 			// 
 			// t
 			// 
 			this->t->Enabled = false;
-			this->t->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->t->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->t->Location = System::Drawing::Point(485, 306);
+			this->t->Location = System::Drawing::Point(557, 502);
 			this->t->Name = L"t";
-			this->t->Size = System::Drawing::Size(68, 21);
+			this->t->Size = System::Drawing::Size(169, 26);
 			this->t->TabIndex = 101;
 			// 
 			// l
 			// 
 			this->l->Enabled = false;
-			this->l->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->l->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->l->Location = System::Drawing::Point(214, 478);
+			this->l->Location = System::Drawing::Point(212, 671);
 			this->l->Name = L"l";
-			this->l->Size = System::Drawing::Size(68, 21);
+			this->l->Size = System::Drawing::Size(169, 26);
 			this->l->TabIndex = 100;
 			// 
 			// k
 			// 
 			this->k->Enabled = false;
-			this->k->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->k->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->k->Location = System::Drawing::Point(214, 436);
+			this->k->Location = System::Drawing::Point(212, 629);
 			this->k->Name = L"k";
-			this->k->Size = System::Drawing::Size(68, 21);
+			this->k->Size = System::Drawing::Size(169, 26);
 			this->k->TabIndex = 99;
 			// 
 			// j
 			// 
 			this->j->Enabled = false;
-			this->j->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->j->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->j->Location = System::Drawing::Point(214, 392);
+			this->j->Location = System::Drawing::Point(212, 585);
 			this->j->Name = L"j";
-			this->j->Size = System::Drawing::Size(68, 21);
+			this->j->Size = System::Drawing::Size(169, 26);
 			this->j->TabIndex = 98;
 			// 
 			// i
 			// 
 			this->i->Enabled = false;
-			this->i->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->i->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->i->Location = System::Drawing::Point(214, 349);
+			this->i->Location = System::Drawing::Point(212, 542);
 			this->i->Name = L"i";
-			this->i->Size = System::Drawing::Size(68, 21);
+			this->i->Size = System::Drawing::Size(169, 26);
 			this->i->TabIndex = 97;
 			// 
 			// h
 			// 
 			this->h->Enabled = false;
-			this->h->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->h->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->h->Location = System::Drawing::Point(214, 306);
+			this->h->Location = System::Drawing::Point(212, 499);
 			this->h->Name = L"h";
-			this->h->Size = System::Drawing::Size(68, 21);
+			this->h->Size = System::Drawing::Size(169, 26);
 			this->h->TabIndex = 96;
 			// 
 			// g
 			// 
 			this->g->Enabled = false;
-			this->g->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->g->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->g->Location = System::Drawing::Point(214, 263);
+			this->g->Location = System::Drawing::Point(212, 456);
 			this->g->Name = L"g";
-			this->g->Size = System::Drawing::Size(68, 21);
+			this->g->Size = System::Drawing::Size(169, 26);
 			this->g->TabIndex = 95;
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label9->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label9->Location = System::Drawing::Point(100, 222);
+			this->label9->Location = System::Drawing::Point(98, 415);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(105, 16);
+			this->label9->Size = System::Drawing::Size(130, 20);
 			this->label9->TabIndex = 94;
 			this->label9->Text = L"Mobile Number :";
 			this->label9->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -633,11 +677,11 @@ namespace projectUI {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label3->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(100, 93);
+			this->label3->Location = System::Drawing::Point(98, 286);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(77, 16);
+			this->label3->Size = System::Drawing::Size(93, 20);
 			this->label3->TabIndex = 93;
 			this->label3->Text = L"Last Name :";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -647,13 +691,13 @@ namespace projectUI {
 			this->UpdateBtn->BackColor = System::Drawing::Color::Teal;
 			this->UpdateBtn->FlatAppearance->BorderSize = 0;
 			this->UpdateBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->UpdateBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+			this->UpdateBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->UpdateBtn->ForeColor = System::Drawing::Color::White;
-			this->UpdateBtn->Location = System::Drawing::Point(194, 526);
+			this->UpdateBtn->Location = System::Drawing::Point(229, 722);
 			this->UpdateBtn->Margin = System::Windows::Forms::Padding(0);
 			this->UpdateBtn->Name = L"UpdateBtn";
-			this->UpdateBtn->Size = System::Drawing::Size(106, 51);
+			this->UpdateBtn->Size = System::Drawing::Size(166, 51);
 			this->UpdateBtn->TabIndex = 91;
 			this->UpdateBtn->Text = L"UPDATE";
 			this->UpdateBtn->UseVisualStyleBackColor = false;
@@ -662,132 +706,132 @@ namespace projectUI {
 			// s
 			// 
 			this->s->Enabled = false;
-			this->s->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->s->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->s->Location = System::Drawing::Point(485, 263);
+			this->s->Location = System::Drawing::Point(557, 459);
 			this->s->Name = L"s";
-			this->s->Size = System::Drawing::Size(68, 21);
+			this->s->Size = System::Drawing::Size(169, 26);
 			this->s->TabIndex = 90;
 			// 
 			// r
 			// 
 			this->r->Enabled = false;
-			this->r->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->r->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->r->Location = System::Drawing::Point(485, 220);
+			this->r->Location = System::Drawing::Point(557, 416);
 			this->r->Name = L"r";
-			this->r->Size = System::Drawing::Size(68, 21);
+			this->r->Size = System::Drawing::Size(169, 26);
 			this->r->TabIndex = 89;
 			// 
 			// q
 			// 
 			this->q->Enabled = false;
-			this->q->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->q->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->q->Location = System::Drawing::Point(485, 177);
+			this->q->Location = System::Drawing::Point(557, 373);
 			this->q->Name = L"q";
-			this->q->Size = System::Drawing::Size(68, 21);
+			this->q->Size = System::Drawing::Size(169, 26);
 			this->q->TabIndex = 88;
 			// 
 			// p
 			// 
 			this->p->Enabled = false;
-			this->p->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->p->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->p->Location = System::Drawing::Point(485, 134);
+			this->p->Location = System::Drawing::Point(557, 330);
 			this->p->Name = L"p";
-			this->p->Size = System::Drawing::Size(68, 21);
+			this->p->Size = System::Drawing::Size(169, 26);
 			this->p->TabIndex = 87;
 			// 
 			// o
 			// 
 			this->o->Enabled = false;
-			this->o->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->o->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->o->Location = System::Drawing::Point(485, 91);
+			this->o->Location = System::Drawing::Point(557, 287);
 			this->o->Name = L"o";
-			this->o->Size = System::Drawing::Size(68, 21);
+			this->o->Size = System::Drawing::Size(169, 26);
 			this->o->TabIndex = 86;
 			// 
 			// n
 			// 
 			this->n->Enabled = false;
-			this->n->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->n->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->n->Location = System::Drawing::Point(485, 48);
+			this->n->Location = System::Drawing::Point(557, 244);
 			this->n->Name = L"n";
-			this->n->Size = System::Drawing::Size(68, 21);
+			this->n->Size = System::Drawing::Size(169, 26);
 			this->n->TabIndex = 85;
 			// 
 			// f
 			// 
 			this->f->Enabled = false;
-			this->f->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->f->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->f->Location = System::Drawing::Point(214, 220);
+			this->f->Location = System::Drawing::Point(212, 413);
 			this->f->Name = L"f";
-			this->f->Size = System::Drawing::Size(68, 21);
+			this->f->Size = System::Drawing::Size(169, 26);
 			this->f->TabIndex = 84;
 			// 
 			// e
 			// 
 			this->e->Enabled = false;
-			this->e->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->e->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->e->Location = System::Drawing::Point(214, 177);
+			this->e->Location = System::Drawing::Point(212, 370);
 			this->e->Name = L"e";
-			this->e->Size = System::Drawing::Size(68, 21);
+			this->e->Size = System::Drawing::Size(169, 26);
 			this->e->TabIndex = 83;
 			// 
 			// d
 			// 
 			this->d->Enabled = false;
-			this->d->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->d->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->d->Location = System::Drawing::Point(214, 134);
+			this->d->Location = System::Drawing::Point(212, 327);
 			this->d->Name = L"d";
-			this->d->Size = System::Drawing::Size(68, 21);
+			this->d->Size = System::Drawing::Size(169, 26);
 			this->d->TabIndex = 82;
 			// 
 			// c
 			// 
 			this->c->Enabled = false;
-			this->c->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->c->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->c->Location = System::Drawing::Point(214, 91);
+			this->c->Location = System::Drawing::Point(212, 284);
 			this->c->Name = L"c";
-			this->c->Size = System::Drawing::Size(68, 21);
+			this->c->Size = System::Drawing::Size(169, 26);
 			this->c->TabIndex = 81;
 			// 
 			// b
 			// 
 			this->b->Enabled = false;
-			this->b->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->b->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->b->Location = System::Drawing::Point(214, 48);
+			this->b->Location = System::Drawing::Point(212, 241);
 			this->b->Name = L"b";
-			this->b->Size = System::Drawing::Size(68, 21);
+			this->b->Size = System::Drawing::Size(169, 26);
 			this->b->TabIndex = 80;
 			// 
 			// a
 			// 
 			this->a->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->a->Enabled = false;
-			this->a->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->a->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->a->Location = System::Drawing::Point(214, 5);
+			this->a->Location = System::Drawing::Point(212, 198);
 			this->a->Name = L"a";
-			this->a->Size = System::Drawing::Size(69, 21);
+			this->a->Size = System::Drawing::Size(169, 26);
 			this->a->TabIndex = 79;
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label7->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(100, 136);
+			this->label7->Location = System::Drawing::Point(98, 329);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(88, 16);
+			this->label7->Size = System::Drawing::Size(104, 20);
 			this->label7->TabIndex = 78;
 			this->label7->Text = L"Roll Number :";
 			this->label7->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -795,11 +839,11 @@ namespace projectUI {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label6->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(100, 179);
+			this->label6->Location = System::Drawing::Point(98, 372);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(110, 16);
+			this->label6->Size = System::Drawing::Size(137, 20);
 			this->label6->TabIndex = 77;
 			this->label6->Text = L"Secondary Email :";
 			this->label6->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -807,11 +851,11 @@ namespace projectUI {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label5->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(100, 50);
+			this->label5->Location = System::Drawing::Point(98, 243);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(93, 16);
+			this->label5->Size = System::Drawing::Size(116, 20);
 			this->label5->TabIndex = 76;
 			this->label5->Text = L"Middle Name :";
 			this->label5->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -819,14 +863,19 @@ namespace projectUI {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Lucida Sans Unicode", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+			this->label4->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(100, 7);
+			this->label4->Location = System::Drawing::Point(98, 200);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(78, 16);
+			this->label4->Size = System::Drawing::Size(91, 20);
 			this->label4->TabIndex = 75;
 			this->label4->Text = L"First Name :";
 			this->label4->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
+			// 
+			// openFileDialogPhoto
+			// 
+			this->openFileDialogPhoto->FileName = L"openFileDialogPhoto";
+			this->openFileDialogPhoto->FileOk += gcnew System::ComponentModel::CancelEventHandler(this, &DetailedStudentProfile::openFileDialogPhoto_FileOk);
 			// 
 			// DetailedStudentProfile
 			// 
@@ -834,215 +883,244 @@ namespace projectUI {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScrollMargin = System::Drawing::Size(0, 50);
 			this->BackColor = System::Drawing::Color::White;
-			this->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->Controls->Add(this->panel1);
 			this->Name = L"DetailedStudentProfile";
-			this->Size = System::Drawing::Size(968, 431);
+			this->Size = System::Drawing::Size(841, 505);
 			this->Load += gcnew System::EventHandler(this, &DetailedStudentProfile::DetailedStudentProfile_Load);
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 
-private: System::Void DetailedStudentProfile_Load(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void DetailedStudentProfile_Load(System::Object^  sender, System::EventArgs^  e) {
 
-			 OleDb::OleDbConnection ^con;	 
-			 try{				
-				 String^ connString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
+				 OleDb::OleDbConnection ^con;	 
+				 try{				
+					 String^ connString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
 
-				 con=gcnew OleDb::OleDbConnection(connString);
-				 con->Open();
+					 con=gcnew OleDb::OleDbConnection(connString);
+					 con->Open();
 
-				 String ^ aString = "Select * from Student where [Username] ='"+usrnm+"';";
-//				 MessageBox::Show(aString);
+					 String ^ aString = "Select * from Student where [Username] ='"+usrnm+"';";
+					 //				 MessageBox::Show(aString);
 
-				 OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(aString,con);
-				 OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
+					 OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(aString,con);
+					 OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
 
-				 while(readerData->Read())
-				 {
-					 if(!readerData->IsDBNull(1)) a->Text=readerData->GetString(1);
-					 if(!readerData->IsDBNull(2)) b->Text=readerData->GetString(2);
-					 if(!readerData->IsDBNull(3)) c->Text=readerData->GetString(3);
-					 if(!readerData->IsDBNull(4)) d->Text=readerData->GetString(4);
-//					 if(!readerData->IsDBNull(6)) e->Text=readerData->GetString(6);
-					 if(!readerData->IsDBNull(7)) f->Text=readerData->GetString(7);
-					 if(!readerData->IsDBNull(8)) g->Text=readerData->GetString(8);
-					 if(!readerData->IsDBNull(9)) h->Text=readerData->GetString(9);
-					 if(!readerData->IsDBNull(10)) i->Text=readerData->GetString(10);
-					 if(!readerData->IsDBNull(11)) j->Text=readerData->GetString(11);
-					 if(!readerData->IsDBNull(12)) k->Text=readerData->GetString(12);
-					 if(!readerData->IsDBNull(17)) l->Text=readerData->GetString(17);
-					 if(!readerData->IsDBNull(13)) m->Text=readerData->GetString(13);
-					 if(!readerData->IsDBNull(14)) n->Text=readerData->GetString(14);
-					 if(!readerData->IsDBNull(15)) o->Text=readerData->GetString(15);
-					 if(!readerData->IsDBNull(16)) p->Text=readerData->GetString(16);
-					 if(!readerData->IsDBNull(23)) q->Text=readerData->GetString(23);
-					 if(!readerData->IsDBNull(26)) r->Text=readerData->GetString(26);
-					 if(!readerData->IsDBNull(30)) s->Text=readerData->GetString(30);
-					 if(!readerData->IsDBNull(44)) t->Text=readerData->GetString(44);
-					 if(!readerData->IsDBNull(45)) u->Text=readerData->GetString(45);
-					 if(!readerData->IsDBNull(46)) v->Text=readerData->GetString(46);
-					 if(!readerData->IsDBNull(47))w->Text=readerData->GetString(47);
-					 if(!readerData->IsDBNull(50))x->Text=readerData->GetString(50);
+					 while(readerData->Read())
+					 {
+						 if(!readerData->IsDBNull(1)) a->Text=readerData->GetString(1);
+						 if(!readerData->IsDBNull(2)) b->Text=readerData->GetString(2);
+						 if(!readerData->IsDBNull(3)) c->Text=readerData->GetString(3);
+						 if(!readerData->IsDBNull(4)) d->Text=readerData->GetString(4);
+						 //					 if(!readerData->IsDBNull(6)) e->Text=readerData->GetString(6);
+						 if(!readerData->IsDBNull(7)) f->Text=readerData->GetString(7);
+						 if(!readerData->IsDBNull(8)) g->Text=readerData->GetString(8);
+						 if(!readerData->IsDBNull(9)) h->Text=readerData->GetString(9);
+						 if(!readerData->IsDBNull(10)) i->Text=readerData->GetString(10);
+						 if(!readerData->IsDBNull(11)) j->Text=readerData->GetString(11);
+						 if(!readerData->IsDBNull(12)) k->Text=readerData->GetString(12);
+						 if(!readerData->IsDBNull(17)) l->Text=readerData->GetString(17);
+						 if(!readerData->IsDBNull(13)) m->Text=readerData->GetString(13);
+						 if(!readerData->IsDBNull(14)) n->Text=readerData->GetString(14);
+						 if(!readerData->IsDBNull(15)) o->Text=readerData->GetString(15);
+						 if(!readerData->IsDBNull(16)) p->Text=readerData->GetString(16);
+						 if(!readerData->IsDBNull(23)) q->Text=readerData->GetString(23);
+						 if(!readerData->IsDBNull(26)) r->Text=readerData->GetString(26);
+						 if(!readerData->IsDBNull(30)) s->Text=readerData->GetString(30);
+						 if(!readerData->IsDBNull(44)) t->Text=readerData->GetString(44);
+						 if(!readerData->IsDBNull(45)) u->Text=readerData->GetString(45);
+						 if(!readerData->IsDBNull(46)) v->Text=readerData->GetString(46);
+						 if(!readerData->IsDBNull(47))w->Text=readerData->GetString(47);
+						 if(!readerData->IsDBNull(50))x->Text=readerData->GetString(50);
+						 if(!readerData->IsDBNull(56))pictureBox1->ImageLocation=readerData->GetString(56);
+					 }
+					 con->Close();
 				 }
-				 con->Close();
+				 catch(Exception ^ ex)
+				 {
+					 MessageBox::Show(ex->Message);
+					 con->Close();
+				 }
 			 }
-			 catch(Exception ^ ex)
-			 {
-				 MessageBox::Show(ex->Message);
-				 con->Close();
+
+	private: System::Void editBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+				 //			 MessageBox::Show("Hi");
+
+				 this->e->Enabled = true;
+				 this->f->Enabled = true;
+				 this->i->Enabled = true;
+				 this->k->Enabled = true;
+				 this->m->Enabled = true;
+				 this->n->Enabled = true;
+				 this->o->Enabled = true;
+				 this->p->Enabled = true;
+				 this->r->Enabled = true;
+				 this->s->Enabled = true;
+				 this->t->Enabled = true;
+				 this->u->Enabled = true;
+				 this->v->Enabled = true;
+				 this->w->Enabled = true;
+				 this->x->Enabled = true;
+
+				 this->editBtn->Hide();
+				 this->UpdateBtn->Show();
+
+				 this->backBtn->Hide();
+				 this->cancelBtn->Show();
+
+
 			 }
-		 }
+	private: System::Void UpdateBtn_Click(System::Object^  sender, System::EventArgs^  e) {
 
-private: System::Void editBtn_Click(System::Object^  sender, System::EventArgs^  e) {
-//			 MessageBox::Show("Hi");
+				 if(Validator()){
+					 OleDb::OleDbConnection ^con;	 
 
-			 this->e->Enabled = true;
-			 this->f->Enabled = true;
-			 this->i->Enabled = true;
-			 this->k->Enabled = true;
-			 this->m->Enabled = true;
-			 this->n->Enabled = true;
-			 this->o->Enabled = true;
-			 this->p->Enabled = true;
-			 this->r->Enabled = true;
-			 this->s->Enabled = true;
-			 this->t->Enabled = true;
-			 this->u->Enabled = true;
-			 this->v->Enabled = true;
-			 this->w->Enabled = true;
-			 this->x->Enabled = true;
+					 try{				
+						 String^ connString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
 
-			 this->editBtn->Hide();
-			 this->UpdateBtn->Show();
+						 con=gcnew OleDb::OleDbConnection(connString);
+						 con->Open();
 
-			 this->backBtn->Hide();
-			 this->cancelBtn->Show();
+						 if (File::Exists("Resources\\"+this->usrnm+".jpg"))
+						 	 File::Exists("Resources\\"+this->usrnm+".jpg");
+						 File::Copy(profilePicPath, "Resources\\"+this->usrnm+".jpg");
+						 String ^ aString = "Update [Student] set [SecondaryEmail]='" + this->e->Text->Trim() + "',[PhoneNo]='" + this->f->Text->Trim() + "',[PassportSizePhotograph]='"+"Resources\\"+this->usrnm+".jpg"+"',[Nationality]='" + this->i->Text->Trim() + "',[Hostel]='" + this->m->Text->Trim() + "',[RoomNo]='" + this->n->Text->Trim() + "',[Address]='" + this->o->Text->Trim() + "',[Pincode]='" + this->p->Text->Trim() + "',[FatherName]='" + this->r->Text->Trim() + "',[MotherName]='" + this->s->Text->Trim() + "',[BloodGroup]='" + this->t->Text->Trim() + "',[Height]='" + this->u->Text->Trim() + "',[Weight]='" + this->v->Text->Trim() + "',[AadhaarNumber]='" + this->w->Text->Trim() + "',[PassportNumber]='" + this->x->Text->Trim() + "'where [Username]= '" + usrnm + "' ";
+						 //				    MessageBox::Show(aString);
 
-			  
-		 }
-private: System::Void UpdateBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+						 OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(aString,con);
+						 cmd->ExecuteNonQuery();
 
-			if(Validator()){
-					OleDb::OleDbConnection ^con;	 
-					
-					try{				
-						String^ connString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=AcadManager.accdb";
-
-						con=gcnew OleDb::OleDbConnection(connString);
-						con->Open();
-
-						String ^ aString = "Update [Student] set [SecondaryEmail]='" + this->e->Text->Trim() + "',[PhoneNo]='" + this->f->Text->Trim() + "',[Nationality]='" + this->i->Text->Trim() + "',[Hostel]='" + this->m->Text->Trim() + "',[RoomNo]='" + this->n->Text->Trim() + "',[Address]='" + this->o->Text->Trim() + "',[Pincode]='" + this->p->Text->Trim() + "',[FatherName]='" + this->r->Text->Trim() + "',[MotherName]='" + this->s->Text->Trim() + "',[BloodGroup]='" + this->t->Text->Trim() + "',[Height]='" + this->u->Text->Trim() + "',[Weight]='" + this->v->Text->Trim() + "',[AadhaarNumber]='" + this->w->Text->Trim() + "',[PassportNumber]='" + this->x->Text->Trim() + "'where [Username]= '" + usrnm + "' ";
-	 //				    MessageBox::Show(aString);
-
-						OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(aString,con);
-						cmd->ExecuteNonQuery();
-
-						con->Close();
-						MessageBox::Show("Info updated Successfully!");
-					}
-					
-					catch(Exception ^ ex){
-						MessageBox::Show(ex->Message);
-						con->Close();
-					}
-
-					this->e->Enabled = false;
-					this->f->Enabled = false;
-					this->i->Enabled = false;
-					this->k->Enabled = false;
-					this->m->Enabled = false;
-					this->n->Enabled = false;
-					this->o->Enabled = false;
-					this->p->Enabled = false;
-					this->r->Enabled = false;
-					this->s->Enabled = false;
-					this->t->Enabled = false;
-					this->u->Enabled = false;
-					this->v->Enabled = false;
-					this->w->Enabled = false;
-					this->x->Enabled = false;
-
-					this->UpdateBtn->Hide();
-					this->editBtn->Show();
 						 
-					this->cancelBtn->Hide();
-					this->backBtn->Show();
-				}
-			}
+						 con->Close();
+						 MessageBox::Show("Info updated Successfully!");
+					 }
 
-private: System::Void cancelBtn_Click(System::Object^  sender, System::EventArgs^  e) {
-			 this->e->Enabled = false;
-			 this->f->Enabled = false;
-			 this->i->Enabled = false;
-			 this->k->Enabled = false;
-			 this->m->Enabled = false;
-			 this->n->Enabled = false;
-			 this->o->Enabled = false;
-			 this->p->Enabled = false;
-			 this->r->Enabled = false;
-			 this->s->Enabled = false;
-			 this->t->Enabled = false;
-			 this->u->Enabled = false;
-			 this->v->Enabled = false;
-			 this->w->Enabled = false;
-			 this->x->Enabled = false;
+					 catch(Exception ^ ex){
+						 MessageBox::Show(ex->Message);
+						 con->Close();
+					 }
 
-			 this->UpdateBtn->Hide();
-			 this->editBtn->Show();
+					 this->e->Enabled = false;
+					 this->f->Enabled = false;
+					 this->i->Enabled = false;
+					 this->k->Enabled = false;
+					 this->m->Enabled = false;
+					 this->n->Enabled = false;
+					 this->o->Enabled = false;
+					 this->p->Enabled = false;
+					 this->r->Enabled = false;
+					 this->s->Enabled = false;
+					 this->t->Enabled = false;
+					 this->u->Enabled = false;
+					 this->v->Enabled = false;
+					 this->w->Enabled = false;
+					 this->x->Enabled = false;
 
-			 this->cancelBtn->Hide();
-			 this->backBtn->Show();
-		 }
-private: System::Void backBtn_Click(System::Object^  sender, System::EventArgs^  e) {
-				parent->Controls->Clear();
-				parent->Controls->Add(previous);
-		 }
+					 this->UpdateBtn->Hide();
+					 this->editBtn->Show();
 
-		 
-		bool Validator(){
-				
-			if(!MobileValidator(f->Text->Trim())) return false;
-			if(!GenderValidator(k->Text->Trim())) return false;
-			return true;
-		}
+					 this->cancelBtn->Hide();
+					 this->backBtn->Show();
+				 }
 
-		bool MobileValidator(String^ mobile){
-				int i=0;
+			 }
 
-				if(mobile->Length!=10){
-					MessageBox::Show("Too many/less digits in phone no.!!");
-					return false;
-				}
-				
-				while(i<10 && mobile[i]=='0') i++;
-				if(i>1){
-					MessageBox::Show("Too many zeroes in phone no.!!");
-					return false;
-				}
+	private: System::Void cancelBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+				 this->e->Enabled = false;
+				 this->f->Enabled = false;
+				 this->i->Enabled = false;
+				 this->k->Enabled = false;
+				 this->m->Enabled = false;
+				 this->n->Enabled = false;
+				 this->o->Enabled = false;
+				 this->p->Enabled = false;
+				 this->r->Enabled = false;
+				 this->s->Enabled = false;
+				 this->t->Enabled = false;
+				 this->u->Enabled = false;
+				 this->v->Enabled = false;
+				 this->w->Enabled = false;
+				 this->x->Enabled = false;
 
-				for (i=0;i<10;i++){
-					if(mobile[i] < '0' || mobile[i] > '9'){
-						MessageBox::Show("Check digits of phone no.!!");
-						return false;
-					}
-				}
-				
-				return true;
-		}
+				 this->UpdateBtn->Hide();
+				 this->editBtn->Show();
 
-		bool GenderValidator(String^ Gender){
-				
-			String ^ gender = Gender->ToLower();
-			if(!(gender == "male" || gender == "female" || gender == "others")){
-				MessageBox::Show("Enter Valid Gender.Choose from male, female or others!!");
-				return false;
-			}
+				 this->cancelBtn->Hide();
+				 this->backBtn->Show();
+			 }
+	private: System::Void backBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+				 parent->Controls->Clear();
+				 parent->Controls->Add(previous);
+			 }
 
-			return true;
-		}
+
+			 bool Validator(){
+
+				 if(!MobileValidator(f->Text->Trim())) return false;
+				 if(!GenderValidator(k->Text->Trim())) return false;
+				 return true;
+			 }
+
+			 bool MobileValidator(String^ mobile){
+				 int i=0;
+
+				 if(mobile->Length!=10){
+					 MessageBox::Show("Too many/less digits in phone no.!!");
+					 return false;
+				 }
+
+				 while(i<10 && mobile[i]=='0') i++;
+				 if(i>1){
+					 MessageBox::Show("Too many zeroes in phone no.!!");
+					 return false;
+				 }
+
+				 for (i=0;i<10;i++){
+					 if(mobile[i] < '0' || mobile[i] > '9'){
+						 MessageBox::Show("Check digits of phone no.!!");
+						 return false;
+					 }
+				 }
+
+				 return true;
+			 }
+
+			 bool GenderValidator(String^ Gender){
+
+				 String ^ gender = Gender->ToLower();
+				 if(!(gender == "male" || gender == "female" || gender == "others")){
+					 MessageBox::Show("Enter Valid Gender.Choose from male, female or others!!");
+					 return false;
+				 }
+
+				 return true;
+			 }
+	
+
+private: System::Void openFileDialogPhoto_FileOk(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+	    }
+private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		    // open file dialog   
+		    //OpenFileDialog *open = new OpenFileDialog();
+		    // image filters  
+		    //open->Filter = L"Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+		    if (openFileDialogPhoto->ShowDialog() == DialogResult::OK)
+		    {
+			    // display image in picture box  
+			    pictureBox1->Image = gcnew Bitmap(openFileDialogPhoto->FileName);
+			    // image file path  
+			    //txtPhoto->Text = openFileDialogPhoto->FileName;
+
+		    }
+		    if (!Directory::Exists("Resources"))
+		    {
+			    Directory::CreateDirectory("Resources");
+		    }
+
+	    }
 };
 }

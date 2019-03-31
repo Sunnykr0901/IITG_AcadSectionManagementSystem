@@ -4,6 +4,12 @@
 
 #include "professor_sendGrades.h"
 #include "professor_currentCourses.h"
+#include "professor_addnotif_1.h"
+#include "professor_viewNotifications.h"
+#include "professor_updateProfile.h"
+#include "professor_current_students.h"
+#include "professor_sendCoursePreference.h"
+#include "professor_ta_manage.h"
 namespace projectUI {
 
 	using namespace System;
@@ -95,12 +101,13 @@ namespace projectUI {
 			// 
 			this->splitContainer1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->splitContainer1->Location = System::Drawing::Point(0, 0);
-			this->splitContainer1->Margin = System::Windows::Forms::Padding(2);
+			this->splitContainer1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->splitContainer1->Name = L"splitContainer1";
 			// 
 			// splitContainer1.Panel1
 			// 
 			this->splitContainer1->Panel1->AutoScroll = true;
+			this->splitContainer1->Panel1->AutoScrollMargin = System::Drawing::Size(0, 50);
 			this->splitContainer1->Panel1->Controls->Add(this->btn_caa);
 			this->splitContainer1->Panel1->Controls->Add(this->btn_vn);
 			this->splitContainer1->Panel1->Controls->Add(this->btn_cs);
@@ -111,10 +118,6 @@ namespace projectUI {
 			this->splitContainer1->Panel1->Controls->Add(this->btn_sg);
 			this->splitContainer1->Panel1->Controls->Add(this->btn_up);
 			this->splitContainer1->Panel1->Controls->Add(this->btn_tam);
-			// 
-			// splitContainer1.Panel2
-			// 
-			this->splitContainer1->Panel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &professor::splitContainer1_Panel2_Paint);
 			this->splitContainer1->Size = System::Drawing::Size(764, 501);
 			this->splitContainer1->SplitterDistance = 195;
 			this->splitContainer1->SplitterWidth = 3;
@@ -129,26 +132,29 @@ namespace projectUI {
 			this->btn_caa->TabIndex = 9;
 			this->btn_caa->Text = L"Course Adjustment Approval";
 			this->btn_caa->UseVisualStyleBackColor = true;
+			this->btn_caa->Click += gcnew System::EventHandler(this, &professor::btn_caa_Click);
 			// 
 			// btn_vn
 			// 
 			this->btn_vn->Location = System::Drawing::Point(19, 572);
-			this->btn_vn->Margin = System::Windows::Forms::Padding(2);
+			this->btn_vn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btn_vn->Name = L"btn_vn";
 			this->btn_vn->Size = System::Drawing::Size(140, 53);
 			this->btn_vn->TabIndex = 7;
 			this->btn_vn->Text = L"View Notification";
 			this->btn_vn->UseVisualStyleBackColor = true;
+			this->btn_vn->Click += gcnew System::EventHandler(this, &professor::btn_vn_Click);
 			// 
 			// btn_cs
 			// 
 			this->btn_cs->Location = System::Drawing::Point(19, 505);
-			this->btn_cs->Margin = System::Windows::Forms::Padding(2);
+			this->btn_cs->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btn_cs->Name = L"btn_cs";
 			this->btn_cs->Size = System::Drawing::Size(140, 53);
 			this->btn_cs->TabIndex = 6;
 			this->btn_cs->Text = L"Current Students";
 			this->btn_cs->UseVisualStyleBackColor = true;
+			this->btn_cs->Click += gcnew System::EventHandler(this, &professor::btn_cs_Click);
 			// 
 			// btn_an
 			// 
@@ -159,11 +165,12 @@ namespace projectUI {
 			this->btn_an->TabIndex = 8;
 			this->btn_an->Text = L"Add Notification";
 			this->btn_an->UseVisualStyleBackColor = true;
+			this->btn_an->Click += gcnew System::EventHandler(this, &professor::btn_an_Click);
 			// 
 			// btn_cc
 			// 
 			this->btn_cc->Location = System::Drawing::Point(19, 432);
-			this->btn_cc->Margin = System::Windows::Forms::Padding(2);
+			this->btn_cc->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btn_cc->Name = L"btn_cc";
 			this->btn_cc->Size = System::Drawing::Size(140, 53);
 			this->btn_cc->TabIndex = 5;
@@ -174,7 +181,7 @@ namespace projectUI {
 			// btn_tt
 			// 
 			this->btn_tt->Location = System::Drawing::Point(19, 363);
-			this->btn_tt->Margin = System::Windows::Forms::Padding(2);
+			this->btn_tt->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btn_tt->Name = L"btn_tt";
 			this->btn_tt->Size = System::Drawing::Size(140, 53);
 			this->btn_tt->TabIndex = 4;
@@ -184,17 +191,18 @@ namespace projectUI {
 			// btn_scp
 			// 
 			this->btn_scp->Location = System::Drawing::Point(19, 219);
-			this->btn_scp->Margin = System::Windows::Forms::Padding(2);
+			this->btn_scp->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btn_scp->Name = L"btn_scp";
 			this->btn_scp->Size = System::Drawing::Size(140, 53);
 			this->btn_scp->TabIndex = 2;
 			this->btn_scp->Text = L"Send Course Preference";
 			this->btn_scp->UseVisualStyleBackColor = true;
+			this->btn_scp->Click += gcnew System::EventHandler(this, &professor::btn_scp_Click);
 			// 
 			// btn_sg
 			// 
 			this->btn_sg->Location = System::Drawing::Point(19, 144);
-			this->btn_sg->Margin = System::Windows::Forms::Padding(2);
+			this->btn_sg->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btn_sg->Name = L"btn_sg";
 			this->btn_sg->Size = System::Drawing::Size(140, 53);
 			this->btn_sg->TabIndex = 1;
@@ -205,22 +213,24 @@ namespace projectUI {
 			// btn_up
 			// 
 			this->btn_up->Location = System::Drawing::Point(19, 73);
-			this->btn_up->Margin = System::Windows::Forms::Padding(2);
+			this->btn_up->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btn_up->Name = L"btn_up";
 			this->btn_up->Size = System::Drawing::Size(140, 53);
 			this->btn_up->TabIndex = 0;
 			this->btn_up->Text = L"Update Profile";
 			this->btn_up->UseVisualStyleBackColor = true;
+			this->btn_up->Click += gcnew System::EventHandler(this, &professor::btn_up_Click);
 			// 
 			// btn_tam
 			// 
 			this->btn_tam->Location = System::Drawing::Point(19, 291);
-			this->btn_tam->Margin = System::Windows::Forms::Padding(2);
+			this->btn_tam->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btn_tam->Name = L"btn_tam";
 			this->btn_tam->Size = System::Drawing::Size(140, 53);
 			this->btn_tam->TabIndex = 3;
 			this->btn_tam->Text = L"TA Management";
 			this->btn_tam->UseVisualStyleBackColor = true;
+			this->btn_tam->Click += gcnew System::EventHandler(this, &professor::btn_tam_Click);
 			// 
 			// professor
 			// 
@@ -228,7 +238,7 @@ namespace projectUI {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(764, 501);
 			this->Controls->Add(this->splitContainer1);
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"professor";
 			this->Text = L"professor";
 			this->Load += gcnew System::EventHandler(this, &professor::professor_Load);
@@ -247,9 +257,31 @@ private: System::Void btn_cc_Click(System::Object^  sender, System::EventArgs^  
 			 splitContainer1->Panel2->Controls->Clear();
 			 splitContainer1->Panel2->Controls->Add(gcnew professor_currentCourses);
 		 }
-private: System::Void splitContainer1_Panel2_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+private: System::Void btn_an_Click(System::Object^  sender, System::EventArgs^  e) {
+			 splitContainer1->Panel2->Controls->Clear();
+			 splitContainer1->Panel2->Controls->Add(gcnew professor_addnotif_1);
+		 }
+private: System::Void btn_vn_Click(System::Object^  sender, System::EventArgs^  e) {
+			 splitContainer1->Panel2->Controls->Clear();
+			 splitContainer1->Panel2->Controls->Add(gcnew professor_viewNotifications);
+		 }
+private: System::Void btn_up_Click(System::Object^  sender, System::EventArgs^  e) {
+			 splitContainer1->Panel2->Controls->Clear();
+			 splitContainer1->Panel2->Controls->Add(gcnew professor_updateProfile);
 		 }
 private: System::Void professor_Load(System::Object^  sender, System::EventArgs^  e) {
-	    }
+		 }
+private: System::Void btn_scp_Click(System::Object^  sender, System::EventArgs^  e) {
+		 }
+private: System::Void btn_tam_Click(System::Object^  sender, System::EventArgs^  e) {
+			 splitContainer1->Panel2->Controls->Clear();
+			 splitContainer1->Panel2->Controls->Add(gcnew professor_ta_manage);
+		 }
+private: System::Void btn_cs_Click(System::Object^  sender, System::EventArgs^  e) {
+			 splitContainer1->Panel2->Controls->Clear();
+			 splitContainer1->Panel2->Controls->Add(gcnew professor_current_students);
+		 }
+private: System::Void btn_caa_Click(System::Object^  sender, System::EventArgs^  e) {
+		 }
 };
 }

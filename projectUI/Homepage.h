@@ -11,6 +11,7 @@ namespace projectUI {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Diagnostics;
 
 	/// <summary>
 	/// Summary for Homepage
@@ -62,6 +63,7 @@ namespace projectUI {
 
 	private: System::Windows::Forms::TextBox^  textBox2;
 	private: System::Windows::Forms::TextBox^  txtUsername;
+	private: System::Windows::Forms::Panel^  panel1;
 
 
 	private:
@@ -100,11 +102,13 @@ namespace projectUI {
 			this->txtPassword = (gcnew System::Windows::Forms::TextBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->txtUsername = (gcnew System::Windows::Forms::TextBox());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->formsPanel->SuspendLayout();
 			this->panel2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox2))->BeginInit();
 			this->loginPnl->SuspendLayout();
 			this->panel3->SuspendLayout();
+			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// formsPanel
@@ -134,6 +138,7 @@ namespace projectUI {
 			this->PFormsBtn->Text = L"   PhD   ";
 			this->PFormsBtn->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			this->PFormsBtn->UseVisualStyleBackColor = false;
+			this->PFormsBtn->Click += gcnew System::EventHandler(this, &Homepage::PFormsBtn_Click);
 			// 
 			// MFormsBtn
 			// 
@@ -149,6 +154,7 @@ namespace projectUI {
 			this->MFormsBtn->Text = L"   MTech/MDes   ";
 			this->MFormsBtn->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			this->MFormsBtn->UseVisualStyleBackColor = false;
+			this->MFormsBtn->Click += gcnew System::EventHandler(this, &Homepage::MFormsBtn_Click);
 			// 
 			// GenFormsBtn
 			// 
@@ -164,6 +170,7 @@ namespace projectUI {
 			this->GenFormsBtn->Text = L"   General   ";
 			this->GenFormsBtn->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			this->GenFormsBtn->UseVisualStyleBackColor = false;
+			this->GenFormsBtn->Click += gcnew System::EventHandler(this, &Homepage::GenFormsBtn_Click);
 			// 
 			// BMFormsBtn
 			// 
@@ -179,10 +186,11 @@ namespace projectUI {
 			this->BMFormsBtn->Text = L"   BTech/BDes/MSc   ";
 			this->BMFormsBtn->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			this->BMFormsBtn->UseVisualStyleBackColor = false;
+			this->BMFormsBtn->Click += gcnew System::EventHandler(this, &Homepage::BMFormsBtn_Click);
 			// 
 			// button1
 			// 
-			this->button1->BackColor = System::Drawing::Color::Tomato;
+			this->button1->BackColor = System::Drawing::Color::OrangeRed;
 			this->button1->FlatAppearance->BorderSize = 0;
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
@@ -327,7 +335,7 @@ namespace projectUI {
 			// 
 			this->loginPnl->BackColor = System::Drawing::Color::Teal;
 			this->loginPnl->Controls->Add(this->panel3);
-			this->loginPnl->Location = System::Drawing::Point(300, 328);
+			this->loginPnl->Location = System::Drawing::Point(224, 150);
 			this->loginPnl->Name = L"loginPnl";
 			this->loginPnl->Size = System::Drawing::Size(411, 190);
 			this->loginPnl->TabIndex = 22;
@@ -348,12 +356,12 @@ namespace projectUI {
 			// forgotBtn
 			// 
 			this->forgotBtn->BackColor = System::Drawing::Color::White;
-			this->forgotBtn->FlatAppearance->BorderColor = System::Drawing::Color::Tomato;
+			this->forgotBtn->FlatAppearance->BorderColor = System::Drawing::Color::OrangeRed;
 			this->forgotBtn->FlatAppearance->BorderSize = 2;
 			this->forgotBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->forgotBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 6.7F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->forgotBtn->ForeColor = System::Drawing::Color::Tomato;
+			this->forgotBtn->ForeColor = System::Drawing::Color::OrangeRed;
 			this->forgotBtn->Location = System::Drawing::Point(204, 123);
 			this->forgotBtn->Name = L"forgotBtn";
 			this->forgotBtn->Size = System::Drawing::Size(114, 32);
@@ -409,12 +417,20 @@ namespace projectUI {
 			this->txtUsername->Size = System::Drawing::Size(223, 29);
 			this->txtUsername->TabIndex = 0;
 			// 
+			// panel1
+			// 
+			this->panel1->Controls->Add(this->loginPnl);
+			this->panel1->Location = System::Drawing::Point(113, 177);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(839, 503);
+			this->panel1->TabIndex = 23;
+			// 
 			// Homepage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1064, 681);
-			this->Controls->Add(this->loginPnl);
+			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->formsPanel);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label5);
@@ -429,6 +445,7 @@ namespace projectUI {
 			this->loginPnl->ResumeLayout(false);
 			this->panel3->ResumeLayout(false);
 			this->panel3->PerformLayout();
+			this->panel1->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -444,7 +461,7 @@ namespace projectUI {
 					 con->Open();
 
 					 String ^ aString = "Select * from Student where [Username] ='"+txtUsername-> Text+"';";
-//					 MessageBox::Show(aString);
+					 //					 MessageBox::Show(aString);
 
 					 OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(aString,con);
 					 OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
@@ -456,7 +473,7 @@ namespace projectUI {
 					 {
 						 password=readerData->GetString(5);
 						 usrnm=readerData->GetString(0);
-//						 MessageBox::Show(password);
+						 //						 MessageBox::Show(password);
 						 count++;
 					 }
 
@@ -477,14 +494,26 @@ namespace projectUI {
 							 MessageBox::Show("Please check your password and try again!");
 						 }
 					 }
-					 
+
 					 con->Close();
 				 }
-				catch(Exception ^ ex)
-				{
+				 catch(Exception ^ ex)
+				 {
 					 MessageBox::Show(ex->Message);
 					 con->Close();
-				}
+				 }
 			 };
+	private: System::Void BMFormsBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+			    Process::Start("http://intranet.iitg.ernet.in/acad/forms/btbdmsc_index.htm");
+		    }
+private: System::Void GenFormsBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+		    Process::Start("http://intranet.iitg.ernet.in/acad/forms/common_formindex.htm");
+	    }
+private: System::Void MFormsBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+		    Process::Start("http://intranet.iitg.ernet.in/acad/forms/mtech_formindex.htm");
+	    }
+private: System::Void PFormsBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+		    Process::Start("http://intranet.iitg.ernet.in/acad/forms/formindexphd.htm");
+	    }
 };
 }

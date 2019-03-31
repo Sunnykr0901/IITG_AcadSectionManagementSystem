@@ -13,7 +13,7 @@ int main(array<System::String ^> ^args)
 	Application::SetCompatibleTextRenderingDefault(false); 
 
 	// Create the main window and run it
-	//Application::Run(gcnew professor());
 	Application::Run(gcnew Homepage());
+	//Application::Run(gcnew professor());
 	return 0;
 }
