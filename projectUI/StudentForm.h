@@ -69,6 +69,8 @@ namespace projectUI {
 	private: System::Windows::Forms::Button^  noticificationBtn;
 	private: System::Windows::Forms::PictureBox^  pictureBox2;
 	private: System::Windows::Forms::Panel^  panel1;
+
+
 	private: System::Windows::Forms::ComboBox^  comboBox1;
 	private: System::Windows::Forms::RadioButton^  radioButton3;
 	private: System::Windows::Forms::RadioButton^  radioButton2;

@@ -1,6 +1,7 @@
 #pragma once
 #using <System.dll>
 #using <System.data.dll>
+#include "Search.h"
 #include "StudentForm.h"
 
 namespace projectUI {
@@ -19,6 +20,8 @@ namespace projectUI {
 	public ref class Homepage : public System::Windows::Forms::Form
 	{
 	public:
+
+		UserControlSearch ^s;
 		Homepage(void)
 		{
 			InitializeComponent();
@@ -54,16 +57,37 @@ namespace projectUI {
 	private: System::Windows::Forms::Panel^  panel2;
 	private: System::Windows::Forms::Button^  noticeBrdBtn;
 	private: System::Windows::Forms::PictureBox^  pictureBox2;
-	private: System::Windows::Forms::Panel^  loginPnl;
 
+
+
+
+
+
+
+
+
+	private: System::Windows::Forms::Panel^  panel1;
+	private: System::Windows::Forms::TextBox^  textBox1;
+
+
+	private: System::Windows::Forms::Button^  helpBtn;
+	private: System::Windows::Forms::Panel^  panel4;
+	private: System::Windows::Forms::RadioButton^  radioButton2;
+	private: System::Windows::Forms::ComboBox^  comboBox1;
+	private: System::Windows::Forms::RadioButton^  radioButton1;
+	private: System::Windows::Forms::RadioButton^  radioButton3;
+
+
+
+
+
+	private: System::Windows::Forms::Panel^  loginPnl;
 	private: System::Windows::Forms::Panel^  panel3;
 	private: System::Windows::Forms::Button^  forgotBtn;
 	private: System::Windows::Forms::Button^  loginBtn;
 	private: System::Windows::Forms::TextBox^  txtPassword;
-
 	private: System::Windows::Forms::TextBox^  textBox2;
 	private: System::Windows::Forms::TextBox^  txtUsername;
-	private: System::Windows::Forms::Panel^  panel1;
 
 
 	private:
@@ -93,8 +117,16 @@ namespace projectUI {
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->helpBtn = (gcnew System::Windows::Forms::Button());
 			this->noticeBrdBtn = (gcnew System::Windows::Forms::Button());
+			this->panel4 = (gcnew System::Windows::Forms::Panel());
+			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButton3 = (gcnew System::Windows::Forms::RadioButton());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->loginPnl = (gcnew System::Windows::Forms::Panel());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->forgotBtn = (gcnew System::Windows::Forms::Button());
@@ -102,13 +134,13 @@ namespace projectUI {
 			this->txtPassword = (gcnew System::Windows::Forms::TextBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->txtUsername = (gcnew System::Windows::Forms::TextBox());
-			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->formsPanel->SuspendLayout();
 			this->panel2->SuspendLayout();
+			this->panel4->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox2))->BeginInit();
+			this->panel1->SuspendLayout();
 			this->loginPnl->SuspendLayout();
 			this->panel3->SuspendLayout();
-			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// formsPanel
@@ -203,6 +235,7 @@ namespace projectUI {
 			this->button1->TabIndex = 10;
 			this->button1->Text = L"LOGIN";
 			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &Homepage::button1_Click);
 			// 
 			// searchBtn
 			// 
@@ -219,6 +252,7 @@ namespace projectUI {
 			this->searchBtn->TabIndex = 9;
 			this->searchBtn->Text = L"SEARCH";
 			this->searchBtn->UseVisualStyleBackColor = false;
+			this->searchBtn->Click += gcnew System::EventHandler(this, &Homepage::searchBtn_Click);
 			// 
 			// label4
 			// 
@@ -293,6 +327,8 @@ namespace projectUI {
 			// panel2
 			// 
 			this->panel2->BackColor = System::Drawing::Color::Teal;
+			this->panel2->Controls->Add(this->textBox1);
+			this->panel2->Controls->Add(this->helpBtn);
 			this->panel2->Controls->Add(this->button1);
 			this->panel2->Controls->Add(this->searchBtn);
 			this->panel2->Controls->Add(this->formsBtn);
@@ -303,6 +339,41 @@ namespace projectUI {
 			this->panel2->Name = L"panel2";
 			this->panel2->Size = System::Drawing::Size(1067, 47);
 			this->panel2->TabIndex = 17;
+			// 
+			// textBox1
+			// 
+			this->textBox1->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Lucida Sans", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->textBox1->Location = System::Drawing::Point(313, 15);
+			this->textBox1->Margin = System::Windows::Forms::Padding(0);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(220, 19);
+			this->textBox1->TabIndex = 24;
+			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->textBox1->Visible = false;
+			// 
+			// helpBtn
+			// 
+			this->helpBtn->BackColor = System::Drawing::Color::Teal;
+			this->helpBtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"helpBtn.BackgroundImage")));
+			this->helpBtn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->helpBtn->FlatAppearance->BorderSize = 0;
+			this->helpBtn->FlatAppearance->MouseDownBackColor = System::Drawing::Color::Teal;
+			this->helpBtn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::Teal;
+			this->helpBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->helpBtn->Font = (gcnew System::Drawing::Font(L"Chiller", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->helpBtn->ForeColor = System::Drawing::Color::Gold;
+			this->helpBtn->Location = System::Drawing::Point(541, 10);
+			this->helpBtn->Margin = System::Windows::Forms::Padding(0);
+			this->helpBtn->Name = L"helpBtn";
+			this->helpBtn->Size = System::Drawing::Size(26, 26);
+			this->helpBtn->TabIndex = 21;
+			this->helpBtn->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
+			this->helpBtn->UseVisualStyleBackColor = true;
+			this->helpBtn->Visible = false;
+			this->helpBtn->Click += gcnew System::EventHandler(this, &Homepage::helpBtn_Click);
 			// 
 			// noticeBrdBtn
 			// 
@@ -320,6 +391,69 @@ namespace projectUI {
 			this->noticeBrdBtn->Text = L"NOTICE BOARD";
 			this->noticeBrdBtn->UseVisualStyleBackColor = false;
 			// 
+			// panel4
+			// 
+			this->panel4->BackColor = System::Drawing::Color::Teal;
+			this->panel4->Controls->Add(this->radioButton2);
+			this->panel4->Controls->Add(this->comboBox1);
+			this->panel4->Controls->Add(this->radioButton1);
+			this->panel4->Controls->Add(this->radioButton3);
+			this->panel4->Location = System::Drawing::Point(200, 1);
+			this->panel4->Margin = System::Windows::Forms::Padding(0);
+			this->panel4->Name = L"panel4";
+			this->panel4->Size = System::Drawing::Size(187, 83);
+			this->panel4->TabIndex = 22;
+			this->panel4->Visible = false;
+			// 
+			// radioButton2
+			// 
+			this->radioButton2->AutoSize = true;
+			this->radioButton2->ForeColor = System::Drawing::Color::White;
+			this->radioButton2->Location = System::Drawing::Point(8, 33);
+			this->radioButton2->Name = L"radioButton2";
+			this->radioButton2->Size = System::Drawing::Size(59, 17);
+			this->radioButton2->TabIndex = 16;
+			this->radioButton2->TabStop = true;
+			this->radioButton2->Text = L"Faculty";
+			this->radioButton2->UseVisualStyleBackColor = true;
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->BackColor = System::Drawing::Color::White;
+			this->comboBox1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(12) {L"----(Select)----", L"CSE", L"MNC", L"ECE", L"EEE", 
+				L"BT", L"CST", L"CE", L"EP", L"ME", L"CL", L"DoD"});
+			this->comboBox1->Location = System::Drawing::Point(109, 32);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(75, 21);
+			this->comboBox1->TabIndex = 18;
+			this->comboBox1->Visible = false;
+			// 
+			// radioButton1
+			// 
+			this->radioButton1->AutoSize = true;
+			this->radioButton1->ForeColor = System::Drawing::Color::White;
+			this->radioButton1->Location = System::Drawing::Point(8, 10);
+			this->radioButton1->Name = L"radioButton1";
+			this->radioButton1->Size = System::Drawing::Size(62, 17);
+			this->radioButton1->TabIndex = 15;
+			this->radioButton1->TabStop = true;
+			this->radioButton1->Text = L"Student";
+			this->radioButton1->UseVisualStyleBackColor = true;
+			// 
+			// radioButton3
+			// 
+			this->radioButton3->AutoSize = true;
+			this->radioButton3->ForeColor = System::Drawing::Color::White;
+			this->radioButton3->Location = System::Drawing::Point(8, 57);
+			this->radioButton3->Name = L"radioButton3";
+			this->radioButton3->Size = System::Drawing::Size(79, 17);
+			this->radioButton3->TabIndex = 17;
+			this->radioButton3->TabStop = true;
+			this->radioButton3->Text = L"Admin Staff";
+			this->radioButton3->UseVisualStyleBackColor = true;
+			// 
 			// pictureBox2
 			// 
 			this->pictureBox2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"pictureBox2.BackgroundImage")));
@@ -331,14 +465,24 @@ namespace projectUI {
 			this->pictureBox2->TabIndex = 16;
 			this->pictureBox2->TabStop = false;
 			// 
+			// panel1
+			// 
+			this->panel1->BackColor = System::Drawing::SystemColors::Control;
+			this->panel1->Controls->Add(this->loginPnl);
+			this->panel1->Controls->Add(this->panel4);
+			this->panel1->Location = System::Drawing::Point(113, 176);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(839, 503);
+			this->panel1->TabIndex = 23;
+			// 
 			// loginPnl
 			// 
 			this->loginPnl->BackColor = System::Drawing::Color::Teal;
 			this->loginPnl->Controls->Add(this->panel3);
-			this->loginPnl->Location = System::Drawing::Point(224, 150);
+			this->loginPnl->Location = System::Drawing::Point(214, 156);
 			this->loginPnl->Name = L"loginPnl";
 			this->loginPnl->Size = System::Drawing::Size(411, 190);
-			this->loginPnl->TabIndex = 22;
+			this->loginPnl->TabIndex = 27;
 			// 
 			// panel3
 			// 
@@ -417,18 +561,11 @@ namespace projectUI {
 			this->txtUsername->Size = System::Drawing::Size(223, 29);
 			this->txtUsername->TabIndex = 0;
 			// 
-			// panel1
-			// 
-			this->panel1->Controls->Add(this->loginPnl);
-			this->panel1->Location = System::Drawing::Point(113, 177);
-			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(839, 503);
-			this->panel1->TabIndex = 23;
-			// 
 			// Homepage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(1064, 681);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->formsPanel);
@@ -439,19 +576,23 @@ namespace projectUI {
 			this->Controls->Add(this->pictureBox2);
 			this->Name = L"Homepage";
 			this->Text = L"Homepage";
+			this->Load += gcnew System::EventHandler(this, &Homepage::Homepage_Load);
 			this->formsPanel->ResumeLayout(false);
 			this->panel2->ResumeLayout(false);
+			this->panel2->PerformLayout();
+			this->panel4->ResumeLayout(false);
+			this->panel4->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->pictureBox2))->EndInit();
+			this->panel1->ResumeLayout(false);
 			this->loginPnl->ResumeLayout(false);
 			this->panel3->ResumeLayout(false);
 			this->panel3->PerformLayout();
-			this->panel1->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void loginBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+			private: System::Void loginBtn_Click(System::Object^  sender, System::EventArgs^  e) {
 
 				 OleDb::OleDbConnection ^con;	 
 				 try{				
@@ -506,14 +647,52 @@ namespace projectUI {
 	private: System::Void BMFormsBtn_Click(System::Object^  sender, System::EventArgs^  e) {
 			    Process::Start("http://intranet.iitg.ernet.in/acad/forms/btbdmsc_index.htm");
 		    }
-private: System::Void GenFormsBtn_Click(System::Object^  sender, System::EventArgs^  e) {
-		    Process::Start("http://intranet.iitg.ernet.in/acad/forms/common_formindex.htm");
+	private: System::Void GenFormsBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+			    Process::Start("http://intranet.iitg.ernet.in/acad/forms/common_formindex.htm");
+		    }
+	private: System::Void MFormsBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+			    Process::Start("http://intranet.iitg.ernet.in/acad/forms/mtech_formindex.htm");
+		    }
+	private: System::Void PFormsBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+			    Process::Start("http://intranet.iitg.ernet.in/acad/forms/formindexphd.htm");
+		    }
+	private: System::Void Homepage_Load(System::Object^  sender, System::EventArgs^  e) {
+// 			    panel1->Controls->Clear();
+// 			    Homepage ^ homepageForm = gcnew Homepage();
+// 			    Login ^lg = gcnew Login(homepageForm);
+// 			    panel1->Controls->Add(lg);
+		    }
+	private: System::Void searchBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+			    textBox1->Visible=true;
+			    helpBtn->Visible=true;
+			    comboBox1->Visible=true;
+			    panel4->Visible=true;
+			    this->comboBox1->SelectedIndex = 0;
+			    this->radioButton1->Checked=true;
+		    }
+	
+
+private: System::Void helpBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+		    //checking if department selected for search
+		    if(comboBox1->SelectedIndex == 0){
+			    MessageBox::Show("Please Select Department from Dropdown Menu!");
+		    }
+		    else{
+			    String ^table = "Student";
+			    if (radioButton2->Checked) table="Professor";
+			    if (radioButton3->Checked) table="Staff";
+
+			    s = gcnew UserControlSearch(textBox1->Text,comboBox1->Text,table);
+			    textBox1->Visible=false;
+			    helpBtn->Visible=false;
+			    panel4->Visible=false;
+			    comboBox1->Visible=false;
+			    loginPnl->Hide();
+			    panel1->Controls->Add(s);		    }
 	    }
-private: System::Void MFormsBtn_Click(System::Object^  sender, System::EventArgs^  e) {
-		    Process::Start("http://intranet.iitg.ernet.in/acad/forms/mtech_formindex.htm");
-	    }
-private: System::Void PFormsBtn_Click(System::Object^  sender, System::EventArgs^  e) {
-		    Process::Start("http://intranet.iitg.ernet.in/acad/forms/formindexphd.htm");
+private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		    panel1->Controls->Remove(s);
+		    loginPnl->Show();
 	    }
 };
 }
