@@ -1,12 +1,16 @@
-#include <string.h>
 #pragma once
-
+#using <System.dll>
+#using <System.data.dll>
+#include <cstring>
+#include <ctime>
+#include<cstdio>
 using namespace System;
 using namespace System::ComponentModel;
 using namespace System::Collections;
 using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
+using namespace System::Data::OleDb;
 
 
 namespace projectUI {
@@ -26,6 +30,8 @@ namespace projectUI {
 		int present_sem; // 0 = Spring, 1 = Fall
 		int year_under_query;
 		int semester_under_query; 
+		int year_of_admission;
+		int sem_of_admission;
 		int course_btn_index;
 
 		int x;
@@ -33,6 +39,7 @@ namespace projectUI {
 
 		String ^ lastClickedCourseBtn;	
 		String ^ courseToChange;
+		String^ explainingText;
 		String ^ temp;
 	private: System::Windows::Forms::Label^  label2;
 
@@ -63,11 +70,14 @@ namespace projectUI {
 
 			present_year = 2018;
 			present_sem = 1; // 0 = Spring, 1 = Fall
+			year_of_admission=2017;
+			sem_of_admission=0;
 
 			x = 250;
 			y = 50 + 21*(course_btn_index-1);
 			resources = (gcnew System::ComponentModel::ComponentResourceManager(StudentCourses::typeid));
-			explanationText = gcnew System::Windows::Forms::TextBox();		
+			explanationText = gcnew System::Windows::Forms::TextBox();	
+			explainingText="";
 
 		}
 
@@ -407,7 +417,50 @@ namespace projectUI {
 
 	private: System::Void drop_btn_Click(System::Object^  sender, System::EventArgs^  e) {
 			    if(lastClickedCourseBtn != ""){
-				    MessageBox::Show("Successfully applied to drop "+lastClickedCourseBtn);//
+				    explainingText=(explanationText->Text)->Replace(";", " ");
+				    MessageBox::Show("Successfully applied to drop "+lastClickedCourseBtn);
+				    MessageBox::Show("message = "+explainingText);//
+				    
+
+				    try
+				    {				
+
+					    con->Open();
+
+					    time_t now = time(0);
+					    tm *ltm = new tm;
+					    localtime_s(ltm,&now);
+
+					    String ^ bString = "Select Username from ProfCourses where [CourseID] ='"+lastClickedCourseBtn+"'";
+					    String ^ targetProf;
+					    OleDb::OleDbCommand ^ cmd1 = gcnew OleDb::OleDbCommand(bString, con);
+					    OleDb::OleDbDataReader ^ reader = cmd1->ExecuteReader();
+
+					    while(reader->Read() == true){
+						    targetProf = reader->GetString(0);	
+						    
+					    }
+					    reader->Close();
+
+					    String^ formattedMsg = "Drop;"+lastClickedCourseBtn+";"+explainingText;
+					    String^ com="insert into Notification(SenderUsername,SendTime,SendDate,Message,OtherReceivers,Type) values('"+this->usrnm+"','"+ltm->tm_hour+":"+ltm->tm_min+"','"+ltm->tm_mday+"/"+(ltm->tm_mon+1)+"/"+(ltm->tm_year+1900)+"','"+formattedMsg+"','"+targetProf+"','Request');";
+					    MessageBox::Show(com);
+
+					    OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(com,con);
+					    OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
+
+
+
+					    readerData->Close();
+
+					    con->Close();
+				    }
+				    catch(Exception ^ ex)
+				    {
+					    con->Close();
+					    MessageBox::Show(ex->Message);
+				    }
+				    
 
 				    destroyer();
 				    year_under_query = present_year;
@@ -426,6 +479,45 @@ namespace projectUI {
 			    {
 				    if(lastClickedCourseBtn != courseToChange){
 					    MessageBox::Show("Successfully applied to change from "+temp+" to "+lastClickedCourseBtn);
+					    
+					    try
+					    {				
+
+						    con->Open();
+
+						    time_t now = time(0);
+						    tm *ltm = new tm;
+						    localtime_s(ltm,&now);
+
+						    String ^ bString = "Select Username from ProfCourses where [CourseID] ='"+temp+"'";
+						    String ^ targetProf;
+						    OleDb::OleDbCommand ^ cmd1 = gcnew OleDb::OleDbCommand(bString, con);
+						    OleDb::OleDbDataReader ^ reader = cmd1->ExecuteReader();
+
+						    while(reader->Read() == true){
+							    targetProf = reader->GetString(0);	
+
+						    }
+						    reader->Close();
+
+						    String^ formattedMsg = "Change;"+temp+";To;"+lastClickedCourseBtn+";"+explainingText;
+						    String^ com="insert into Notification(SenderUsername,SendTime,SendDate,Message,OtherReceivers,Type) values('"+this->usrnm+"','"+ltm->tm_hour+":"+ltm->tm_min+"','"+ltm->tm_mday+"/"+(ltm->tm_mon+1)+"/"+(ltm->tm_year+1900)+"','"+formattedMsg+"','"+targetProf+"','Request');";
+						    
+						    OleDb::OleDbCommand ^cmd=gcnew OleDb::OleDbCommand(com,con);
+						    OleDb::OleDbDataReader ^readerData=cmd->ExecuteReader();
+
+						    readerData->Close();
+
+						    con->Close();
+					    }
+					    catch(Exception ^ ex)
+					    {
+						    con->Close();
+						    MessageBox::Show(ex->Message);
+					    }
+					    
+					    
+					    
 				    }
 				    else
 					    MessageBox::Show("Select a different course");
@@ -448,47 +540,7 @@ namespace projectUI {
 	private: System::Void change_btn_Click(System::Object^  sender, System::EventArgs^  e) {
 			    if(lastClickedCourseBtn != "")
 			    {
-				    // 				destroyer();
-				    // 				year_under_query = present_year;
-				    // 				semester_under_query = present_sem;
-				    // 			 
-				    // 				try
-				    // 				{				
-				    // 					con->Open();
-				    // 
-				    // 					String ^ semesterName;
-				    // 					if (semester_under_query == 0)
-				    // 						semesterName = "Spring";
-				    // 					else if (semester_under_query == 1)
-				    // 						semesterName = "Fall";
-				    // 
-				    // 					String ^ session = Convert::ToString(year_under_query)+"-"+Convert::ToString(Convert::ToInt32(year_under_query)-1999);
-				    // 					String ^ aString = "Select * from CourseList where [CourseType] ='"+'"Elective"'+"' AND [Session] = '"+session+"' AND [DeptID] = '"+deptID+"' AND [StudentSem] = '"+studentSem+"' AND [Semester] = '"+semesterName+"'";
-				    // 
-				    // 
-				    // 					OleDb::OleDbCommand ^ cmd = gcnew OleDb::OleDbCommand(aString, con);
-				    // 					OleDb::OleDbDataReader ^ readerData = cmd->ExecuteReader();
-				    // 
-				    // 					while(readerData->Read() == true){
-				    // 						String ^ course_grade = "";
-				    // 						String ^ course_id = readerData->GetString(1);	
-				    // 
-				    // 
-				    // 						course_btn_creator(course_btn_index, course_id, course_grade, con);
-				    // 
-				    // 						course_btn_index++;
-				    // 
-				    // 					}
-				    // 					readerData->Close();
-				    // 
-				    // 					con->Close();
-				    // 				}
-				    // 				catch(Exception ^ ex)
-				    // 				{
-				    // 					con->Close();
-				    // 					MessageBox::Show(ex->Message);
-				    // 				}
-
+				    explainingText=explanationText->Text;
 				    temp = lastClickedCourseBtn;
 				    destroyer();
 				    generateCourseButtons();
@@ -559,3 +611,5 @@ namespace projectUI {
 
 	};
 }
+
+

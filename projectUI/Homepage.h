@@ -83,11 +83,13 @@ namespace projectUI {
 
 	private: System::Windows::Forms::Panel^  loginPnl;
 	private: System::Windows::Forms::Panel^  panel3;
-	private: System::Windows::Forms::Button^  forgotBtn;
+
 	private: System::Windows::Forms::Button^  loginBtn;
 	private: System::Windows::Forms::TextBox^  txtPassword;
 	private: System::Windows::Forms::TextBox^  textBox2;
 	private: System::Windows::Forms::TextBox^  txtUsername;
+	private: System::Windows::Forms::LinkLabel^  linkLabel1;
+	private: System::Windows::Forms::Label^  label1;
 
 
 	private:
@@ -129,11 +131,12 @@ namespace projectUI {
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->loginPnl = (gcnew System::Windows::Forms::Panel());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
-			this->forgotBtn = (gcnew System::Windows::Forms::Button());
 			this->loginBtn = (gcnew System::Windows::Forms::Button());
 			this->txtPassword = (gcnew System::Windows::Forms::TextBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->txtUsername = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->linkLabel1 = (gcnew System::Windows::Forms::LinkLabel());
 			this->formsPanel->SuspendLayout();
 			this->panel2->SuspendLayout();
 			this->panel4->SuspendLayout();
@@ -282,6 +285,7 @@ namespace projectUI {
 			this->formsBtn->TabIndex = 5;
 			this->formsBtn->Text = L"FORMS";
 			this->formsBtn->UseVisualStyleBackColor = false;
+			this->formsBtn->MouseEnter += gcnew System::EventHandler(this, &Homepage::formsBtn_MouseEnter);
 			// 
 			// AcadCalBtn
 			// 
@@ -487,7 +491,8 @@ namespace projectUI {
 			// panel3
 			// 
 			this->panel3->BackColor = System::Drawing::Color::White;
-			this->panel3->Controls->Add(this->forgotBtn);
+			this->panel3->Controls->Add(this->linkLabel1);
+			this->panel3->Controls->Add(this->label1);
 			this->panel3->Controls->Add(this->loginBtn);
 			this->panel3->Controls->Add(this->txtPassword);
 			this->panel3->Controls->Add(this->textBox2);
@@ -497,22 +502,6 @@ namespace projectUI {
 			this->panel3->Size = System::Drawing::Size(405, 184);
 			this->panel3->TabIndex = 0;
 			// 
-			// forgotBtn
-			// 
-			this->forgotBtn->BackColor = System::Drawing::Color::White;
-			this->forgotBtn->FlatAppearance->BorderColor = System::Drawing::Color::OrangeRed;
-			this->forgotBtn->FlatAppearance->BorderSize = 2;
-			this->forgotBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->forgotBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 6.7F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
-				static_cast<System::Byte>(0)));
-			this->forgotBtn->ForeColor = System::Drawing::Color::OrangeRed;
-			this->forgotBtn->Location = System::Drawing::Point(204, 123);
-			this->forgotBtn->Name = L"forgotBtn";
-			this->forgotBtn->Size = System::Drawing::Size(114, 32);
-			this->forgotBtn->TabIndex = 4;
-			this->forgotBtn->Text = L"Forgot Password";
-			this->forgotBtn->UseVisualStyleBackColor = false;
-			// 
 			// loginBtn
 			// 
 			this->loginBtn->BackColor = System::Drawing::Color::Teal;
@@ -521,9 +510,9 @@ namespace projectUI {
 			this->loginBtn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
 			this->loginBtn->ForeColor = System::Drawing::Color::White;
-			this->loginBtn->Location = System::Drawing::Point(61, 123);
+			this->loginBtn->Location = System::Drawing::Point(34, 102);
 			this->loginBtn->Name = L"loginBtn";
-			this->loginBtn->Size = System::Drawing::Size(137, 32);
+			this->loginBtn->Size = System::Drawing::Size(317, 32);
 			this->loginBtn->TabIndex = 3;
 			this->loginBtn->Text = L"LOGIN";
 			this->loginBtn->UseVisualStyleBackColor = false;
@@ -560,6 +549,30 @@ namespace projectUI {
 			this->txtUsername->Name = L"txtUsername";
 			this->txtUsername->Size = System::Drawing::Size(223, 29);
 			this->txtUsername->TabIndex = 0;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->label1->ForeColor = System::Drawing::Color::Black;
+			this->label1->Location = System::Drawing::Point(40, 147);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(215, 16);
+			this->label1->TabIndex = 4;
+			this->label1->Text = L"For any issue lodge a service request in";
+			// 
+			// linkLabel1
+			// 
+			this->linkLabel1->AutoSize = true;
+			this->linkLabel1->LinkColor = System::Drawing::Color::OrangeRed;
+			this->linkLabel1->Location = System::Drawing::Point(261, 148);
+			this->linkLabel1->Name = L"linkLabel1";
+			this->linkLabel1->Size = System::Drawing::Size(90, 13);
+			this->linkLabel1->TabIndex = 5;
+			this->linkLabel1->TabStop = true;
+			this->linkLabel1->Text = L"www.iitg.ac.in/cb";
+			this->linkLabel1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &Homepage::linkLabel1_LinkClicked);
 			// 
 			// Homepage
 			// 
@@ -693,6 +706,13 @@ private: System::Void helpBtn_Click(System::Object^  sender, System::EventArgs^ 
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		    panel1->Controls->Remove(s);
 		    loginPnl->Show();
+	    }
+private: System::Void formsBtn_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+		    formsPanel->Show();
+	    }
+
+private: System::Void linkLabel1_LinkClicked(System::Object^  sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^  e) {
+		    Process::Start("http://iitg.ac.in/cb");
 	    }
 };
 }

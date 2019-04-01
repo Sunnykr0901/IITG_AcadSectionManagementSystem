@@ -6,6 +6,7 @@
 #include "StudentCourses.h"
 #include "StudentNoticifications.h"
 #include "Search.h"
+#include "StudentTimeTable.h"
 
 namespace projectUI {
 
@@ -277,6 +278,7 @@ namespace projectUI {
 			this->TTBtn->TabIndex = 1;
 			this->TTBtn->Text = L"TIME TABLE";
 			this->TTBtn->UseVisualStyleBackColor = false;
+			this->TTBtn->Click += gcnew System::EventHandler(this, &StudentForm::TTBtn_Click);
 			// 
 			// noticificationBtn
 			// 
@@ -464,5 +466,10 @@ namespace projectUI {
 			    StudentNoticifications ^sn = gcnew StudentNoticifications(usrnm);
 			    panel1->Controls->Add(sn);
 		    }
+private: System::Void TTBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+		    panel1->Controls->Clear();
+		    StudentTimeTable ^stt = gcnew StudentTimeTable(usrnm);
+		    panel1->Controls->Add(stt);
+	    }
 };
 }

@@ -114,6 +114,7 @@
     <ClCompile Include="StudentForm.cpp" />
     <ClCompile Include="StudentNoticifications.cpp" />
     <ClCompile Include="StudentProfile.cpp" />
+    <ClCompile Include="StudentTimeTable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DetailedStudentProfile.h">
@@ -175,6 +176,9 @@
     <ClInclude Include="StudentProfile.h">
       <FileType>CppControl</FileType>
     </ClInclude>
+    <ClInclude Include="StudentTimeTable.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />
@@ -225,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StudentProfile.resx">
       <DependentUpon>StudentProfile.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentTimeTable.resx">
+      <DependentUpon>StudentTimeTable.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
